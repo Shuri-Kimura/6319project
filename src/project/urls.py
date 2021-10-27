@@ -21,4 +21,5 @@ urlpatterns = [
     path('search/', include('search.urls')),
     path('newcommodity/', include('newcommodity.urls')),
     path('like/', include('like.urls')),
+    path('mypage/',include('mypage.urls')),
 ]
