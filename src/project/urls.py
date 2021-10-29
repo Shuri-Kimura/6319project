@@ -22,4 +22,7 @@ urlpatterns = [
     path('newcommodity/', include('newcommodity.urls')),
     path('like/', include('like.urls')),
     path('mypage/',include('mypage.urls')),
+    path('textpage/',include('textpage.urls')),
+    
+    
 ]
