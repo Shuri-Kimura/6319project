@@ -23,6 +23,7 @@ urlpatterns = [
     path('like/', include('like.urls')),
     path('mypage/',include('mypage.urls')),
     path('textpage/',include('textpage.urls')),
+    path('users/',include('users.urls')),
     
     
 ]
