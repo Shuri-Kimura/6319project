@@ -8,6 +8,7 @@ from django.utils import timezone
 
 #Users作らなきゃいけない
 
+
 class Classes(models.Model):
     class_id = models.IntegerField(primary_key=True)
     title = models.TextField(max_length=50) #文字数？
