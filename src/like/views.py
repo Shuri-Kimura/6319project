@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from src.users.models import Cfavos, Tfavos
 
 
 def index(request):
