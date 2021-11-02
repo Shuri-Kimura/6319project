@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'classpages.apps.ClasspagesConfig',
     'like.apps.LikeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
