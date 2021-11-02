@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'classpages.apps.ClasspagesConfig',
     'like.apps.LikeConfig',
+    'mypage.apps.MypageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

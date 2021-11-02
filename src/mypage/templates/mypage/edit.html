@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>編集</title>
+        <h1>編集せい</h1>
+    </head>
+    <body>
+        <p>ここが自己紹介です。</p>
+        <textarea> name="comment" cols="40" rows="8"></textarea>
+        <a href="{% url 'mypage:mypage' %}">Vote again?</a>
+    {% block main_containts %}
+    {% endblock %}
+        <input type="button" onclick="history.back()" value = "戻る">
+    </body>
+
+</html>
