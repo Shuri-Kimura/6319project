@@ -7,19 +7,31 @@
     </head>
     <body>
        <h1>Doutei1</h1>
-       <h2>メッセージ</h2>
-       <h2>マイページ</h2>
-       <h2>授業検索</h2>
-       <h2>教科書検索</h2>
- 
+       <h2><a href="../mypage">メッセージ</a></h2>
+       <h2><a href="../mypage">マイページ</a></h2>
+       <h2><a href="../mypage">授業検索</a></h2>
+       <h2><a href="../mypage">教科書検索</a></h2>
+
+       <center>
+      <p>画像選択<br>
        <input type="file" name="example" accept="image/jpeg, image/png">
        <input type="file" name="example" accept="image/jpeg, image/png">
        <input type="file" name="example" accept="image/jpeg, image/png">
-       
+       </p>
        <form action="#" method="post">
-          <p>商品情報<br>
-             <textarea name="iteminfo" cols="40" rows="8"></textarea></p>
+          <p class="iteminfo">商品情報</p>
+          <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
        </form>
+
+       <form action="#" method="post">
+         <p class="iteminfo">商品情報</p>
+         <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
+      </form>
+
+      <form action="#" method="post">
+         <p class="iteminfo">商品情報</p>
+         <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
+      </form>
  
        <table border="1">
           <tr>
@@ -29,8 +41,6 @@
                 <option value="選択肢1">教科書</option>
                 <option value="選択肢2">参考書</option>
                 <option value="選択肢3">過去問</option>
-                <option value="選択肢4">ちんこ</option>
-                <option value="選択肢5">ぱんつ</option>
              </select>
             </td>
           </tr>
@@ -66,21 +76,23 @@
            </tr>
         </table>
       
-      
-      <label for="trigger" class="open_btn">出品する</label>
-      <div class="popup_wrap">
-        <input id="trigger" type="checkbox">
-        <div class="popup_overlay">
-          <label for="trigger" class="popup_trigger"></label>
-          <div class="popup_content">
-              <label for="trigger" class="close_btn">×</label>
-              <p>出品完了しました！お疲れ様でした！<br>
-               <button onclick="location.href='http://127.0.0.1:8000/mypage/'">マイページへ</button>
-              </p>
-          </div>
-        </div>
+      <div class="positioned">
+         <label for="trigger" class="open_btn">出品する</label>
+         <div class="popup_wrap">
+         <input id="trigger" type="checkbox">
+            <div class="popup_overlay">
+            <label for="trigger" class="popup_trigger"></label>
+               <div class="popup_content">
+                  <!--<label for="trigger" class="close_btn"></label>-->
+                  <p>出品完了しました！お疲れ様でした！
+                  <br>
+                  <button onclick="location.href='http://127.0.0.1:8000/mypage/'">マイページへ</button>
+                  </p>
+               </div>
+            </div>
+         </div>
       </div>
-   
+   </center>
    </body>
  </html>
  
