@@ -3,33 +3,40 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, RegexValidator
 from django.utils import timezone
+import uuid
 
 # Create your models here.
 
 #Users作らなきゃいけない
 class MyUserManager(BaseUserManager):
-    def create_user(self, username, email, password, **extra_fields):
+    def create_user(self, username, student_number, password):
         if not username:
             raise ValueError('Users must have an username')
-        if not email:
-            raise ValueError('Users must have an email address')
+        if not student_number:
+            raise ValueError('Users must have an student_number address')
         if not password:
             raise ValueError('Users must have a password')
 
         user = self.model(
             username=username,
-            email=self.normalize_email(email),
+            student_number=student_number,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password):
-        user = self.create_user(
+    def create_superuser(self, username, student_number, password):
+        if not username:
+            raise ValueError('Users must have an username')
+        if not student_number:
+            raise ValueError('Users must have an student_number address')
+        if not password:
+            raise ValueError('Users must have a password')
+        user = self.model(
             username=username,
-            email=self.normalize_email(email),
-            password=password,
+            student_number=student_number,
         )
+        user.set_password(password)
         user.is_admin=True
         user.is_staff=True
         user.is_superuser=True
@@ -39,8 +46,8 @@ class MyUserManager(BaseUserManager):
 class Users(AbstractBaseUser, PermissionsMixin):
     user_id = models.IntegerField(primary_key=True)
     username = models.CharField(verbose_name='username', max_length=10, unique=True, validators=[MinLengthValidator(5,), RegexValidator(r'^[a-zA-Z0-9]*$',)])
-    student_number = models.CharField(verbose_name='学籍番号', max_length=7, unique=True, validators=[MinLengthValidator(7,), RegexValidator(r'^[A-Z0-9]*$',)])
-    email = models.EmailField(verbose_name='Email', max_length=50, unique=True)
+    student_number = models.CharField(verbose_name='学籍番号', unique=True, max_length=7, validators=[MinLengthValidator(7,), RegexValidator(r'^[A-Z0-9]*$',)])
+    email = models.EmailField(verbose_name='Email', max_length=50)
     image = models.ImageField(verbose_name='プロフィール画像', upload_to="image/", blank=True, null=True)
     user_comment = models.TextField(verbose_name='自己紹介', max_length=300, blank=True, null=True) #文字数？
 
@@ -50,9 +57,9 @@ class Users(AbstractBaseUser, PermissionsMixin):
     #AbstractBaseUserにはMyUserManagerが必要
     objects = MyUserManager()
     #一意の識別子として使用されます
-    USERNAME_FIELD = 'student_number'
+    USERNAME_FIELD = 'username'
     #ユーザーを作成するときにプロンプ​​トに表示されるフィールド名のリストです。
-    REQUIRED_FIELDS = ['username', 'student_number']
+    REQUIRED_FIELDS = ['student_number']
 
     def __str__(self):
         return self.username

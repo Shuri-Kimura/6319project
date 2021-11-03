@@ -27,11 +27,14 @@ SECRET_KEY = 'django-insecure-_e88p6(0r981)jk=y2srf82%ywo@%^3&jo2g)%=kggqoq2%=!p
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'users.Users'
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
+    'search',
     'classpages.apps.ClasspagesConfig',
     'like.apps.LikeConfig',
     'mypage.apps.MypageConfig',
