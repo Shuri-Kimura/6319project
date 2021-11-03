@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'like.apps.LikeConfig',
     'mypage.apps.MypageConfig',
     'textpage.apps.TextpageConfig',
+    'newcommodity.apps.NewcommodityConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
