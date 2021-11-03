@@ -5,11 +5,12 @@
     </head>
     <body>
         <p>ここが自己紹介です。</p>
-        <textarea> name="comment" cols="40" rows="8"></textarea>
-        <a href="{% url 'mypage:mypage' %}">Vote again?</a>
+        <textarea name="comment" cols="40" rows="8"> </textarea>
+        <a href="{% url 'mypage:mypage' %}">編集する</a>
+        <p></p>
+        <input type="button" onclick="history.back()" value = "戻る">
     {% block main_containts %}
     {% endblock %}
-        <input type="button" onclick="history.back()" value = "戻る">
     </body>
 
 </html>
