@@ -1,9 +1,19 @@
+from django.shortcuts import render
+
+def index(request):
+  content = {
+  'message': 'こんにちは！Djangoテンプレート！'
+  }
+  return render(request, 'index.html', content)
+
+
+
 #from django.http import HttpResponse
-from django.views.generic import TemplateView
+#from django.views.generic import TemplateView
 
 
-class IndexView(TemplateView):
-    template_name = "index.html"
+#class IndexView(TemplateView):
+    #template_name = "index.html"
 
 
 #def index(request):
