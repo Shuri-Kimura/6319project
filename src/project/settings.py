@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'classpages.apps.ClasspagesConfig',
     'like.apps.LikeConfig',
     'mypage.apps.MypageConfig',
+    'textpage.apps.TextpageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
