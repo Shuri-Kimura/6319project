@@ -1,8 +1,6 @@
-from django.http import HttpResponse,HttpResponseRedirect
-from django.views import generic
 from django.shortcuts import render
-
-#from ..users.models import Cfavos, Tfavos
+from django.http import HttpResponse
+from users.models import *
 
 def like(request):
     return render(request, 'like/like.html')
