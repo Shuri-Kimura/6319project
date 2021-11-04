@@ -1,9 +1,8 @@
 .header {
-    background-color: #26d0c9;
-    color: #fff;
-    height: 90px;
-  }
+  color: rgb(224, 33, 7);
+  font-size: 70px;
+}
 
-  .footer button {
-    float: right;
-   }
+.footer button {
+ float: right;
+}
