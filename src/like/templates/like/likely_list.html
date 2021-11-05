@@ -11,7 +11,7 @@
   <div class="header">お気に入り一覧</div>
   <div class = "contents">
     {% for likely in object_list %}
-    <li>{{ likely.class_id }}</li>
+    <li>{{ likely.class_id.title }}</li>
     {% endfor %}
   </div>
 
