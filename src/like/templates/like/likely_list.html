@@ -11,7 +11,9 @@
   <div class="header">お気に入り一覧</div>
   <div class = "contents">
     {% for likely in object_list %}
-    <li>{{ likely.class_id.title }}</li>
+      <a href="http://127.0.0.1:8000/mypage/"> <!--授業ページのリンクをはる(classpages)-->
+        {{ likely.class_id.title }}
+      </a>
     {% endfor %}
   </div>
 
