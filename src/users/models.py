@@ -48,7 +48,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(verbose_name='username', max_length=10, unique=True, validators=[MinLengthValidator(5,), RegexValidator(r'^[a-zA-Z0-9]*$',)])
     student_number = models.CharField(verbose_name='学籍番号', unique=True, max_length=7, validators=[MinLengthValidator(7,), RegexValidator(r'^[A-Z0-9]*$',)])
     email = models.EmailField(verbose_name='Email', max_length=50)
-    image = models.ImageField(verbose_name='プロフィール画像', upload_to="image/", blank=True, null=True)
+    image = models.ImageField(verbose_name='プロフィール画像', upload_to="src/users/static/users/image/", blank=True, null=True)
     user_comment = models.TextField(verbose_name='自己紹介', max_length=300, blank=True, null=True) #文字数？
 
     is_staff = models.BooleanField(default=False)
@@ -85,6 +85,9 @@ class Texts(models.Model):
     state =  models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は?
     date = models.DateTimeField(default=timezone.now) #レコード登録時の日本時間が保存
     days = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)]) #数字は？
+    image1 = models.ImageField(verbose_name='プロフィール画像', upload_to="src/textpage/static/textpage/image1/", blank=True, null=True)
+    image2 = models.ImageField(verbose_name='プロフィール画像', upload_to="src/textpage/static/textpage/image2/", blank=True, null=True)
+    image3 = models.ImageField(verbose_name='プロフィール画像', upload_to="src/textpage/static/textpage/image3/", blank=True, null=True)
 
 class Tcom(models.Model):
     tcom_id = models.IntegerField(primary_key=True)
