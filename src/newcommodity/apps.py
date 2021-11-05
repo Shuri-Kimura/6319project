@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class NewcommdityConfig(AppConfig):
+class NewcommodityConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'newcommdity'
+    name = 'newcommodity'

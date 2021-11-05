@@ -1,6 +1,10 @@
+from django.shortcuts import render
 from django.http import HttpResponse
+from users.models import *
 
-#from ..users.models import Cfavos, Tfavos
+def like(request):
+    return render(request, 'like/like.html')
 
-def index(request):
-    return HttpResponse("Hello, world. 6319project.like")
+def likely(request):
+    return render(request, 'like/likely.html')
+
