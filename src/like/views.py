@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView
-from users.models import Tfavos , Cfavos
+from users.models import Tfavos , Cfavos,Classes,Texts
 
 #def like(request):
   #  return render(request, 'like/like.html')
