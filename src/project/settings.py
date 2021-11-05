@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'like.apps.LikeConfig',
     'mypage.apps.MypageConfig',
     'textpage.apps.TextpageConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,4 +131,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'user.User'
