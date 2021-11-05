@@ -11,8 +11,8 @@
   <div class= "header">いいね一覧</div>
 
 　<div class = "contents">
-  {% for likess in like %}
-  <li>{{ likess.text_id }}</li>
+  {% for like in object_list %}
+  <li>{{ like.text_id }}</li>
   {% endfor %}
  </div>
 

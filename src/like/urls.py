@@ -5,6 +5,7 @@ from . import views
 
 app_name = 'like'
 urlpatterns = [
+    #path('', views.LikeListView.as_view(), name='like'),
     path('', views.LikeListView.as_view(), name='like'),
-    #path('likely/', views.likely, name='likely'),
+    path('likely/', views.LikelyListView.as_view(), name='likely'),
 ]
