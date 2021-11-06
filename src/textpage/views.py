@@ -5,6 +5,9 @@ from django.db.models import Q, Avg
 
 
 def index(request):
+    text ={
+     'explain' : '二枚目を見てください'
+    }
     q_class = request.POST.get('q_class')
     classes = Classes.objects.all()
     if q_class:
@@ -17,8 +20,9 @@ def index(request):
                 ).distinct()
     else:
         classes = classes.order_by()
-    return render(request, "index.html", {
+    return render(request, "index.html",{
         'classes':classes,
+        'explain' : '二枚目を見てください',
     })
 
 #def index(request):
