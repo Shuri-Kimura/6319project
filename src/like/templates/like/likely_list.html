@@ -3,7 +3,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   <title>Document</title>
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
@@ -11,9 +11,10 @@
   <div class="header">お気に入り一覧</div>
   <div class = "contents">
     {% for likely in object_list %}
-      <a href="http://127.0.0.1:8000/mypage/"> <!--授業ページのリンクをはる(classpages)-->
-        {{ likely.class_id.title }}
-      </a>
+    　<center>
+      <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">{{ likely.class_id.title }}</button> <!--授業ページのリンクをはる(classpages)-->
+       <br>
+      </center>
     {% endfor %}
   </div>
 
