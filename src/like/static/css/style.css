@@ -3,12 +3,7 @@
     font-size: 60px;
   }
 
-  .contents button {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    /*border-radius: 6px;*/
-    /*background-color: rgba(255, 100, 0, 0.8);*/
+  .contents butto{
     padding: 6px 3px;
   }
 
@@ -16,7 +11,7 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    border-radius: 6px;
-    background-color: rgba(255, 100, 0, 0.8);
+   /* border-radius: 6px;
+    background-color: rgba(255, 100, 0, 0.8);*/
     padding: 6px 3px;
   }
