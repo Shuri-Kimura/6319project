@@ -23,17 +23,42 @@
   </form>
 </div>
 
-<div class="card mb-4" style="width: 35rem; margin: auto;">
+
+{% if classes %}
+  {% for class in classes %}
+  <div class="card mb-4" style="width: 35rem; margin: auto;">
   <div class="card-header nowrap">
-    <div class="text-center"><h5>{{ classes.title }}</h5></div>
+    <div class="text-center"><h5>{{ class.title }}</h5></div>
  
     <div class="card-body">
      
-      <h5 class="card-title">概要 </h5>
+      <h5 class="card-title text-center">概要 </h5>
       <div>
-        <p>{{ classes.teacher }}</p> 
+        <p>{{ class.teacher }}</p> 
     
       </div>
     </div>
-  </div>  
+  </div>
+  </div> 
+  {% endfor %}
+{% elif texts%}
+{% for text in texts %}
+  <div class="card mb-4" style="width: 35rem; margin: auto;">
+  <div class="card-header nowrap">
+    <div class="text-center"><h5>{{ text.title }}</h5></div>
+
+    <div class="card-body">
+    
+      <h5 class="card-title text-center">概要 </h5>
+      <div>
+        <p>{{ text.info }}</p> 
+    
+      </div>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+{% else %}
+<h5 class="card-title text-center" style="padding-top: 50px;">キーワードに一致する検索結果がありません。 </h5>
+{% endif %}
 {% endblock %}

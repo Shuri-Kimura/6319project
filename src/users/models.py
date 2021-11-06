@@ -79,6 +79,7 @@ class Texts(models.Model):
     text_id = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE) #外部キー
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE) #外部キー
+    title = models.TextField(max_length=50, default="出品サンプル") #文字数？
     info = models.TextField(max_length=300) #文字数？
     sold_flag = models.BooleanField()
     category = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は？
