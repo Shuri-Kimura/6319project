@@ -17,7 +17,7 @@ def index(request):
                 ).distinct()
     else:
         classes = classes.order_by()
-    return render(request, "realtextpage.html", {
+    return render(request, "index.html", {
         'classes':classes,
     })
 
