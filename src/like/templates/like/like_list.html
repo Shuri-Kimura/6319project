@@ -10,7 +10,11 @@
 <body>
   <div class= "header">いいね一覧</div>
 
-　<div class = "contents">ありがとう</div>
+　<div class = "contents">
+  {% for like in object_list %}
+  <li>{{ like.text_id }}</li>
+  {% endfor %}
+ </div>
 
 　<div class="footer">
   　<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">戻る</button> 

@@ -9,7 +9,13 @@
 </head>
 <body>
   <div class="header">お気に入り一覧</div>
-  <div class = "contents">ありがとう</div>
+  <div class = "contents">
+    {% for likely in object_list %}
+      <a href="http://127.0.0.1:8000/mypage/"> <!--授業ページのリンクをはる(classpages)-->
+        {{ likely.class_id.title }}
+      </a>
+    {% endfor %}
+  </div>
 
   <div class="footer">
     <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">戻る</button> 
