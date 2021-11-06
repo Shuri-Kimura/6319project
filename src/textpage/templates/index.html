@@ -62,12 +62,51 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-<h1>写真（複数枚）</h1>
-<img src ="{% static 'youki.jpg' %}" width="300" height="300px">
-<h2>{{ textname }}</h2>
-<h3>いいね {{num_love}}　コメント{{num_comment}}</h3>
+
+
+
+
+
+
+<img id="mypic" src ="{% static 'youki.jpg' %}" width="400" height="400">
+        <input type="button" value="戻る" onclick="go_back()">
+        <input type="button" value="進む" onclick="go_forward()">
+            <script>
+            var pics_src = new Array("{% static 'youki.jpg' %}","{% static 'pai.jpg' %}");
+            var num = 0;
+ 
+            function go_forward(){
+                if (num == 2) {
+                    num = 0;
+                }
+                else {
+                    num ++;
+                }
+                document.getElementById("mypic").src=pics_src[num];
+            }
+ 
+            function go_back(){
+                if (num == 0) {
+                    num = 2;
+                }
+                else {
+                    num --;
+                }
+                document.getElementById("mypic").src=pics_src[num];
+            }
+           
+            </script>
+
+
+
+<h2>{{ user }}</h2>
+
+
+<h3>いいね コメント</h3>
+
 
 <h1>商品説明欄</h1>
+<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{explain}}</div>
 
  
 </body>    
