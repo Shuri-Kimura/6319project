@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,8 +18,9 @@
 
 <h2>授業検索</h2>
 <h1>写真（複数枚）</h1>
+<img src ="{% static 'youki.jpg' %}" />
 <h2>{{ textname }}</h2>
-<h3>いいね　コメント</h3>
+<h3>いいね {{num_love}}　コメント{{num_comment}}</h3>
 
 <h1>商品説明欄</h1>
 

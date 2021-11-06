@@ -6,6 +6,8 @@ class IndexView(TemplateView):
     def get_context_data(self):
         ctext = super().get_context_data()
         ctext["textname"] = "久保耀希　取扱い説明書"
+        ctext["num_love"] = 99
+        ctext["num_comment"] = 99
         return ctext
 
 #def index(request):
