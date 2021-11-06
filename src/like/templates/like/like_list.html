@@ -11,10 +11,13 @@
   <div class= "header">いいね一覧</div>
 
 　<div class = "contents">
-  {% for like in object_list %}
-  <li>{{ like.text_id }}</li>
-  {% endfor %}
- </div>
+   {% for like in object_list %}
+  　<center>
+    <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> <!--授業ページのリンクをはる(classpages)-->
+     </a><br>
+    </center>
+   {% endfor %}
+  </div>
 
 　<div class="footer">
   　<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">戻る</button> 
