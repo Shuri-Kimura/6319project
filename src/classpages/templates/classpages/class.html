@@ -6,51 +6,76 @@
         
     </head>
     <body>
-        <p>Doutei                                          メッセージ</p>
-        <p> <a href="../mypage">マイページ</a>    授業検索        教科書検索</p>
-        
+        <div>
+            <p>Doutei                                          メッセージ</p>
+            <p> <a href="../../mypage">マイページ</a>      授業検索        教科書検索</p>
+        </div>
         <table border="1">
-            <tr>
-                <td>教科名</td>
-            </tr>
-            <tr>
+        <caption>{{classes.title}}</caption>
+            <td>
+                分かりやすさ
+            </td>
                 <td>
-                    分かりやすさ
-                </td>
-                <td>
-                    4
+                    {{classes.method_eval}}
                 </td>
             </tr>
             <tr>
                 <td>
                     楽単
                 </td>
+                <td>
+                    3
+                </td>
             </tr>
             <tr>
                 <td>
                     教授名
+                </td>
+                <td>
+                    {{classes.teacher}}
                 </td>
             </tr>
             <tr>
                 <td>
                     抽選
                 </td>
+                <td>
+                    あり
+                </td>
             </tr>
             <tr>
                 <td>
                     評価方法
+                </td>
+                <td>
+                    レポートの内容
                 </td>
             </tr>
             <tr>
                 <td>
                     授業形態
                 </td>
+                <td>
+                    ハイフレックス
+                </td>
             </tr>
             <tr>
                 <td>
                     授業内容
                 </td>
+                <td>
+                    {{classes.contents}}
+                </td>
             </tr>
         </table>
+        <form action="#" method="post">
+            <div class="c_com">
+                <p>口コミ:</p>
+                <p>
+                    <textarea name="c_com" cols="50" rows="1"></textarea>
+                    <input type="submit">
+                </p>
+            </div>
+        </form>
     </body>
 </html>

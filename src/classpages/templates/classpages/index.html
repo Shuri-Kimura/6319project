@@ -1,7 +1,7 @@
 {% if classes_list %}
     <ul>
     {% for classes in classes_list %}
-        <li><a href="{% url 'classpage:class' classes.class_id %}">{{ classes.title }}</a></li>
+        <li><a href="{% url 'classpages:class' classes.class_id %}">{{ classes.title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
