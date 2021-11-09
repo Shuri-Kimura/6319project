@@ -1,16 +1,4 @@
-<html>
-    <head>
-        <title>編集</title>
-        <h1>編集せい</h1>
-    </head>
-    <body>
-        <p>ここが自己紹介です。</p>
-        <textarea name="comment" cols="40" rows="8"> </textarea>
-        <a href="{% url 'mypage:mypage' %}">編集する</a>
-        <p></p>
-        <input type="button" onclick="history.back()" value = "戻る">
-    {% block main_containts %}
-    {% endblock %}
-    </body>
-
-</html>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" onclick="location.href='mypage:mypage'">
+</form>

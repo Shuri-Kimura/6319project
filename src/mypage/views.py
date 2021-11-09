@@ -11,11 +11,16 @@ class IndexView(generic.ListView):
     context_object_name = 'users_list'
 
     def get_queryset(self):
-        return Users.objects.filter(user_id__isnull = False)
+       return Users.objects.filter(user_id__isnull = False)
 
 class MypageView(generic.DetailView):
     model = Users
     template_name = 'mypage/mypage.html'
-
+    
+class CommentUpdate(generic.edit.UpdateView):
+    model = Users
+    fields = ['user_comment']
+    template_name = 'mypage/edit.html'
+    
 def edit(request):
     return render(request,'mypage/edit.html')
