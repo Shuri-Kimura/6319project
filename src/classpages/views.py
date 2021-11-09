@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
-from classpages.models import Classes
+from users.models import Classes,Users
 
 #def index(request):
     #return render(request,'classpages/index.html')
-    
+
 class IndexView(generic.ListView):
     template_name = 'classpages/index.html'
     context_object_name = 'classes_list'
