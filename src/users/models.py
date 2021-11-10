@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, RegexValidator
 from django.utils import timezone
+from django.urls import reverse
 import uuid
 
 # Create your models here.
@@ -63,6 +64,9 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+    
+    def get_absolute_url(self):
+        return reverse('mypage:mypage', kwargs={'pk': self.pk})
 
 
 class Classes(models.Model):

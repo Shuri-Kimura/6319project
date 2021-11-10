@@ -1,0 +1,9 @@
+{% if users_list %}
+    <ul>
+    {% for users in users_list %}
+        <li><a href="{% url 'mypage:mypage' users.user_id %}">{{ users.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users exist.</p>
+{% endif %}

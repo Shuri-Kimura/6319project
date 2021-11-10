@@ -1,7 +1,8 @@
 <html>
     <head>
-        <title>ホームページ</title>
-        <h1>マイページだお</h1>
+        <title>{{users.username}}のホームページ</title>
+        <h1>{{users.username}}のマイページ</h1>
+        <input type="button" onclick="location.href='edit/'" value = "編集">
     </head>
     <body>
         <p>ここがいいね一覧です。</p>
@@ -11,8 +12,9 @@
         <p>ここがお気に入り登録です。</p>
         <button type="button" onclick="location.href='http://127.0.0.1:8000/like/likely/'">お気に入り登録</button>
         <p>ここが自己紹介です。</p>
-        <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">〜本文はこちら〜</div>
-        <input type="button" onclick="location.href='edit/'" value = "編集">
+        <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
+        <p>ここが写真です。</p>
+        <img src={{users.image}}>
     {% block main_containts %}
     {% endblock %}
         <p>ここがSNSリンクです。</p>
