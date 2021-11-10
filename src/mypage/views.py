@@ -19,7 +19,7 @@ class MypageView(generic.DetailView):
     
 class CommentUpdate(generic.edit.UpdateView):
     model = Users
-    fields = ['user_comment']
+    fields = ['username','user_comment','image']
     template_name = 'mypage/edit.html'
     
 def edit(request):
