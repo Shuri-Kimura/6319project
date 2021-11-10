@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, RegexValidator
 from django.utils import timezone
+from django.urls import reverse
 import uuid
 
 # Create your models here.
@@ -63,6 +64,9 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+    
+    def get_absolute_url(self):
+        return reverse('mypage:mypage', kwargs={'pk': self.pk})
 
 
 class Classes(models.Model):
@@ -79,16 +83,16 @@ class Texts(models.Model):
     text_id = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE) #外部キー
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE) #外部キー
-    title = models.TextField(max_length=50, default="出品サンプル") #文字数？
-    info = models.TextField(max_length=300) #文字数？
+    title = models.TextField(max_length=50, default="出品サンプル") #文字数？商品名
+    info = models.TextField(max_length=300) #文字数？　商品情報
     sold_flag = models.BooleanField()
-    category = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は？
-    state =  models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は?
+    category = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は？カテゴリ
+    state =  models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は?商品状態
     date = models.DateTimeField(default=timezone.now) #レコード登録時の日本時間が保存
-    days = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)]) #数字は？
-    image1 = models.ImageField(verbose_name='プロフィール画像', upload_to="src/textpage/static/textpage/image1/", blank=True, null=True)
-    image2 = models.ImageField(verbose_name='プロフィール画像', upload_to="src/textpage/static/textpage/image2/", blank=True, null=True)
-    image3 = models.ImageField(verbose_name='プロフィール画像', upload_to="src/textpage/static/textpage/image3/", blank=True, null=True)
+    days = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)]) #数字は？お渡しまでの日数
+    image1 = models.ImageField(verbose_name='商品画像１', upload_to="src/textpage/static/textpage/image1/", blank=True, null=True)
+    image2 = models.ImageField(verbose_name='商品画像２', upload_to="src/textpage/static/textpage/image2/", blank=True, null=True)
+    image3 = models.ImageField(verbose_name='商品画像３', upload_to="src/textpage/static/textpage/image3/", blank=True, null=True)
 
 class Tcom(models.Model):
     tcom_id = models.IntegerField(primary_key=True)

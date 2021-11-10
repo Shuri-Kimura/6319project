@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'mypage'
 urlpatterns = [
-    path('', views.mypage, name='mypage'),
-    path('edit/', views.edit, name='edit'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<int:pk>/', views.MypageView.as_view(), name='mypage'),
+    path('<int:pk>/edit/', views.CommentUpdate.as_view(), name='edit'),
 ]

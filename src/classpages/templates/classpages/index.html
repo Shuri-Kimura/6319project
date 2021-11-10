@@ -1,56 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>授業ページ</title>
-        
-    </head>
-    <body>
-        <p>Doutei                                          メッセージ</p>
-        <p>    マイページ      授業検索        教科書検索</p>
-        
-        <table border="1">
-            <tr>
-                <td>教科名</td>
-            </tr>
-            <tr>
-                <td>
-                    分かりやすさ
-                </td>
-                <td>
-                    4
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    楽単
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    教授名
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    抽選
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    評価方法
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    授業形態
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    授業内容
-                </td>
-            </tr>
-        </table>
-    </body>
-</html>
+{% if classes_list %}
+    <ul>
+    {% for classes in classes_list %}
+        <li><a href="{% url 'classpages:class' classes.class_id %}">{{ classes.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
