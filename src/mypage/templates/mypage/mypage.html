@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>{{users.username}}のホームページ</title>
-        <h1>{{users.username}}のマイページだお</h1>
+        <h1>{{users.username}}のマイページ</h1>
     </head>
     <body>
         <p>ここがいいね一覧です。</p>
@@ -13,6 +13,8 @@
         <p>ここが自己紹介です。</p>
         <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
         <input type="button" onclick="location.href='edit/'" value = "編集">
+        <p>ここが写真です。</p>
+        <img src={{users.image}}>
     {% block main_containts %}
     {% endblock %}
         <p>ここがSNSリンクです。</p>
