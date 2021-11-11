@@ -28,7 +28,7 @@
   {% for class in classes %}
   <div class="card mb-4" style="width: 35rem; margin: auto;">
   <div class="card-header nowrap">
-    <div class="text-center"><h5>{{ class.title }} （{{ class.teacher }}）</h5></div>
+    <div class="text-center"><h5><a href="{% url 'classpages:class' class.class_id %}" class="">{{ class.title }} （{{ class.teacher }}）</a></h5></div>
  
     <div class="card-body">
      
