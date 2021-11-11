@@ -2,14 +2,40 @@ from django.shortcuts import render
 from users.models import Texts
 from django.contrib import messages
 from django.views import generic
+from .forms import TextForm
 
 
-def index(request):
-  content = {
-  'message': 'こんにちは！Djangoテンプレート！'
-  }
-  return render(request, 'newcommodity/newcommodity.html', content)
+#～～～～～～～～～～～～～～～～～
+# 新規登録フォームHTMLへ返す
+def showCreateTextForm(request):
+    #フォームを変数にセット
+    form = TextForm()
+ 
+    context = {
+      'message': 'こんにちは！Djangoテンプレート！',
+      'textForm':form,
+    }
+ 
+    #detail.htmlへデータを渡す
+    return render(request, 'newcommodity/newcommodity.html',context)
 
+
+
+#～～～～～～～～～～～～～～～～～
+
+# フォームから受取ったデータをDBに登録する
+def addText(request):
+    #リクエストがPOSTの場合
+    if request.method == 'POST':
+        #リクエストをもとにフォームをインスタンス化
+        textForm = TextForm(request.POST)
+        if textForm.is_valid():
+            textForm.save()
+ 
+    #user.htmlへデータを渡す
+    return render(request, 'mypage/mypage.html')
+
+"""
 #from django.http import HttpResponse
 class NewcommodityView(generic.CreateView):
     template_name = 'newcommodity/newcommodity.html'
@@ -34,3 +60,4 @@ class NewcommodityView(generic.CreateView):
 
 #def index(request):
     #return HttpResponse("Hello, world. 6319project.newcommodity")
+"""

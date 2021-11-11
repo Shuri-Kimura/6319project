@@ -12,9 +12,9 @@
         <p>ここがお気に入り登録です。</p>
         <button type="button" onclick="location.href='http://127.0.0.1:8000/like/likely/'">お気に入り登録</button>
         <p>ここが自己紹介です。</p>
-        <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
+        <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.image}}</div>
         <p>ここが写真です。</p>
-        <img src={{users.image}}>
+        <img src="{{users.image}}">
     {% block main_containts %}
     {% endblock %}
         <p>ここがSNSリンクです。</p>
