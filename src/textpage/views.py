@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from users.models import Classes, Texts
 from django.db.models import Q, Avg
+from .models import SnsModel
 
-
-
+def sns(request):
+    images = SnsModel.objects.all()
+    context = {'images':images}
+    return render(request, 'realtextpage.html', context)
 
 def index(request):
     
@@ -27,6 +30,10 @@ def index(request):
         'classes':classes,
         'explain' : '二枚目を見てください',
     })
+
+
+
+
 
 #def index(request):
  # content = {
