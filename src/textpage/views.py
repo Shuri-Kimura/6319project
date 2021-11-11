@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from users.models import Classes, Texts
 from django.db.models import Q, Avg
+from .models import SnsModel
 
+def showall(request):
+    images = SnsModel.objects.all()
+    context = {'images':images}
+    return render(request, 'textpage/realtextpage.html', context)
 
 
 
