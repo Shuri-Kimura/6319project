@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
@@ -93,6 +94,7 @@ class Texts(models.Model):
     image1 = models.ImageField(verbose_name='商品画像１', upload_to="src/textpage/static/textpage/image1/", blank=True, null=True)
     image2 = models.ImageField(verbose_name='商品画像２', upload_to="src/textpage/static/textpage/image2/", blank=True, null=True)
     image3 = models.ImageField(verbose_name='商品画像３', upload_to="src/textpage/static/textpage/image3/", blank=True, null=True)
+    
 
 class Tcom(models.Model):
     tcom_id = models.IntegerField(primary_key=True)

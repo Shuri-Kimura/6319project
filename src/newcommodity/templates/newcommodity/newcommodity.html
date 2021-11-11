@@ -1,27 +1,72 @@
-
 {% load static %}
 <html lang="ja" dir="ltr">
     <head>
        <meta charset="utf-8">
        <link href="{% static 'css/newcommodity.css' %}" rel="stylesheet">
     </head>
+
     <body>
+   
+      
+ 
+    <form action='{% url "addText" %}' method='post' class='form'>
+        <!-- ユーザー登録フォームを表示 -->
+        {% csrf_token %}
+        {{ textForm }}
+        <button type='submit' class='btn btn-outline-primary'>登録</button>
+        
+    </form>
+
+
+       <!--
        <h1>Doutei1</h1>
        <h2><a href="../mypage">メッセージ</a></h2>
        <h2><a href="../mypage">マイページ</a></h2>
        <h2><a href="../mypage">授業検索</a></h2>
        <h2><a href="../mypage">教科書検索</a></h2>
 
-       <center>
-      <p>画像選択<br>
-       <input type="file" name="example" accept="image/jpeg, image/png">
-       <input type="file" name="example" accept="image/jpeg, image/png">
-       <input type="file" name="example" accept="image/jpeg, image/png">
+       
+      <form action="" method="POST">{% csrf_token %}
+
+      <p><br>
+         画像１枚目{{form.image1}}<br>
+         画像２枚目{{form.image2}} <br>
+         画像３枚目{{form.image3}} <br>
        </p>
-       <form action="#" method="post">
-          <p class="iteminfo">商品情報</p>
-          <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
-       </form>
+       <p>商品名<br>
+          {{form.title}}
+　　　　</p>
+       
+      <p>商品詳細<br>
+         {{form.info}}
+　　　　</p>
+
+         <p>カテゴリ<br>
+            {{form.category}}
+         </p>
+
+         <p>商品状態<br>
+            {{form.state}}
+         </p>
+
+         <p>授業名<br>
+            {{form.class_id}}
+         </p>
+
+         <p>お渡しまでの日数<br>
+            {{form.days}}
+         </p>
+
+         <p>出品者<br>
+            {{form.user_id}}
+         </p>
+         
+         <p>出品日時<br>
+            {{form.date}}
+         </p>
+         
+         
+       
 
        
  
@@ -69,13 +114,15 @@
         </table>
       
      
-   </center>
+  
 
-   <form action="" method="POST">{% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">フルーツを追加する</button>
+   
+  
+     
+      <button type="submit">出品する</button>
   </form>
-
+-->
    </body>
  </html>
  
+
