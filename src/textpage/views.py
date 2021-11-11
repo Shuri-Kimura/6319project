@@ -4,7 +4,10 @@ from users.models import Classes, Texts
 from django.db.models import Q, Avg
 
 
+
+
 def index(request):
+    
     text ={
      'explain' : '二枚目を見てください'
     }
