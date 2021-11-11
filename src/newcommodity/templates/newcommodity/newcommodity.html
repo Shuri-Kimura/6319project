@@ -23,15 +23,7 @@
           <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
        </form>
 
-       <form action="#" method="post">
-         <p class="iteminfo">商品情報</p>
-         <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
-      </form>
-
-      <form action="#" method="post">
-         <p class="iteminfo">商品情報</p>
-         <p><textarea name="iteminfo" cols="40" rows="8"></textarea></p>
-      </form>
+       
  
        <table border="1">
           <tr>
@@ -76,23 +68,14 @@
            </tr>
         </table>
       
-      <div class="positioned">
-         <label for="trigger" class="open_btn">出品する</label>
-         <div class="popup_wrap">
-         <input id="trigger" type="checkbox">
-            <div class="popup_overlay">
-            <label for="trigger" class="popup_trigger"></label>
-               <div class="popup_content">
-                  <!--<label for="trigger" class="close_btn"></label>-->
-                  <p>出品完了しました！お疲れ様でした！
-                  <br>
-                  <button onclick="location.href='http://127.0.0.1:8000/mypage/'">マイページへ</button>
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
+     
    </center>
+
+   <form action="" method="POST">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">フルーツを追加する</button>
+  </form>
+
    </body>
  </html>
  
