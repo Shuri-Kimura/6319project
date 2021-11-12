@@ -12,7 +12,7 @@
     <form action='{% url "addText" %}' method='post' class='form'>
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
-        
+        {{ textForm.text_id }}
         {{ textForm.user_id }}
 
         {{ textForm.image1 }}
