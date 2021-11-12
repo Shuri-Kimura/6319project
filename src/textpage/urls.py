@@ -1,11 +1,11 @@
 from django.urls import path
-#from .views import IndexView
+from django.conf.urls import url
 from . import views
 
 app_name = 'textpage'
 urlpatterns = [
   #path('', IndexView.as_view())
- path('', views.TextpageListView.as_view(), name='textpage'),
+ path('', views.TextpageView.as_view(), name='textpage'),
 ]
 
 

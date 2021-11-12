@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView
 from users.models import Tfavos , Cfavos,Classes,Texts
 
-class TextpageListView(ListView):
+class TextpageView(ListView):
     template_name = 'textpage/index.html'
     model = Texts
 
