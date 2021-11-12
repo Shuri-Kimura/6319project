@@ -64,9 +64,10 @@
     <div class = "contents">
       {% for textpage in object_list %}
      　<center>
-       {%if textpage.text_id.image1%}
+      <img src="{{textpage.text_id.image1.url}}">
+       {% if textpage.4.image1 %}
       <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
-      <img src="{{textpage.text_id.image1.url}}" style="width:500px;">
+      <img src="{{textpage.tetx_id.image1.url}}">
       {%endif%}
        </center>
       {% endfor %}
@@ -77,34 +78,7 @@
 
 
 
-<img id="mypic" src ="{% static 'youki.jpg' %}" width="400" height="400">
-        <input type="button" value="戻る" onclick="go_back()">
-        <input type="button" value="進む" onclick="go_forward()">
-            <script>
-            var pics_src = new Array("{% static 'youki.jpg' %}","{% static 'pai.jpg' %}");
-            var num = 0;
- 
-            function go_forward(){
-                if (num == 2) {
-                    num = 0;
-                }
-                else {
-                    num ++;
-                }
-                document.getElementById("mypic").src=pics_src[num];
-            }
- 
-            function go_back(){ 
-                if (num == 0) {
-                    num = 2;
-                }
-                else {
-                    num --;
-                }
-                document.getElementById("mypic").src=pics_src[num];
-            }
-           
-            </script>
+
 
 
 
