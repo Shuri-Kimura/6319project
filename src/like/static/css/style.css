@@ -14,21 +14,25 @@
 
   .footer button {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    width: 80px;
+    bottom: 20px;
+    right: 20px;
     /*border-radius: 6px;
     background-color: rgba(255, 100, 0, 0.8);*/
     padding: 6px 3px;
   }
 
   .example-link {
+    width: 50%;
     display: inline-block;
-    margin: 1em 0; /* 前後のスペース */
-    padding: 0.6em 1em; /* 文字周りの余白 */
+    /*line-height:0.7px;*/
+    margin: 10px; /* 前後のスペース */
+    margin-bottom: 0.5px;
+    padding: 10px 0.6px; /* 文字周りの余白 */
     color: #FFF; /* テキストカラー */
     font-size: 0.95em; /* フォントサイズ */
     text-decoration: none; /* 下線を消す */
-    background: #1aa1ff; /* 背景色 */
+    background: #1857df; /* 背景色 */
     border-radius: 3px; /* 角の丸み */
     transition: 0.3s; /* ホバーの変化を滑らかに */
   }
