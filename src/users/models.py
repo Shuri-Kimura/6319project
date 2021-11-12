@@ -81,7 +81,7 @@ class Classes(models.Model):
     contents = models.TextField()
 
 class Texts(models.Model):
-    text_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    text_id = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE) #外部キー
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE) #外部キー
     title = models.TextField(max_length=50, default="出品サンプル") #文字数？商品名
