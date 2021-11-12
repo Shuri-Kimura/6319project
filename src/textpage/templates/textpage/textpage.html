@@ -62,15 +62,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <div class = "contents">
-      {% for textpage in object_list %}
      　<center>
-      <img src="{{textpage.text_id.image1.url}}">
-       {% if textpage.4.image1 %}
+       {% if texts.image1 %}
       <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
-      <img src="{{textpage.tetx_id.image1.url}}">
+      <img src="{{texts.image1.url}}">
       {%endif%}
        </center>
-      {% endfor %}
      </div>
 
 

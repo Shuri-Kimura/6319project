@@ -5,7 +5,7 @@ from . import views
 app_name = 'textpage'
 urlpatterns = [
   #path('', IndexView.as_view())
- path('', views.TextpageView.as_view(), name='textpage'),
+ #path('', views.TextpageView.as_view(), name='textpage'),
  path('<int:pk>/', views.TextpageView.as_view(), name='textpage'),
 ]
 

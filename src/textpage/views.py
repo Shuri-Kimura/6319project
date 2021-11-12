@@ -9,6 +9,12 @@ from users.models import Tfavos,Cfavos,Classes,Texts
     #template_name = 'textpage/textpage.html'
     #model = Texts
 
+def textpage(request):
+    return textpage(request, 'textpage/textpage.html')
+
+def get_queryset(self):
+       return Texts.objects.filter(text_id__isnull = False)
+
 class TextpageView(generic.DetailView):
     model = Texts
     template_name = 'textpage/textpage.html'
