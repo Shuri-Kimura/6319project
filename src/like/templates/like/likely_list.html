@@ -12,8 +12,9 @@
   <div class = "contents">
     {% for likely in object_list %}
     　<center>
-      <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">{{ likely.class_id.title }}</button> <!--授業ページのリンクをはる(classpages)-->
-       <br>
+      <!--<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">{{ likely.class_id.title }}</button>  授業ページのリンクをはる(classpages)-->
+      <a href="{% url 'classpages:class' Classes.class_id %}">{{ likely.class_id.title }}</a>
+      
       </center>
     {% endfor %}
   </div>
