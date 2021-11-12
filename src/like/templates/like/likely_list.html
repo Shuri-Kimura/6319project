@@ -14,8 +14,8 @@
     {% if likely.class_id %}
     　<center>
       <!--<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">{{ likely.class_id.title }}</button>  授業ページのリンクをはる(classpages)-->
-      <a href="{% url 'classpages:class' likely.class_id.class_id %}">{{ likely.class_id.title }}</a>
-      
+      <a href="{% url 'classpages:class' likely.class_id.class_id %}" class="example-link">{{ likely.class_id.title }}</a>
+      <br>
       </center>
       {%endif%}
     {% endfor %}
