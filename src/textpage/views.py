@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from users.models import Classes, Texts
-from django.db.models import Q, Avg
-from .models import SnsModel
+from django.views.generic import ListView
+from users.models import Tfavos , Cfavos,Classes,Texts
 
-def index(request):
-    images = SnsModel.objects.all()
-    context = {'images':images}
-    return render(request, 'realtextpage.html', context)
+class TextpageListView(ListView):
+    template_name = 'textpage/index.html'
+    model = Texts
 
 
 
