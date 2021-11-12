@@ -4,7 +4,7 @@ from django.views.generic import ListView
 from users.models import Tfavos , Cfavos,Classes,Texts
 
 class TextpageView(ListView):
-    template_name = 'textpage/index.html'
+    template_name = 'textpage/textpage_list.html'
     model = Texts
 
 
