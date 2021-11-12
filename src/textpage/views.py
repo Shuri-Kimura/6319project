@@ -1,18 +1,15 @@
-from django.http import HttpResponse,HttpResponseRedirect
-from django.views import generic
 from django.shortcuts import render
-from django.utils import timezone
+from django.http import HttpResponse
+from django.views.generic import ListView
 from users.models import Tfavos , Cfavos,Classes,Texts
 
-#class TextpageView(ListView):
- #   template_name = 'textpage/textpage_list.html'
-  #  model = Texts
-
-
-
-class TextpageView(generic.DetailView):
-    model = Texts
+class TextpageView(ListView):
     template_name = 'textpage/textpage_list.html'
+    model = Texts
+
+
+
+
 
 
 
