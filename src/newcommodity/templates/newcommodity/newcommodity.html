@@ -14,7 +14,6 @@
         {% csrf_token %}
         {{ textForm.text_id }}
         {{ textForm.user_id }}
-
         {{ textForm.image1 }}
         {{ textForm.image2 }}
         {{ textForm.image3 }}
@@ -22,8 +21,7 @@
         <p>商品名<br>{{ textForm.title }}</p>
         <p>商品の説明<br>{{ textForm.info }}</p>
 
-        <p>ソールドフラぐ<br>{{ textForm.sold_flag }}</p>
-
+        
         
        
         {{ textForm.category }}
@@ -60,7 +58,7 @@
             <td>{{ textForm.days}}</td>
       </tr>
     </table>
-    <p>日時<br>{{ textForm.date }}</p>
+    <p>{{ textForm.date }}</p>
     <button type='submit' class='btn btn-outline-primary'>出品する</button>
         
    </form>
@@ -172,6 +170,7 @@
   </form>
 -->
    </body>
+
  </html>
  
 

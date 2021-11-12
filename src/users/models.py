@@ -89,11 +89,12 @@ class Texts(models.Model):
     sold_flag = models.BooleanField()
     category = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は？カテゴリ
     state =  models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)]) #数字は?商品状態
-    date = models.DateTimeField(default=timezone.now) #レコード登録時の日本時間が保存
+    date = models.DateTimeField(default=timezone.now,editable=False) #レコード登録時の日本時間が保存
     days = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)]) #数字は？お渡しまでの日数
     image1 = models.ImageField(verbose_name='商品画像１', upload_to="src/textpage/static/textpage/image1/", blank=True, null=True)
     image2 = models.ImageField(verbose_name='商品画像２', upload_to="src/textpage/static/textpage/image2/", blank=True, null=True)
     image3 = models.ImageField(verbose_name='商品画像３', upload_to="src/textpage/static/textpage/image3/", blank=True, null=True)
+
     
 
 class Tcom(models.Model):
