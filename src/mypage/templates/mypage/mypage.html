@@ -2,6 +2,7 @@
     <head>
         <title>{{users.username}}のホームページ</title>
         <h1>{{users.username}}のマイページ
+        <p>ここが写真です。</p>
         {% if users.image %}
         <img src="{{users.image.url}}" width = 100px>
         {% endif %}
@@ -17,7 +18,6 @@
         <button type="button" onclick="location.href='http://127.0.0.1:8000/like/likely/'">お気に入り登録</button>
         <p>ここが自己紹介です。</p>
         <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
-        <p>ここが写真です。</p>
     {% block main_containts %}
     {% endblock %}
     </body>
