@@ -28,7 +28,7 @@ def addText(request):
     #リクエストがPOSTの場合
     if request.method == 'POST':
         #リクエストをもとにフォームをインスタンス化
-        textForm = TextForm(request.POST)
+        textForm = TextForm(request.POST, request.FILES)
         if textForm.is_valid():
             textForm.save()
  

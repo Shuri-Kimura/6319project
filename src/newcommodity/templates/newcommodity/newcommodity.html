@@ -9,12 +9,13 @@
    
       
  
-    <form action='{% url "addText" %}' method='post' class='form'>
+    <form action='{% url "addText" %}' method='post' class='form' enctype="multipart/form-data">
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
         {{ textForm.text_id }}
         {{ textForm.user_id }}
         {{ textForm.image1 }}
+        
         {{ textForm.image2 }}
         {{ textForm.image3 }}
 
