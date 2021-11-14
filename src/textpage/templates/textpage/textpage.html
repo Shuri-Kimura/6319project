@@ -79,31 +79,34 @@
      </div>
 
 
-<h2>{{texts.info.url}}</h2>
+<h2>{{texts.title}}</h2>
 
 
-<h3>いいね コメント</h3>
+<!--<h3>いいね コメント</h3>
 
 <div class="good">
 
-</div>>
+</div>>-->
 
 <h1>商品説明欄</h1>
-<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{explain}}</div>
+<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{texts.info}}</div>
 
 <h1>商品の情報</h1>
-カテゴリ：
-商品状態：
+カテゴリ：{{texts.category}}
+商品状態：{{text.state}}
 授業名：
-お渡しまでの日数：
+お渡しまでの日数：{{texts.days}}
 
 
 <h2>出品者</h2>
+
 <h2>コメント</h2>
 
 
-<h1>取引完了</h1>>
+<h1>取引完了</h1>
+ボタンにする　ソールドフラグを立てて取引完了状態にする。
 <h1>出品取り消し</h1>
+ボタンにする　特定のデータベースから消去を行う必要がある。
 
  
 </body>    
