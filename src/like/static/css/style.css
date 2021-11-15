@@ -3,20 +3,41 @@
     font-size: 60px;
   }
 
-  .contents button{
+  /*.contents button{
     width: 50%;
     min-width: 200px;
     max-width: 600px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #68779a;
-  }
+  }*/
 
   .footer button {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-   /* border-radius: 6px;
+    width: 80px;
+    bottom: 20px;
+    right: 20px;
+    /*border-radius: 6px;
     background-color: rgba(255, 100, 0, 0.8);*/
     padding: 6px 3px;
+  }
+
+  .example-link {
+    width: 50%;
+    display: inline-block;
+    /*line-height:0.7px;*/
+    margin: 10px; /* 前後のスペース */
+    margin-bottom: 0.5px;
+    padding: 10px 0.6px; /* 文字周りの余白 */
+    color: #FFF; /* テキストカラー */
+    font-size: 0.95em; /* フォントサイズ */
+    text-decoration: none; /* 下線を消す */
+    background: #1857df; /* 背景色 */
+    border-radius: 3px; /* 角の丸み */
+    transition: 0.3s; /* ホバーの変化を滑らかに */
+  }
+  
+  /* ホバー時の見た目 */
+  .example-link:hover {
+    background: #064fda; /* 背景色 */
   }

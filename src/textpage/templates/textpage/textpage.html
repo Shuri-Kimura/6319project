@@ -61,52 +61,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <div class = "contents">
+     　<center>
+       {% if texts.image1 %}
+      <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+      <img src="{{texts.image1.url}}">
+      {%endif%}
+      {% if texts.image2 %}
+      <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+      <img src="{{texts.image2.url}}">
+      {%endif%}
+      {% if texts.image3 %}
+      <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+      <img src="{{texts.image3.url}}">
+      {%endif%}
+       </center>
+     </div>
 
 
+<h2>{{texts.title}}</h2>
 
 
+<!--<h3>いいね コメント</h3>
 
+<div class="good">
 
-
-<img id="mypic" src ="{% static 'youki.jpg' %}" width="400" height="400">
-        <input type="button" value="戻る" onclick="go_back()">
-        <input type="button" value="進む" onclick="go_forward()">
-            <script>
-            var pics_src = new Array("{% static 'youki.jpg' %}","{% static 'pai.jpg' %}");
-            var num = 0;
- 
-            function go_forward(){
-                if (num == 2) {
-                    num = 0;
-                }
-                else {
-                    num ++;
-                }
-                document.getElementById("mypic").src=pics_src[num];
-            }
- 
-            function go_back(){ 
-                if (num == 0) {
-                    num = 2;
-                }
-                else {
-                    num --;
-                }
-                document.getElementById("mypic").src=pics_src[num];
-            }
-           
-            </script>
-
-
-
-<h2>{{ user }}</h2>
-
-
-<h3>いいね コメント</h3>
-
+</div>>-->
 
 <h1>商品説明欄</h1>
-<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{explain}}</div>
+<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{texts.info}}</div>
+
+<h1>商品の情報</h1>
+カテゴリ：{{texts.category}}
+商品状態：{{text.state}}
+授業名：
+お渡しまでの日数：{{texts.days}}
+
+
+<h2>出品者</h2>
+
+<h2>コメント</h2>
+
+
+<h1>取引完了</h1>
+ボタンにする　ソールドフラグを立てて取引完了状態にする。
+<h1>出品取り消し</h1>
+ボタンにする　特定のデータベースから消去を行う必要がある。
 
  
 </body>    

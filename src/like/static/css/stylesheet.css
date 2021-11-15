@@ -11,3 +11,16 @@
   /*background-color: rgba(255, 100, 0, 0.8);*/
   padding: 6px 3px;
 }
+
+/* 横スクロールで画像をスライドさせる */
+.image-horizontal-scroll{
+	overflow-x: auto;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+
+.box{
+	display: inline-block;
+	width: 90%;
+	margin: 10px;
+}

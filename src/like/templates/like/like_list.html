@@ -10,14 +10,36 @@
 <body>
   <div class= "header">いいね一覧</div>
 
-　<div class = "contents">
-   {% for like in object_list %}
-  　<center>
-    <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> <!--授業ページのリンクをはる(classpages)-->
-     </a><br>
-    </center>
-   {% endfor %}
-  </div>
+    
+
+    <ul class="image-horizontal-scroll">
+      {% for like in object_list %}
+      　<center>
+      <div class="box">
+      {%if like.text_id.image1%}
+      <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
+        <img src="{{like.text_id.image1.url}}" style="width:100px;"/></a>
+      {%endif%}  
+    </div>
+      <div class="box">
+      {%if like.text_id.image2%}
+      <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
+        <img src="{{like.text_id.image2.url}}" style="width:100px;"/></a>
+      {%endif%}  
+    </div>
+      <div class="box">
+      {%if like.text_id.image3%}
+      <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
+        <img src="{{like.text_id.image3.url}}" style="width:100px;"/></a>
+      {%endif%}  
+    </div>
+  </center>
+  {% endfor %}
+      </ul>
+    
+   <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+   <!--<img src="{{like.text_id.image1.url}}" style="width:500px;">-->
+  
 
 　<div class="footer">
   　<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">戻る</button> 
@@ -25,3 +47,4 @@
 
 </body>
 </html>
+

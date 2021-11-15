@@ -1,35 +1,26 @@
+from django.http import HttpResponse,HttpResponseRedirect
+from django.views import generic
 from django.shortcuts import render
-from django.http import HttpResponse
-from users.models import Classes, Texts
-from django.db.models import Q, Avg
-from .models import SnsModel
+from users.models import Users
+from django.utils import timezone
+from users.models import Tfavos,Cfavos,Classes,Texts
 
-def sns(request):
-    images = SnsModel.objects.all()
-    context = {'images':images}
-    return render(request, 'realtextpage.html', context)
+#class TextpageView(ListView):
+    #template_name = 'textpage/textpage.html'
+    #model = Texts
 
-def index(request):
-    
-    text ={
-     'explain' : '二枚目を見てください'
-    }
-    q_class = request.POST.get('q_class')
-    classes = Classes.objects.all()
-    if q_class:
-        queries = q_class.split()
-        for query in queries:
-            classes.append = classes.filter(
-                Q(title__icontains=query)|
-                Q(teacher__icontains=query)|
-                Q(contents__icontains=query)
-                ).distinct()
-    else:
-        classes = classes.order_by()
-    return render(request, "index.html",{
-        'classes':classes,
-        'explain' : '二枚目を見てください',
-    })
+def textpage(request):
+    return textpage(request, 'textpage/textpage.html')
+
+def get_queryset(self):
+       return Texts.objects.filter(text_id__isnull = False)
+
+class TextpageView(generic.DetailView):
+    model = Texts
+    template_name = 'textpage/textpage.html'
+
+
+
 
 
 
