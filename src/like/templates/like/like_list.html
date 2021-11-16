@@ -9,11 +9,12 @@
 </head>
 <body>
   <div class= "header">いいね一覧</div>
-
-    
-
-    <ul class="image-horizontal-scroll">
+  {% if not user.is_authenticated%}
+  こんにちは！ ゲスト さん
+{% else %}
+  <ul class="image-horizontal-scroll">
       {% for like in object_list %}
+      {%if user.user_id == like.user_id.user_id %}
       　<center>
       <div class="box">
       {%if like.text_id.image1%}
@@ -31,11 +32,14 @@
       {%if like.text_id.image3%}
       <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
         <img src="{{like.text_id.image3.url}}" style="width:100px;"/></a>
-      {%endif%}  
-    </div>
+      {%endif%}
+      </div>
   </center>
+  {%endif%}
   {% endfor %}
       </ul>
+      {%endif%}
+      {% block content %}{% endblock %}
     
    <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
    <!--<img src="{{like.text_id.image1.url}}" style="width:500px;">-->
@@ -47,4 +51,3 @@
 
 </body>
 </html>
-
