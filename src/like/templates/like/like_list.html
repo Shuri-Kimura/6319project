@@ -46,9 +46,8 @@
   
 
 　<div class="footer">
-  　<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">戻る</button> 
+  　<button type="button" onclick="location.href='{% url 'mypage:mypage' user.user_id %}'">戻る</button> 
 　</div>
 
 </body>
 </html>
-
