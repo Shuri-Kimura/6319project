@@ -9,7 +9,7 @@
    
       
  
-    <form action='{% url "addText" %}' method='post' class='form' enctype="multipart/form-data">
+    <form action='{% url 'newcommodity:addText' %}' method='post' class='form' enctype="multipart/form-data">
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
         {{ textForm.text_id }}
