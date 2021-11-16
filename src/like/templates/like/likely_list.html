@@ -10,16 +10,20 @@
 <body>
   <div class="header">お気に入り一覧</div>
   <div class = "contents">
+    {% if not user.is_authenticated%}
+    こんにちは！ ゲスト さん
+    {% else %}
     {% for likely in object_list %}
-    {% if likely.class_id %}
+    {%if user.user_id == likely.user_id.user_id %}
     　<center>
       <!--<button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">{{ likely.class_id.title }}</button>  授業ページのリンクをはる(classpages)-->
       <a href="{% url 'classpages:class' likely.class_id.class_id %}" class="example-link">{{ likely.class_id.title }}</a>
       <br>
       </center>
-      {%endif%}
+    {%endif%}
     {% endfor %}
-  </div>
+    </div>
+    {%endif%}
 
   <div class="footer">
     <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'">戻る</button> 

@@ -6,13 +6,14 @@
     </head>
 
     <body>
-   
+      
       
  
-    <form action='{% url "addText" %}' method='post' class='form' enctype="multipart/form-data">
+    <form action='{% url 'newcommodity:addText' %}' method='post' class='form' enctype="multipart/form-data">
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
         {{ textForm.text_id }}
+        {{ user.user_id }}
         {{ textForm.user_id }}
         {{ textForm.image1 }}
         
@@ -44,10 +45,6 @@
          <td> {{ textForm.state }}</td>
       </tr>
 
-      <tr>
-         <th>商品名</th>
-            <td>{{ textForm.state }}</td>
-      </tr>
 
       <tr>
          <th>授業名</th>
@@ -59,7 +56,7 @@
             <td>{{ textForm.days}}</td>
       </tr>
     </table>
-    <p>{{ textForm.date }}</p>
+    <p>{{textForm.date}}</p>
     <button type='submit' class='btn btn-outline-primary'>出品する</button>
         
    </form>

@@ -27,37 +27,69 @@
 {% if classes %}
   {% for class in classes %}
   <div class="card mb-4" style="width: 35rem; margin: auto;">
-  <div class="card-header nowrap">
-    <div class="text-center"><h5><a href="{% url 'classpages:class' class.class_id %}" class="">{{ class.title }} （{{ class.teacher }}）</a></h5></div>
- 
-    <div class="card-body">
-     
-      <h5 class="card-title">評価</h5>
-      <div>
-        <p>理解度　:<span class="star5_rating" data-rate="1"></span></p>
-        <p>楽単　　:<span class="star5_rating" data-rate="{{ class.cevals__raku__avg }}"></span></p>
-    </div>
+    <div class="card-header nowrap">
+      <div class="text-center"><h5><a href="{% url 'classpages:class' class.class_id %}" class="">{{ class.title }} （{{ class.teacher }}）</a></h5></div>
+  
+      <div class="card-body">
+      
+        <h5 class="card-title">評価</h5>
+        <div>
+          <p>理解度　:<span class="star5_rating" data-rate="{{ class.cevals__rikai__avg }}"></span></p>
+          <p>単位　　:<span class="star5_rating" data-rate="{{ class.cevals__raku__avg }}"></span></p>
+        </div>
+      </div>
     </div>
   </div>
-  </div> 
   {% endfor %}
 {% elif texts%}
 {% for text in texts %}
   <div class="card mb-4" style="width: 35rem; margin: auto;">
-  <div class="card-header nowrap">
-    <div class="text-center"><h5>{{ text.title }}</h5></div>
+    <div class="card-header nowrap">
+      <div class="text-center"><h5>{{ text.title }}</h5></div>
 
-    <div class="card-body">
-    
-      <h5 class="card-title">概要</h5>
-      <div>
-        <p>{{ text.info }}</p> 
-    
+      <div class="card-body">
+      
+        <h5 class="card-title">概要</h5>
+        <div>
+          <p>{{ text.info }}</p>
+        </div>
       </div>
     </div>
   </div>
+  <div class="text">
+    <h2>{{ text.title }}</h2>
+    <div class="like-outer">
+        {% include 'search/like.html' %}
+    </div>
+    <hr>
   </div>
 {% endfor %}
+<script type="text/javascript">
+  $(document).ready(function(event){
+      $(document).on('click', '#like', function(event){
+          event.preventDefault();
+          $.ajax({
+              type: 'POST',
+              url: "{% url 'search:tlike' %}",
+              data: {
+                  'text_id': $(this).attr('name'),
+                  'csrfmiddlewaretoken': '{{ csrf_token }}'},
+              dataType: 'json',
+              success: function(response){
+                  selector = document.getElementsByName(response.text_id);
+                  if(response.liked){
+                      $(selector).html("<i class='fas fa-lg fa-heart'></i>");
+                  }
+                  else {
+                      $(selector).html("<i class='far fa-lg fa-heart'></i>");
+                  }
+                  selector2 = document.getElementsByName(response.text_id + "-count");
+                  $(selector2).text(response.count);
+              }
+          });
+      });
+  });
+</script>
 
   <!--
   <section class="section">

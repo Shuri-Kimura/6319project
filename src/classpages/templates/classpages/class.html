@@ -7,8 +7,8 @@
     </head>
     <body>
         <div>
-            <p>Doutei                                          メッセージ</p>
-            <p> <a href="../../mypage">マイページ</a>      授業検索        教科書検索</p>
+            <p>RIKATYAN                                          メッセージ</p>
+            <p> <a href={% url 'mypage:mypage' user.user_id %}>マイページ</a>      授業検索        教科書検索</p>
         </div>
         <table border="1">
         <caption>{{classes.title}}</caption>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <td>
-                    楽単
+                    単位
                 </td>
                 <td>
                     3
