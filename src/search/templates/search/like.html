@@ -1,3 +1,7 @@
+{% extends 'layout_search.html' %}
+{% load static %}
+
+{% block contents %}
 <form action="{% url 'search:tlike' %}" method="POST">
     {% csrf_token %}
     {% if text.text_id in liked_list %}
@@ -7,3 +11,5 @@
     {% endif %}
 </form>
 <p name="{{text.text_id}}-count" class="count"> {{ text.tfavo_set.count }} </p>
+
+{% endblock %}

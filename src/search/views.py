@@ -35,6 +35,7 @@ def index(request):
             liked = text.tfavos_set.filter(user_id=request.user)
             if liked.exists():
                 liked_list.append(text.text_id)
+        print(liked_list)
     else:
         classes = Classes.objects.all().annotate(Avg('cevals__rikai')).annotate(Avg('cevals__raku'))
         texts = {}
