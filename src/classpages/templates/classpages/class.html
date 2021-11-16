@@ -8,7 +8,7 @@
     <body>
         <div>
             <p>RIKATYAN                                          メッセージ</p>
-            <p> <a href="../../mypage">マイページ</a>      授業検索        教科書検索</p>
+            <p> <a href={% url 'mypage:mypage' user.user_id %}>マイページ</a>      授業検索        教科書検索</p>
         </div>
         <table border="1">
         <caption>{{classes.title}}</caption>
