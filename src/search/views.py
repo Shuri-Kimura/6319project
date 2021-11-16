@@ -5,6 +5,8 @@ from django.db.models import Q, Avg
 
 
 def index(request):
+    if request.user.is_anonymous:#loginしていない場合勝手にloginページ
+        return redirect('users:index')
     q_class = request.POST.get('q_class')
     q_text = request.POST.get('q_text')
     if q_class:
@@ -47,9 +49,6 @@ def index(request):
     })
 
 def TlikeView(request):
-    if request.user.is_anonymous:#loginしていない場合勝手にloginページ
-        return redirect('users:index')
-
     if request.method =="POST":
         text = get_object_or_404(Texts, pk=request.POST.get('text_id'))
         user = request.user

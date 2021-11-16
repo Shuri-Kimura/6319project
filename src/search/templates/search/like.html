@@ -1,15 +1,15 @@
-{% extends 'layout_search.html' %}
 {% load static %}
 
-{% block contents %}
+{% block content %}
 <form action="{% url 'search:tlike' %}" method="POST">
     {% csrf_token %}
     {% if text.text_id in liked_list %}
-        <button id="like" name="{{text.text_id}}"><i class="fas fa-lg fa-heart like-red"></i></button>
+        <button id="like" name="{{text.text_id}}"><i class="fas fa-lg fa-heart like-red" style="color:red;"></i></button>
     {% else %}
-        <button id="like" name="{{text.text_id}}"><i class="far fa-lg fa-heart"></i></button>      
+        <button id="like" name="{{text.text_id}}"><i class="far fa-lg fa-heart"></i></button>
     {% endif %}
 </form>
+
 <p name="{{text.text_id}}-count" class="count"> {{ text.tfavo_set.count }} </p>
 
 {% endblock %}
