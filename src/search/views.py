@@ -50,9 +50,11 @@ def index(request):
 
 def TlikeView(request):
     if request.method =="POST":
+        #print(print(request.is_ajax()))
         text = get_object_or_404(Texts, pk=request.POST.get('text_id'))
         user = request.user
         liked = False
+        #print(text)
         tfavos = Tfavos.objects.filter(text_id=text, user_id=user)
         if tfavos.exists():
             tfavos.delete()
