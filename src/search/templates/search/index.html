@@ -56,17 +56,17 @@
       </div>
     </div>
   </div>
+
   <div class="text">
     <h2>{{ text.title }}</h2>
     <div class="like-outer">
-        {% include 'search/like.html' %}
+      {% include 'search/like.html' %}
     </div>
-    <hr>
   </div>
 {% endfor %}
 <script type="text/javascript">
-  $(document).ready(function(event){
-      $(document).on('click', '#like', function(event){
+  $('.like-outer').ready(function(event){
+      $('.like-outer').on('click', '#like', function(event){
           event.preventDefault();
           $.ajax({
               type: 'POST',
@@ -90,25 +90,6 @@
       });
   });
 </script>
-
-  <!--
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline is-mobile is-tablet is-desktop" style="margin: auto;">
-        <div class="column is-12-mobile is-8-tablet is-9-desktop" style="margin: auto;">
-          <div class="columns is-multiline is-mobile is-tablet is-desktop" style="margin: auto;">
-            {% for text in texts %}
-            <div class="column is-6-mobile is-4-tablet is-3-desktop" style="margin: auto;">
-              <div class="box">
-                {{ text.title }}
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
 {% else %}
 <h5 class="card-title text-center" style="padding-top: 50px;">キーワードに一致する検索結果がありません。</h5>
