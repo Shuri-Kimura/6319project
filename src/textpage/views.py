@@ -3,7 +3,7 @@ from django.views import generic
 from django.shortcuts import render
 from users.models import Users
 from django.utils import timezone
-from users.models import Tfavos,Cfavos,Classes,Texts
+from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 
 #class TextpageView(ListView):
     #template_name = 'textpage/textpage.html'
@@ -15,9 +15,17 @@ def textpage(request):
 def get_queryset(self):
        return Texts.objects.filter(text_id__isnull = False)
 
+
+
+
+
+
 class TextpageView(generic.DetailView):
-    model = Texts
+    model = Tcom
     template_name = 'textpage/textpage.html'
+
+
+
 
 
 
