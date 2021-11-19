@@ -1,3 +1,4 @@
+from typing import Text
 from django.http import HttpResponse,HttpResponseRedirect
 from django.views import generic
 from django.shortcuts import render
@@ -13,15 +14,17 @@ def textpage(request):
     return textpage(request, 'textpage/textpage.html')
 
 def get_queryset(self):
-       return Texts.objects.filter(text_id__isnull = False)
+       return Tcom.objects.filter(text_id__isnull = False)
 
-
+def get_queryset(self):
+       return Texts.objects.filter(text_id__isnull = False)       
 
 
 
 
 class TextpageView(generic.DetailView):
-    model = Tcom
+    model = Texts
+    model2 = Tcom
     template_name = 'textpage/textpage.html'
 
 
