@@ -46,6 +46,9 @@
   <div class="card mb-4" style="width: 35rem; margin: auto;">
     <div class="card-header nowrap">
       <div class="text-center"><h5>{{ text.title }}</h5></div>
+      <div class="like-outer">
+        {% include 'search/like.html' %}
+      </div>
 
       <div class="card-body">
       
@@ -57,12 +60,6 @@
     </div>
   </div>
 
-  <div class="text">
-    <h2>{{ text.title }}</h2>
-    <div class="like-outer">
-      {% include 'search/like.html' %}
-    </div>
-  </div>
 {% endfor %}
 <script type="text/javascript">
   $('.like-outer').ready(function(event){
@@ -78,13 +75,13 @@
               success: function(response){
                   selector = document.getElementsByName(response.text_id);
                   if(response.liked){
-                      $(selector).html("<i class='fas fa-lg fa-heart'></i>");
+                      $(selector).html("<i class='fas fa-lg fa-heart' style='color:#ff3333;'></i>");
                   }
                   else {
                       $(selector).html("<i class='far fa-lg fa-heart'></i>");
                   }
-                  selector2 = document.getElementsByName(response.text_id + "-count");
-                  $(selector2).text(response.count);
+                  // selector2 = document.getElementsByName(response.text_id + "-count");
+                  // $(selector2).text(response.count);
               }
           });
       });
