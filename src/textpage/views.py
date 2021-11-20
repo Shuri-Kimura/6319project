@@ -1,5 +1,7 @@
 from typing import Text
+from django.db import models
 from django.http import HttpResponse,HttpResponseRedirect
+from django.views.generic.list import ListView
 from django.views import generic
 from django.shortcuts import render
 from users.models import Users
@@ -13,19 +15,20 @@ from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 def textpage(request):
     return textpage(request, 'textpage/textpage.html')
 
-def get_queryset(self):
-       return Tcom.objects.filter(text_id__isnull = False)
 
 def get_queryset(self):
-       return Texts.objects.filter(text_id__isnull = False)       
-
-
+       return Texts.objects.filter(text_id__isnull = False)   
 
 
 class TextpageView(generic.DetailView):
-    model = Texts
-    model2 = Tcom
-    template_name = 'textpage/textpage.html'
+        model = Texts
+        template_name = 'textpage/textpage.html'
+
+
+
+      
+
+
 
 
 
