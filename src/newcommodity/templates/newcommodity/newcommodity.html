@@ -12,9 +12,6 @@
     <form action='{% url 'newcommodity:addText' %}' method='post' class='form' enctype="multipart/form-data">
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
-        {{ textForm.text_id }}
-        {{ user.user_id }}
-        {{ textForm.user_id }}
         {{ textForm.image1 }}
         
         {{ textForm.image2 }}
@@ -26,19 +23,18 @@
         
         
        
-        {{ textForm.category }}
-    <table border="1">
-      <tr>
-        <th>カテゴリ</th>
-         <td>
-            <label for="category"></label>
-            <select name="category" id="category">
-            <option value="1">教科書</option>
-            <option value="2">参考書</option>
-            <option value="3">過去問</option>
-            </select>
-         </td>
-      </tr>
+         <table border="1">
+            <tr>
+            <th>カテゴリ</th>
+               <td>
+                  <label for="{{ textForm.category.id_for_label }}"></label>
+                  <select name="category" id="category">
+                  <option value=1>教科書</option>
+                  <option value=2>参考書</option>
+                  <option value=3>過去問</option>
+                  </select>
+               </td>
+            </tr>
 
       <tr>
         <th>商品状態</th>
@@ -49,6 +45,14 @@
       <tr>
          <th>授業名</th>
             <td>{{ textForm.class_id }}</td>
+            <td>
+               <label for="{{ textForm.class_id.id_for_label }}"></label>
+               <select name="class_id" id="class_id">
+               {% for class in classes %}
+               <option value={{class.num}}>{{class.title}}</option>
+               {% endfor %}
+               </select>
+            </td>
       </tr>
       
       <tr>
