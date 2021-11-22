@@ -1,20 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
         <title>授業ページ</title>
-        
+        <link href="{% static 'classpages/classpages.css' %}" rel="stylesheet">        
     </head>
     <body>
-        <div>
-            <p>RIKATYAN                                          メッセージ</p>
-            <p> <a href={% url 'mypage:mypage' user.user_id %}>マイページ</a>      授業検索        教科書検索</p>
+        <div class="titlebar">
+            <p class="RIKATYAN">RIKATYAN</p>        
+            <p class="message">メッセージ</p>
         </div>
-        <table border="1">
+        <div class="url">
+            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %}>マイページ</a></p>
+            <p class="c_search"><a href = "/search">授業検索</a></p>
+            <p class="t_search"><a href = "/search">教科書検索</a></p>
+        </div>
+        <table>
         <caption>{{classes.title}}</caption>
-            <td>
-                分かりやすさ
-            </td>
+            <tr>
+                <td>
+                    分かりやすさ
+                </td>
                 <td>
                     {{classes.method_eval}}
                 </td>
@@ -33,14 +40,6 @@
                 </td>
                 <td>
                     {{classes.teacher}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    抽選
-                </td>
-                <td>
-                    あり
                 </td>
             </tr>
             <tr>

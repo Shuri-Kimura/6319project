@@ -1,0 +1,47 @@
+.RIKATYAN {
+    text-align: left;
+    float: left;
+}
+
+.message {
+    text-align: right;
+}
+
+.titlebr{
+    font-weight:bold;
+}
+
+.mypage{
+    display: table-cell;
+    text-align: left;
+}
+
+.c_search{
+    display: table-cell; 
+    text-align: center;
+}
+
+.t_search{
+    display: table-cell; 
+    text-align: right;
+}
+
+.url{
+    display: table; 
+    width: 100%; 
+    color:black;
+}
+
+table {
+    border-radius: 5%;
+    background-color: rgb(163, 163, 163);
+    box-shadow: 3px 3px 1px black;
+}
+
+table caption{
+    font-size: 30px;
+}
+
+table td{
+    padding: 10px;
+}
