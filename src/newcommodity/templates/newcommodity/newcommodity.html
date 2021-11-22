@@ -13,7 +13,6 @@
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
         {{ textForm.image1 }}
-        
         {{ textForm.image2 }}
         {{ textForm.image3 }}
 
@@ -36,15 +35,24 @@
                </td>
             </tr>
 
-      <tr>
-        <th>商品状態</th>
-         <td> {{ textForm.state }}</td>
-      </tr>
 
+      
+
+      <th>商品状態</th>
+            <td> <label for="{{ textForm.state.id_for_label }}"></label>
+             <select name="state" id="state">
+             <option value=1>新品、未使用</option>
+             <option value=2>未使用に近い</option>
+             <option value=3>目立った傷や汚れなし</option>
+             <option value=4>やや傷や汚れあり</option>
+             <option value=5>傷や汚れあり</option>
+             <option value=6>全体的に状態が悪い</option>
+             </select>
+          </td>
 
       <tr>
          <th>授業名</th>
-            <td>{{ textForm.class_id }}</td>
+            
             <td>
                <label for="{{ textForm.class_id.id_for_label }}"></label>
                <select name="class_id" id="class_id">
@@ -57,10 +65,17 @@
       
       <tr>
          <th>お渡しまでの日数</th>
-            <td>{{ textForm.days}}</td>
+         <td>
+            <label for="{{ textForm.days.id_for_label }}"></label>
+             <select name="days" id="days">
+               <option value=1>１〜２日</option>
+               <option value=2>２〜３日</option>
+               <option value=3>４〜７日</option>
+               </select>
+         </td>
       </tr>
     </table>
-    <p>{{textForm.date}}</p>
+    
     <button type='submit' class='btn btn-outline-primary'>出品する</button>
         
    </form>
@@ -68,6 +83,8 @@
 
 
        <!--
+         <p>{{textForm.date}}</p>
+
        <h1>Doutei1</h1>
        <h2><a href="../mypage">メッセージ</a></h2>
        <h2><a href="../mypage">マイページ</a></h2>
