@@ -58,6 +58,7 @@
 table {
     margin-left: auto;
     margin-right: auto;
+    /*min-width: 70%;*/
     border-radius: 10px;
     background-color: rgb(163, 163, 163);
     box-shadow: 3px 3px 1px black;
@@ -72,5 +73,9 @@ table td{
 }
 
 table td.subject{
-    width: 7em; 
+    min-width: 7em; 
+}
+
+table td.content{
+    min-width: 29em; 
 }
