@@ -12,10 +12,11 @@
             <p class="message">メッセージ</p>
         </div>
         <div class="url">
-            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %}>マイページ</a></p>
-            <p class="c_search"><a href = "/search">授業検索</a></p>
-            <p class="t_search"><a href = "/search">教科書検索</a></p>
+            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
+            <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
+            <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
         </div>
+        <p></p>
         <table>
         <caption>{{classes.title}}</caption>
             <tr>
