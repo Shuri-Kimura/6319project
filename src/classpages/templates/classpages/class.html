@@ -50,7 +50,21 @@
                     評価方法
                 </td>
                 <td>
-                    レポートの内容
+                    {%if classes.method_eval == 1%}
+                    出席点20%、中間テスト30%、期末テスト50%
+                    {%endif%}
+                    {%if classes.method_eval == 2%}
+                    中間テスト30%、期末テスト70%
+                    {%endif%}
+                    {%if classes.method_eval == 3%}
+                    期末テストのみ
+                    {%endif%}
+                    {%if classes.method_eval == 4%}
+                    中間レポート30%、期末レポート70%
+                    {%endif%}
+                    {%if classes.method_eval == 5%}
+                    期末レポートのみ
+                    {%endif%}
                 </td>
             </tr>
             <tr>
@@ -58,7 +72,15 @@
                     授業形態
                 </td>
                 <td>
+                    {%if classes.classform == 1%}
+                    対面
+                    {%endif%}
+                    {%if classes.classform == 2%}
+                    オンライン
+                    {%endif%}
+                    {%if classes.classform == 3%}
                     ハイフレックス
+                    {%endif%}
                 </td>
             </tr>
             <tr>
