@@ -13,7 +13,12 @@ from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
     #model = Texts
 
 def textpage(request):
-    return textpage(request, 'textpage/textpage.html')
+    textpage = Texts.objects.all()
+    tcoms = Tcom.objects.all()
+    return textpage(request, 'textpage/textpage.html',{
+          'textpage' :textpage,
+          'tcoms':tcoms,
+    })
 
 
 def get_queryset(self):
@@ -21,7 +26,7 @@ def get_queryset(self):
 
 
 class TextpageView(generic.DetailView):
-        model = Texts
+        
         template_name = 'textpage/textpage.html'
 
 
