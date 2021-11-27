@@ -1,21 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
         <title>授業ページ</title>
-        
+        <link href="{% static 'css/classpages.css' %}" rel="stylesheet">        
     </head>
     <body>
-        <div>
-            <p>RIKATYAN                                          メッセージ</p>
-            <p> <a href={% url 'mypage:mypage' user.user_id %}>マイページ</a>      授業検索        教科書検索</p>
+        <div class="titlebar">
+            <p class="RIKATYAN">RIKATYAN</p>        
+            <p class="message">メッセージ</p>
         </div>
-        <table border="1">
+        <p>
+        </p>
+        <div class="url">
+            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
+            <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
+            <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
+        </div>
+        <p></p>
+        <table>
         <caption>{{classes.title}}</caption>
-            <td>
-                分かりやすさ
-            </td>
-                <td>
+            <tr>
+                <td class="subject">
+                    分かりやすさ
+                </td>
+                <td class="content">
                     {{classes.method_eval}}
                 </td>
             </tr>
@@ -37,18 +47,24 @@
             </tr>
             <tr>
                 <td>
-                    抽選
-                </td>
-                <td>
-                    あり
-                </td>
-            </tr>
-            <tr>
-                <td>
                     評価方法
                 </td>
                 <td>
-                    レポートの内容
+                    {%if classes.method_eval == 1%}
+                    出席点20%、中間テスト30%、期末テスト50%
+                    {%endif%}
+                    {%if classes.method_eval == 2%}
+                    中間テスト30%、期末テスト70%
+                    {%endif%}
+                    {%if classes.method_eval == 3%}
+                    期末テストのみ
+                    {%endif%}
+                    {%if classes.method_eval == 4%}
+                    中間レポート30%、期末レポート70%
+                    {%endif%}
+                    {%if classes.method_eval == 5%}
+                    期末レポートのみ
+                    {%endif%}
                 </td>
             </tr>
             <tr>
@@ -56,7 +72,15 @@
                     授業形態
                 </td>
                 <td>
+                    {%if classes.classform == 1%}
+                    対面
+                    {%endif%}
+                    {%if classes.classform == 2%}
+                    オンライン
+                    {%endif%}
+                    {%if classes.classform == 3%}
                     ハイフレックス
+                    {%endif%}
                 </td>
             </tr>
             <tr>
