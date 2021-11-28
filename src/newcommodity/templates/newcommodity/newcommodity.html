@@ -8,18 +8,21 @@
     <body>
       
       
-    
+    <center>
          <form action='{% url 'newcommodity:addText' %}' method='post' class='form' enctype="multipart/form-data">
                <!-- ユーザー登録フォームを表示 -->
                
                {% csrf_token %}
-            
-               {{ textForm.image1 }}
-            
-               {{ textForm.image2 }}
+               
+            　　
+               {{ textForm.image1 }}<br>
+               
+               {{ textForm.image2 }}<br>
                {{ textForm.image3 }}
 
+               
                <p>商品名<br>{{ textForm.title }}</p>
+               
                <p>商品の説明<br>{{ textForm.info }}</p>
 
                
@@ -83,7 +86,7 @@
             <button type='submit' class='btn btn-outline-primary'>出品する</button>
             
          </form>
-  
+      </center>
 
 
        <!--
