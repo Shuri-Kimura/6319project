@@ -15,20 +15,30 @@ from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 
 
 
-def get_queryset(self):
-       return Texts.objects.filter(text_id__isnull = False)   
+  
 
 
 class TextpageView(generic.DetailView):
 
  def textpage(request):
-    textpage = Texts.objects.all()
-    
-    tcoms = Tcom.objects.all()
+    q_textpage = request.POST.get('q_textpage')
+    q_tcom = request.POST.get('q_tcom')
+    if q_textpage:
+        textpage = Texts.objects.all()
+        queries = q_textpage.split()
+        
+    elif q_tcom: 
+       text_ids = Texts.text_id
+       tcoms = Tcom.objects.filter(text_id = text_ids)
+       queries = q_tcom.split()
+       
+
     return render(request, 'textpage/textpage.html',{
           'textpage' :textpage,
           'tcoms':tcoms,
     })
+
+
         
 
 
