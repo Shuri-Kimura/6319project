@@ -9,17 +9,17 @@ from users.models import Users
 from django.utils import timezone
 from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 
-#以下成功例
-#class TextpageView(ListView):
-    #template_name = 'textpage/textpage.html'
-    #model = Texts
+
+class TextpageView(ListView):
+    template_name = 'textpage/textpage.html'
+    model = Texts
 
 
 
 
   
 
-
+""""
 class TextpageView(generic.DetailView):
     model = Texts
     def textpage(request,pk):
@@ -30,7 +30,7 @@ class TextpageView(generic.DetailView):
           'textpage' :textpage,
           #'tcoms':tcoms,
     })
-
+"""
 
         
 
