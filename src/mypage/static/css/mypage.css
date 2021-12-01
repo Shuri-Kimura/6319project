@@ -1,0 +1,68 @@
+.top {
+    width: 2000px;
+    height: 40px;
+    color: blue;
+    background: aquamarine;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.RIKATYAN {
+    display: table-cell;
+    text-align: left;
+}
+
+.message {
+    display: table-cell;
+    text-align: right;
+}
+
+.titlebar{
+    display: table;
+    width: 100%; 
+    color:black;
+    font-weight:bold;
+}
+
+
+.mypage{
+    display: table-cell;
+    text-align: left;
+}
+
+.c_search{
+    display: table-cell; 
+    text-align: center;
+}
+
+.t_search{
+    display: table-cell; 
+    text-align: right;
+}
+
+.button, .button1{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+.button:active, .button1:active{
+    /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+.button1 {
+    background: springgreen;
+    color: black;
+}
+
+.url{
+    display: table; 
+    width: 100%; 
+    color:black;
+}
