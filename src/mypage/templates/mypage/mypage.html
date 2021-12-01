@@ -1,33 +1,47 @@
-<html>
+{% load static %}
+<!DOCTYPE html>
     <head>
+        <link href="{% static 'css/mypage.css' %}" rel="stylesheet"> 
         <title>{{users.username}}のホームページ</title>
-        <h1>{{users.username}}のマイページ
-        <p>ここが写真です。</p>
-        {% if users.image %}
-        <img src="{{users.image.url}}" width = 100px>
-        {% endif %}
-        </h1>
-        {% if users.user_id == user.user_id %}
-        <input type="button" onclick="location.href='edit/'" value = "編集">
-        {% endif %}
     </head>
     <body>
-        <p>ここがいいね一覧です。</p>
-        <button type="button" onclick="location.href = '{% url 'like:like' user.user_id %}'">いいね一覧</button>
-        <p>ここが出品です。</p>
-        <button type="button" onclick="location.href='{% url 'newcommodity:index' %}'">出品する</button>
-        <p>ここがお気に入り登録です。</p>
-        <button type="button" onclick="location.href='{% url 'like:likely' user.user_id %}'">お気に入り登録</button>
-        <p>ここが自己紹介です。</p>
-        <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
-        <p>出品教材</p>
-        {% for text in texts_list %}
-        {% if text.user_id.user_id == users.user_id %}
-        {{text.title}}
-        {% endif %}
-        {% endfor %}
-    {% block main_containts %}
-    {% endblock %}
+        <div class="titlebar">
+            <p class="RIKATYAN">RIKATYAN</p>        
+            <p class="message">メッセージ</p>
+        </div>
+        <p>
+        </p>
+        <div class="url">
+            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
+            <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
+            <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
+        </div>
+        <div class="top">
+            <h1>{{users.username}}のマイページ</h1>
+        </div>
+        <div>
+            <p>ここが写真です。</p>
+            {% if users.image %}
+            <img src="{{users.image.url}}" width = 100px>
+            {% endif %}
+            {% if users.user_id == user.user_id %}
+            <a href="edit/" class="button1">編集</a>
+            {% endif %}
+            <p>ここがいいね一覧です。</p>
+            <a href="{% url 'like:like' user.user_id %}" class="button1">いいね一覧</a>
+            <p>ここが出品です。</p>
+            <a href="{% url 'newcommodity:index' %}" class="button1">出品する</a>
+            <p>ここがお気に入り登録です。</p>
+            <a href="{% url 'like:likely' user.user_id %}" class="button1">お気に入り登録</a>
+            <p>ここが自己紹介です。</p>
+            <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
+            <p>出品教材</p>
+            {% for text in texts_list %}
+            {% if text.user_id.user_id == users.user_id %}
+            {{text.title}}
+            {% endif %}
+            {% endfor %}
+        </div>
     </body>
 
 </html>
