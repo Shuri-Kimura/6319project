@@ -39,6 +39,9 @@
             {% for text in texts_list %}
             {% if text.user_id.user_id == users.user_id %}
             {{text.title}}
+            {% if text.image1 %}
+            <img src="{{text.image1.url}}" width = 100px>
+            {% endif %}
             {% endif %}
             {% endfor %}
         </div>
