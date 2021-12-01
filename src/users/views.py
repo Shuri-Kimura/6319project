@@ -31,13 +31,13 @@ class  AccountRegistration(TemplateView):
         if self.params["account_form"].is_valid():
             # アカウント情報をDB保存
             #account = self.params["account_form"].save()
-            account = Users(username=self.params["account_form"]["username"],student_number=self.params["account_form"]["student_number"],email=self.params["account_form"]["email"])
+            print("user",self.params["account_form"].data.get("username"))
+            print("pass",self.params["account_form"].data.get("password"))
+            account = Users(username=self.params["account_form"].data.get("username"), student_number=self.params["account_form"].data.get("student_number"), email=self.params["account_form"].data.get("email"))
             # パスワードをハッシュ化
-            account.set_password(self.params["account_form"]["password"])
-            #account.set_password(account.password)
+            account.set_password(self.params["account_form"].data.get("password"))
             # ハッシュ化パスワード更新
             account.save()
-            #account.save()
 
             # 下記追加情報
             # 下記操作のため、コミットなし
