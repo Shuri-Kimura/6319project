@@ -112,13 +112,31 @@
 カテゴリ：{{texts.category}}
 商品状態：{{texts.state}}
 授業名：{{texts.class_id}}
-お渡しまでの日数：{{textpage.days}}
+お渡しまでの日数：{{texts.days}}
 
 
 <h2>出品者</h2>
 
 <h2>コメント</h2>
-<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{tcoms.text_id}}</div>
+<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
+  {% for tcom in tcom_list %}
+{% if tcom.text_id.text_id == texts.text_id %}
+
+{{tcom.comments}}
+
+{% endif %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
 

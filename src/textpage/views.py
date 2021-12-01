@@ -10,9 +10,19 @@ from django.utils import timezone
 from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 
 
-class TextpageView(ListView):
+class TextpageView(generic.DetailView):
     template_name = 'textpage/textpage.html'
     model = Texts
+    def get_context_data(self, **kwargs):
+        context = super(TextpageView, self).get_context_data(**kwargs)
+        context.update({
+            'tcom_list': Tcom.objects.all(),
+        })
+
+        return context
+
+
+
 
 
 
