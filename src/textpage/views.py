@@ -29,18 +29,7 @@ class TextpageView(generic.DetailView):
 
   
 
-""""
-class TextpageView(generic.DetailView):
-    model = Texts
-    def textpage(request,pk):
-   
-     textpage = get_object_or_404(Texts, pk=pk)
-   #tcoms = Tcom.objects.filter(text_id=textpage)
-     return render(request, 'textpage/textpage.html',{
-          'textpage' :textpage,
-          #'tcoms':tcoms,
-    })
-"""
+
 
         
 
