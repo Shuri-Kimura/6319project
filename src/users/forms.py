@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Account
+from .models import Users
 
 # フォームクラス作成
 class AccountForm(forms.ModelForm):
@@ -9,15 +9,15 @@ class AccountForm(forms.ModelForm):
 
     class Meta():
         # ユーザー認証
-        model = User
+        model = Users
         # フィールド指定
-        fields = ('username','student_number','password')
+        fields = ('username','student_number','email','password')
         # フィールド名指定
-        labels = {'username':"ユーザーID",'学籍番号':"メール"}
+        labels = {'username':"ユーザーID",'stuent_number':"学籍番号",'email':"メールアドレス"}
 
-class AddAccountForm(forms.ModelForm):
-    class Meta():
-        # モデルクラスを指定
-        model = Account
-        fields = ('last_name','first_name',)
-        labels = {'last_name':"苗字",'first_name':"名前",}
+# class AddAccountForm(forms.ModelForm):
+#     class Meta():
+#         # モデルクラスを指定
+#         model = Users
+#         fields = ('last_name','first_name',)
+#         labels = {'last_name':"苗字",'first_name':"名前",}
