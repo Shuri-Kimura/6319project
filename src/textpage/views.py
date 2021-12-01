@@ -1,23 +1,47 @@
+from typing import Text
+from django.shortcuts import render, get_object_or_404, redirect
+from django.db import models
 from django.http import HttpResponse,HttpResponseRedirect
+from django.views.generic.list import ListView
 from django.views import generic
 from django.shortcuts import render
 from users.models import Users
 from django.utils import timezone
-from users.models import Tfavos,Cfavos,Classes,Texts
+from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 
-#class TextpageView(ListView):
-    #template_name = 'textpage/textpage.html'
-    #model = Texts
 
-def textpage(request):
-    return textpage(request, 'textpage/textpage.html')
+class TextpageView(ListView):
+    template_name = 'textpage/textpage.html'
+    model = Texts
 
-def get_queryset(self):
-       return Texts.objects.filter(text_id__isnull = False)
 
+
+
+  
+
+""""
 class TextpageView(generic.DetailView):
     model = Texts
-    template_name = 'textpage/textpage.html'
+    def textpage(request,pk):
+   
+     textpage = get_object_or_404(Texts, pk=pk)
+   #tcoms = Tcom.objects.filter(text_id=textpage)
+     return render(request, 'textpage/textpage.html',{
+          'textpage' :textpage,
+          #'tcoms':tcoms,
+    })
+"""
+
+        
+
+
+
+      
+
+
+
+
+
 
 
 

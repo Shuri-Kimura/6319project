@@ -5,6 +5,8 @@ from django.db.models import Q, Avg
 
 
 def index(request):
+    if request.user.is_anonymous:#loginしていない場合勝手にloginページ
+        return redirect('users:index')
     q_class = request.POST.get('q_class')
     q_text = request.POST.get('q_text')
     if q_class:
@@ -35,6 +37,7 @@ def index(request):
             liked = text.tfavos_set.filter(user_id=request.user)
             if liked.exists():
                 liked_list.append(text.text_id)
+        print(liked_list)
     else:
         classes = Classes.objects.all().annotate(Avg('cevals__rikai')).annotate(Avg('cevals__raku'))
         texts = {}
@@ -46,13 +49,12 @@ def index(request):
     })
 
 def TlikeView(request):
-    if request.user.is_anonymous:#loginしていない場合勝手にloginページ
-        return redirect('users:index')
-
     if request.method =="POST":
+        #print(print(request.is_ajax()))
         text = get_object_or_404(Texts, pk=request.POST.get('text_id'))
         user = request.user
         liked = False
+        #print(text)
         tfavos = Tfavos.objects.filter(text_id=text, user_id=user)
         if tfavos.exists():
             tfavos.delete()

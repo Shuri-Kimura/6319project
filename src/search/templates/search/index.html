@@ -34,8 +34,8 @@
       
         <h5 class="card-title">評価</h5>
         <div>
-          <p>理解度　:<span class="star5_rating" data-rate="1"></span></p>
-          <p>楽単　　:<span class="star5_rating" data-rate="{{ class.cevals__raku__avg }}"></span></p>
+          <p>理解度　:<span class="star5_rating" data-rate="{{ class.cevals__rikai__avg }}"></span></p>
+          <p>単位　　:<span class="star5_rating" data-rate="{{ class.cevals__raku__avg }}"></span></p>
         </div>
       </div>
     </div>
@@ -46,6 +46,9 @@
   <div class="card mb-4" style="width: 35rem; margin: auto;">
     <div class="card-header nowrap">
       <div class="text-center"><h5>{{ text.title }}</h5></div>
+      <div class="like-outer">
+        {% include 'search/like.html' %}
+      </div>
 
       <div class="card-body">
       
@@ -56,17 +59,11 @@
       </div>
     </div>
   </div>
-  <div class="text">
-    <h2>{{ text.title }}</h2>
-    <div class="like-outer">
-        {% include 'search/like.html' %}
-    </div>
-    <hr>
-  </div>
+
 {% endfor %}
 <script type="text/javascript">
-  $(document).ready(function(event){
-      $(document).on('click', '#like', function(event){
+  $('.like-outer').ready(function(event){
+      $('.like-outer').on('click', '#like', function(event){
           event.preventDefault();
           $.ajax({
               type: 'POST',
@@ -78,37 +75,18 @@
               success: function(response){
                   selector = document.getElementsByName(response.text_id);
                   if(response.liked){
-                      $(selector).html("<i class='fas fa-lg fa-heart'></i>");
+                      $(selector).html("<i class='fas fa-lg fa-heart' style='color:#ff3333;'></i>");
                   }
                   else {
                       $(selector).html("<i class='far fa-lg fa-heart'></i>");
                   }
-                  selector2 = document.getElementsByName(response.text_id + "-count");
-                  $(selector2).text(response.count);
+                  // selector2 = document.getElementsByName(response.text_id + "-count");
+                  // $(selector2).text(response.count);
               }
           });
       });
   });
 </script>
-
-  <!--
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline is-mobile is-tablet is-desktop" style="margin: auto;">
-        <div class="column is-12-mobile is-8-tablet is-9-desktop" style="margin: auto;">
-          <div class="columns is-multiline is-mobile is-tablet is-desktop" style="margin: auto;">
-            {% for text in texts %}
-            <div class="column is-6-mobile is-4-tablet is-3-desktop" style="margin: auto;">
-              <div class="box">
-                {{ text.title }}
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
 {% else %}
 <h5 class="card-title text-center" style="padding-top: 50px;">キーワードに一致する検索結果がありません。</h5>

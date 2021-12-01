@@ -7,17 +7,25 @@
         <img src="{{users.image.url}}" width = 100px>
         {% endif %}
         </h1>
+        {% if users.user_id == user.user_id %}
         <input type="button" onclick="location.href='edit/'" value = "編集">
+        {% endif %}
     </head>
     <body>
         <p>ここがいいね一覧です。</p>
-        <button type="button" onclick="location.href = '{% url 'like:like' users.user_id %}'">いいね一覧</button>
+        <button type="button" onclick="location.href = '{% url 'like:like' user.user_id %}'">いいね一覧</button>
         <p>ここが出品です。</p>
         <button type="button" onclick="location.href='{% url 'newcommodity:index' %}'">出品する</button>
         <p>ここがお気に入り登録です。</p>
-        <button type="button" onclick="location.href='{% url 'like:likely' users.user_id %}'">お気に入り登録</button>
+        <button type="button" onclick="location.href='{% url 'like:likely' user.user_id %}'">お気に入り登録</button>
         <p>ここが自己紹介です。</p>
         <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
+        <p>出品教材</p>
+        {% for text in texts_list %}
+        {% if text.user_id.user_id == users.user_id %}
+        {{text.title}}
+        {% endif %}
+        {% endfor %}
     {% block main_containts %}
     {% endblock %}
     </body>
