@@ -20,18 +20,18 @@
             <h1>{{users.username}}のマイページ</h1>
         </div>
         <div>
-            <p>ここが写真です。</p>
+            ここが写真です。
             {% if users.image %}
             <img src="{{users.image.url}}" width = 100px>
             {% endif %}
             {% if users.user_id == user.user_id %}
             <a href="edit/" class="button1">編集</a>
             {% endif %}
-            <p>ここがいいね一覧です。</p>
+            ここがいいね一覧です。
             <a href="{% url 'like:like' user.user_id %}" class="button1">いいね一覧</a>
-            <p>ここが出品です。</p>
+            ここが出品です。
             <a href="{% url 'newcommodity:index' %}" class="button1">出品する</a>
-            <p>ここがお気に入り登録です。</p>
+            ここがお気に入り登録です。
             <a href="{% url 'like:likely' user.user_id %}" class="button1">お気に入り登録</a>
             <p>ここが自己紹介です。</p>
             <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
@@ -40,7 +40,8 @@
             {% if text.user_id.user_id == users.user_id %}
             {{text.title}}
             {% if text.image1 %}
-            <img src="{{text.image1.url}}" width = 100px>
+            <a href="{% url 'textpage:textpage' text.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >
+                <img src="{{text.image1.url}}" width = 100px></a>
             {% endif %}
             {% endif %}
             {% endfor %}
