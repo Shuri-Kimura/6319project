@@ -16,7 +16,8 @@ class TextpageView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(TextpageView, self).get_context_data(**kwargs)
         context.update({
-            'tcom_list': Tcom.objects.all(),
+            'tcom_list': Tcom.objects.order_by('date').reverse().all(),
+            
         })
 
         return context
