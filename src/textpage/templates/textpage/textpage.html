@@ -62,8 +62,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <center>
     <div class = "image-horizontal-scroll">
-     　<center>
+     　
       <div class="box">
        {% if texts.image1 %}
       <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
@@ -82,7 +83,7 @@
       <img src="{{texts.image3.url}}" style="width:100px;"/>
       {%endif%}
     </div>
-       </center>
+       
      </div>
 
 
@@ -109,10 +110,12 @@
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{texts.info}}</div>
 
 <h1>商品の情報</h1>
-カテゴリ：{{texts.category}}
-商品状態：{{texts.state}}
-授業名：{{texts.class_id}}
-お渡しまでの日数：{{texts.days}}
+<p>
+カテゴリ：{{texts.category}}<br>
+商品状態：{{texts.state}}<br>
+授業名：{{texts.class_id.title}}<br>
+お渡しまでの日数：{{texts.days}}<br>
+</p>
 
 
 <h2>出品者</h2>
@@ -122,8 +125,8 @@
   {% for tcom in tcom_list %}
 {% if tcom.text_id.text_id == texts.text_id %}
 
-{{tcom.comments}}
-
+<p>{{tcom.comments}}<br>
+</p>
 {% endif %}
 {% endfor %}
 
@@ -146,7 +149,7 @@
 <h1>出品取り消し</h1>
 ボタンにする　特定のデータベースから消去を行う必要がある。
 
- 
+</center>
 </body>    
 <footer>
 </footer>
