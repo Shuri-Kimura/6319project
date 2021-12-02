@@ -128,14 +128,17 @@
   
   
 <h2>コメント</h2>
-<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
+<div style="border: #141406 solid 1px; font-size: 50%; padding: 15px;">
   {% for tcom in tcom_list %}
 {% if tcom.text_id.text_id == texts.text_id %}
 
 {% if user.username == tcom.user_id.username %}
 
 <h6 style="text-align:right">
-<p>{{tcom.comments}}<br>
+<p>
+  <h7>{{tcom.user_id.username}}</h7><br>
+  {{tcom.comments}}<br>
+  {{tcom.date}}<br>
 </p>
 </h6>
 {% endif%}
@@ -143,7 +146,10 @@
 {% if tcom.user_id.username != user.username %}
 
 <h6 style="text-align:left">
-<p>{{tcom.comments}}<br>
+<p>
+<h7>{{tcom.user_id.username}}</h7><br>
+{{tcom.comments}}<br>
+{{tcom.date}}<br>
 </p>
 </h6>
 {% endif%}
