@@ -16,6 +16,7 @@
  
 
  <title>検索</title>
+
  
 </head>
 <body>
@@ -121,16 +122,35 @@
 <h2>出品者</h2>
 
 <div class="comments">
+  
+  
+  <?php $name= {{user}}; ?>
+  
 <h2>コメント</h2>
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
   {% for tcom in tcom_list %}
 {% if tcom.text_id.text_id == texts.text_id %}
 
+{% if tcom.user_id.username == user %}
+
+<h6 style="text-align:right">
+<p>{{tcom.comments}}<br>
+</p>
+</h6>
+{% endif%}
+
+{% if tcom.user_id.username != user %}
+
 <h6 style="text-align:left">
 <p>{{tcom.comments}}<br>
 </p>
-
 </h6>
+{% endif%}
+
+
+
+
+
 
 {% endif %}
 {% endfor %}
