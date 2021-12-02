@@ -8,36 +8,27 @@
   <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
 </head>
 <body>
+  <div class="url">
+    <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
+    <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
+    <p class="t_search"><a href = "/search" class="button">教科書検索</a></p> 
+  </div>
   <div class= "header">いいね一覧</div>
-  {% if not user.is_authenticated%}
-  こんにちは！ ゲスト さん
-{% else %}
-  <ul class="image-horizontal-scroll">
-      {% for like in object_list %}
-      {%if user.user_id == like.user_id.user_id %}
-      　<center>
-      <div class="box">
-      {%if like.text_id.image1%}
-      <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
-        <img src="{{like.text_id.image1.url}}" style="width:100px;"/></a>
-      {%endif%}  
-    </div>
-     <!-- <div class="box">
-      {%if like.text_id.image2%}
-      <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
-        <img src="{{like.text_id.image2.url}}" style="width:100px;"/></a>
-      {%endif%}  
-    </div>
-      <div class="box">
-      {%if like.text_id.image3%}
-      <a href="{% url 'textpage:textpage' like.text_id.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >{{ like.text_id.title }}
-        <img src="{{like.text_id.image3.url}}" style="width:100px;"/></a>
-      {%endif%}
-      </div>-->
-  </center>
-  {%endif%}
-  {% endfor %}
-      </ul>
+     {% if not user.is_authenticated%}
+        こんにちは！ ゲスト さん
+     {% else %}
+       <ul class="image-horizontal-scroll">
+         {% for like in object_list %}
+           {%if user.user_id == like.user_id.user_id %}
+             <div class="box">
+               {%if like.text_id.image1%}
+                 <a href="{% url 'textpage:textpage' like.text_id.text_id%}" >{{ like.text_id.title }}
+                 <img src="{{like.text_id.image1.url}}" style="width:100px;"  style="display:inline;"/></a>
+               {%endif%}  
+              </div>
+           {%endif%}
+          {% endfor %}
+        </ul>
       {%endif%}
       {% block content %}{% endblock %}
     
@@ -51,3 +42,5 @@
 
 </body>
 </html>
+
+
