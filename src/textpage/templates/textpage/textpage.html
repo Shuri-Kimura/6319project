@@ -126,9 +126,12 @@
   {% for tcom in tcom_list %}
 {% if tcom.text_id.text_id == texts.text_id %}
 
-
+<h6 style="text-align:left">
 <p>{{tcom.comments}}<br>
 </p>
+
+</h6>
+
 {% endif %}
 {% endfor %}
 </div>
