@@ -24,4 +24,4 @@ class Classpage(generic.DetailView):
         })
         return context
     #def get_cfavo():
-    #    cfavo_list = Cevals.objects.filter(class_id__exact = Classes.objects.class_id)
+        cfavo_list = Cevals.objects.filter(class_id__exact = Classes.objects.class_id)

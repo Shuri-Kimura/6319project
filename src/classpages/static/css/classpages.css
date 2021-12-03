@@ -86,7 +86,7 @@ table td.content{
 	z-index: 0;
 	display: inline-block;
 	white-space: nowrap;
-	color: #CCCCCC;
+	color: rgb(163, 163, 163);
 }
 
 .star5_rating:before, .star5_rating:after{
