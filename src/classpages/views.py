@@ -20,7 +20,7 @@ class Classpage(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(Classpage, self).get_context_data(**kwargs)
         context.update({
-            'avg': Cevals.objects.values('class_id').annotate(avg_rikai=models.Avg('rikai')),
+            'avg': Cevals.objects.values('class_id').annotate(avg_rikai=models.Avg('rikai'),avg_raku=models.Avg('raku')),
         })
         return context
     #def get_cfavo():
