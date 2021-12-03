@@ -28,7 +28,7 @@
                 <td class="content">
                     {% for cls in avg %}
                     {% if cls.class_id == classes.class_id %}
-                    {{cls.avg_rikai}}
+                    {{cls.avg_rikai|floatformat:2}}
                     {%endif%}
                     {% endfor %}
                 </td>
