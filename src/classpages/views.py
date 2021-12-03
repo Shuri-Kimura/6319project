@@ -4,10 +4,10 @@ from django.shortcuts import render
 from django.views import generic
 from users.models import Classes,Users,Cevals
 
-#def index(request):
-    #return render(request,'classpages/index.html')
+def index(request):
+    return render(request, 'users/index.html')
 
-class IndexView(generic.ListView):
+#class IndexView(generic.ListView):
     template_name = 'classpages/index.html'
     context_object_name = 'classes_list'
 
