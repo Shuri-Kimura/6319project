@@ -26,7 +26,11 @@
                     分かりやすさ
                 </td>
                 <td class="content">
-                    {{classes.method_eval}}
+                    {% for cls in avg %}
+                    {% if cls.class_id == classes.class_id %}
+                    {{cls.avg_rikai}}
+                    {%endif%}
+                    {% endfor %}
                 </td>
             </tr>
             <tr>
