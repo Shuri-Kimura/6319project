@@ -3,15 +3,13 @@
   font-size: 60px;
 }
 
-.footer button {
+/*.footer button {
   position: fixed;
   width: 80px;
   bottom: 20px;
   right: 20px;
-  /*border-radius: 6px;
-  background-color: rgba(255, 100, 0, 0.8);*/
   padding: 6px 3px;
-}
+}*/
 
 .example-link {
   width: 50%;
