@@ -37,14 +37,17 @@
             <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
             <p>出品教材</p>
             {% for text in texts_list %}
-            {% if text.user_id.user_id == users.user_id %}
-            {{text.title}}
-            {% if text.image1 %}
-            <a href="{% url 'textpage:textpage' text.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >
-                <img src="{{text.image1.url}}" width = 100px></a>
-            {% endif %}
-            {% endif %}
+                {% if text.user_id.user_id == users.user_id %}
+                    {{text.title}}
+                    {% if text.image1 %}
+                        <a href="{% url 'textpage:textpage' text.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >
+                        <img src="{{text.image1.url}}" width = 100px></a>
+                    {% endif %}
+                {% endif %}
             {% endfor %}
+            {% if user.user_id == users.user_id %}
+                <a href="{% url 'mypage:delete_list' users.user_id %}" class="button1">出品取り消し</a>
+            {% endif %}
         </div>
     </body>
 

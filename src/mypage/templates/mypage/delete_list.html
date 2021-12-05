@@ -1,0 +1,9 @@
+{% if texts_list %}
+    <ul>
+    {% for text in texts_list %}
+        <li><a href="{% url 'mypage:delete' text.text_id %}">{{ text.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users exist.</p>
+{% endif %}
