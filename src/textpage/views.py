@@ -1,7 +1,9 @@
-from typing import Text
+from typing import TextIO
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect, request
+from django.urls.base import reverse_lazy
 from django.views.generic.list import ListView
 from django.views import generic
 from django.shortcuts import render
@@ -12,7 +14,7 @@ from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
 
 class TextpageView(generic.DetailView):
     template_name = 'textpage/textpage.html'
-    fields = '__all__'
+    
     model = Texts
     
     def get_context_data(self, **kwargs):
@@ -23,23 +25,25 @@ class TextpageView(generic.DetailView):
         })
         return context
 
-    
-    def get_initial(self):
-        initial = super().get_initial()
-        initial["text_id"] = 1
-        initial["user_id"] = self.request.user
-        return initial
-
 class AddCom(generic.CreateView):
     fields = '__all__'
     model = Tcom
     template_name = 'textpage/add_comments.html'  
+    #success_url = reverse_lazy('textpage:textpage')
+
     def get_initial(self):
-        tcomf = TcomForm(self.request.POST, self.request.FILES)
+        #tcomf = TcomForm(self.request.POST, self.request.FILES)
         initial = super().get_initial()
-        initial["text_id"] = Texts.objects.get(text_id = tcomf)
+        initial["text_id"] = self.kwargs['pk']
         initial["user_id"] = self.request.user
         return initial
+    
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('textpage:textpage', kwargs={'pk':self.kwargs['pk']})
+
+
+        
 
 
 
