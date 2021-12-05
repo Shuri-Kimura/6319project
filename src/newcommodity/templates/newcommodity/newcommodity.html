@@ -30,15 +30,18 @@
                
                {% csrf_token %}
                
-            　　<br>
-               {{ textForm.image1 }}<br>
-               {{ textForm.image2 }}<br>
-               {{ textForm.image3 }}
+               <b>商品の画像</b><br>
+            　　<small>※写真一枚目必須</small>
+               <br>
+                  １枚目：{{ textForm.image1 }}<br>
+                  ２枚目：{{ textForm.image2 }}<br>
+                  ３枚目：{{ textForm.image3 }}
+          
 
                
-               <p>商品名<br>{{ textForm.title }}</p>
+               <p><b>商品名</b><br>{{ textForm.title }}</p>
                
-               <p>商品の説明<br>{{ textForm.info }}</p>
+               <p><b>商品の説明</b><br>{{ textForm.info }}</p>
 
                
                
