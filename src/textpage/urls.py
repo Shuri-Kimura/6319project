@@ -8,6 +8,7 @@ urlpatterns = [
   #path('', IndexView.as_view())
  #path('', views.TextpageView.as_view(), name='textpage'),
  path('<int:pk>/', views.TextpageView.as_view(), name='textpage'),
+ path('AddCom/',views.AddCom.as_view(),name='addCom'),
 ]
 
 

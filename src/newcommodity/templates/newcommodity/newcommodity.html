@@ -3,9 +3,25 @@
     <head>
        <meta charset="utf-8">
        <link href="{% static 'css/newcommodity.css' %}" rel="stylesheet">
+       
     </head>
 
     <body>
+      
+       <div class="titlebar">
+            <p class="RIKATYAN">RIKATYAN</p>        
+            <p class="message">メッセージ</p>
+        </div>
+        <p>
+        </p>
+        <div class="url">
+            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
+            <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
+            <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
+        </div>
+        <div class="top">
+            <h1>{{user}}の出品ページ</h1>
+        </div>
       
       
     <center>
@@ -14,9 +30,8 @@
                
                {% csrf_token %}
                
-            　　
+            　　<br>
                {{ textForm.image1 }}<br>
-               
                {{ textForm.image2 }}<br>
                {{ textForm.image3 }}
 
@@ -83,7 +98,7 @@
                   </tr>
                </table>
             
-            <button type='submit' class='btn btn--orange'>出品する</button>
+            <button type='submit' class='btn btn--orange btn--cubic btn--shadow'>出品する</button>
            
          </form>
       </center>
