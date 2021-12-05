@@ -20,9 +20,8 @@
         <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
     </div>
     <div class="top">
-      <h1>{{users.username}}のマイページ</h1>
+      <h1>{{user}}のお気に入り一覧</h1>
   </div>
-  <div class= "header">いいね一覧</div>
      {% if not user.is_authenticated%}
         こんにちは！ ゲスト さん
      {% else %}
