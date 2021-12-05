@@ -3,6 +3,7 @@ from django.views import generic
 from django.shortcuts import render
 from users.models import Users, Texts
 from django.utils import timezone
+from django.urls import reverse,reverse_lazy
 
 def mypage(request):
     return render(request, 'mypage/mypages.html')
@@ -39,6 +40,19 @@ class CommentUpdate(generic.edit.UpdateView):
     model = Users
     fields = ['username','user_comment','email','image']
     template_name = 'mypage/edit.html'
+    
+class DeleteList(generic.ListView):
+    template_name = 'mypage/delete_list.html'
+    context_object_name = 'texts_list'
+    def get_queryset(self):
+       return Texts.objects.filter(user_id = self.request.user)
+    
+class DeleteText(generic.DeleteView):
+    model = Texts
+    #success_url = reverse_lazy('mypage:mypage')
+    def get_success_url(self):
+        return reverse('mypage:mypage', kwargs={'pk': self.request.user.user_id})
+    template_name = 'mypage/delete.html'
     
 def edit(request):
     return render(request,'mypage/edit.html')

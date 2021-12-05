@@ -25,18 +25,15 @@
      {% if not user.is_authenticated%}
         こんにちは！ ゲスト さん
      {% else %}
-       <ul class="image-horizontal-scroll">
          {% for like in object_list %}
            {%if user.user_id == like.user_id.user_id %}
                {%if like.text_id.image1%}
                　<div class="inline-block_test">
-                 <a href="{% url 'textpage:textpage' like.text_id.text_id%}" >{{ like.text_id.title }}
-                 <img src="{{like.text_id.image1.url}}" style="width:100px;"  style="display:inline;"/></a>
+                 <a href="{% url 'textpage:textpage' like.text_id.text_id%}" ><img src="{{like.text_id.image1.url}}" style="width:200px;"/><p>{{ like.text_id.title }}</p></a>
                 　　   </div>
                  {%endif%}  
            {%endif%}
           {% endfor %}
-        </ul>
       {%endif%}
       {% block content %}{% endblock %}
     
