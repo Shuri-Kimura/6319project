@@ -18,6 +18,9 @@
       <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
       <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
   </div>
+  <div class="top">
+    <h1>{{users.username}}のマイページ</h1>
+</div>
   <div class="header">お気に入り一覧</div>
   <div class = "contents">
     {% if not user.is_authenticated%}
