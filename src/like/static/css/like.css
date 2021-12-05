@@ -10,7 +10,6 @@
   background: aquamarine;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 .RIKATYAN {
   display: table-cell;
   text-align: left;
@@ -55,6 +54,12 @@
   border-radius: 3px;
 }
 
+img{
+  margin-top:50px;
+  height:100px;
+  width:100px;
+}
+
 .button:active{
   /*ボタンを押したとき*/
 -webkit-transform: translateY(4px);
@@ -71,6 +76,4 @@ border-bottom: none;
 
 .inline-block_test {
   display: inline-block;      /* インラインブロック要素にする */
-  width: 1000px;
-	height: 500px;
 }
