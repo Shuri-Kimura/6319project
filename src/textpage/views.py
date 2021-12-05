@@ -33,6 +33,7 @@ class AddCom(generic.CreateView):
     def addText(self):
         print("ここは通っている1")
         tcomf = TcomForm(self.request.POST, self.request.FILES)
+        print(TcomForm.is_valid())
         tcomf = Tcom(text_id = self.kwargs['pk'], user_id = self.request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
         print(tcomf)
         tcomf.save()
