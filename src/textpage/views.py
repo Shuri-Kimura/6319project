@@ -30,11 +30,6 @@ class AddCom(generic.CreateView):
     model = Tcom
     template_name = 'textpage/add_comments.html'  
     #success_url = reverse_lazy('textpage:textpage')
-    def addText(self):
-        tcomf = TcomForm(self.request.POST, self.request.FILES)
-        tcomf = Tcom(text_id = self.kwargs['pk'], user_id = self.request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
-        tcomf.save()
-        return render(self.request, 'textpage/textpage.html')
 
     def get_initial(self):
         #tcomf = TcomForm(self.request.POST, self.request.FILES)
@@ -46,6 +41,9 @@ class AddCom(generic.CreateView):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('textpage:textpage', kwargs={'pk':self.kwargs['pk']})
+
+
+        
 
 
 

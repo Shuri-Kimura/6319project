@@ -168,11 +168,11 @@
 </div>
 <a href="{% url 'textpage:addCom' texts.text_id %}">追加</a>
 
-
+{% if texts.user_id.username == user.username%}
 <h1>取引完了</h1>
 ボタンにする　ソールドフラグを立てて取引完了状態にする。
-<h1>出品取り消し</h1>
-ボタンにする　特定のデータベースから消去を行う必要がある。
+{% endif %}
+
 
 </center>
 </body>    
