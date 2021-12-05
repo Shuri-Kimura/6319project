@@ -41,7 +41,8 @@ def addText(request):
         print(textForm)
         textForm.save()
         #user.htmlへデータを渡す
-    return render(request, 'mypage/mypage.html')
+    #return render(request, 'mypage/mypage.html')
+    return render(request, 'newcommodity/complete.html')
 
 
 """
