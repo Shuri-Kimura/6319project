@@ -3,6 +3,33 @@
   font-size: 60px;
 }
 
+.top {
+  width: 100%;
+  height: 40px;
+  color: blue;
+  background: aquamarine;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.RIKATYAN {
+  display: table-cell;
+  text-align: left;
+}
+
+.message {
+  display: table-cell;
+  text-align: right;
+}
+
+.titlebar{
+  display: table;
+  width: 100%; 
+  color:black;
+  font-weight:bold;
+}
+
+
+
 .mypage{
   display: table-cell;
   text-align: left;
