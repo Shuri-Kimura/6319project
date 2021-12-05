@@ -97,7 +97,7 @@ class Texts(models.Model):
     
 
 class Tcom(models.Model):
-    tcom_id = models.IntegerField(primary_key=True)
+    tcom_id = models.AutoField(primary_key=True)
     text_id = models.ForeignKey(Texts, on_delete=models.CASCADE) #外部キー
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE) #外部キー
     date = models.DateTimeField(default=timezone.now) #レコード登録時の日本時間が保存

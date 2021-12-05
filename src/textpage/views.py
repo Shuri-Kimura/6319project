@@ -19,8 +19,12 @@ class TextpageView(generic.DetailView):
             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
             
         })
-
         return context
+
+class AddCom(generic.CreateView):
+    fields = '__all__'
+    model = Tcom
+    template_name = 'textpage/add_comments.html'     
 
 
 

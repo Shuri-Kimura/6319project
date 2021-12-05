@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+</html>
