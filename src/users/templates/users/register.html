@@ -5,11 +5,12 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<link rel="stylesheet" href='{% static "users/styles.css" %}'/>
+<link rel="stylesheet" href='{% static "css/styles.css" %}'/>
 </head>
 
 <body>
 <h1>新規登録</h1>
+<a href="{% url 'login'%}">ログイン画面へ</a></p>
 
  {% if AccountCreate %}
    <h1>登録完了!</h1>
