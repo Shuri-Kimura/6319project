@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>授業ページ</title>
-        <link href="{% static 'css/classpages.css' %}" rel="stylesheet">        
+        <link href="{% static 'css/classpages.css' %}" rel="stylesheet">               
     </head>
     <body>
         <div class="titlebar">
@@ -18,7 +18,7 @@
             <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
             <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
         </div>
-        <p></p>
+        <p></p>     
         <table>
         <caption>{{classes.title}}</caption>
             <tr>
@@ -26,7 +26,25 @@
                     分かりやすさ
                 </td>
                 <td class="content">
-                    {{classes.method_eval}}
+                    {% for cls in avg %}
+                    {% if cls.class_id == classes.class_id %}
+                    <span class="star5_rating" data-rate="{{cls.avg_rikai|floatformat}}"></span>
+                    {{cls.avg_rikai|floatformat}}
+                    {%endif%}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    楽単
+                </td>
+                <td>
+                    {% for cls in avg %}
+                    {% if cls.class_id == classes.class_id %}
+                    <span class="star5_rating" data-rate="{{cls.avg_raku|floatformat}}"></span>
+                    {{cls.avg_raku|floatformat}}
+                    {%endif%}
+                    {% endfor %}
                 </td>
             </tr>
             <tr>
