@@ -27,6 +27,15 @@
   font-weight:bold;
 }
 
+ img{
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.inline-block_test p{
+  margin-left: 55px;
+  margin-top:1px
+}
 
 
 .mypage{
