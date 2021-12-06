@@ -25,33 +25,43 @@ class TextpageView(generic.DetailView):
         })
         return context
 
-class AddCom(generic.CreateView):
-    fields = '__all__'
-    model = Tcom
-    template_name = 'textpage/add_comments.html'  
-    #success_url = reverse_lazy('textpage:textpage')
-    def addText(self):
+# class AddCom(generic.CreateView):
+#     fields = '__all__'
+#     model = Tcom
+#     template_name = 'textpage/add_comments.html'  
+#     #success_url = reverse_lazy('textpage:textpage')
+def addCom(request, pk):
+    if request.method == 'POST':
         print("ここは通っている1")
-        tcomf = TcomForm(self.request.POST, self.request.FILES)
-        print(TcomForm.is_valid())
-        text = Texts.objects.get(text_id=self.kwargs['pk'])
-        tcomf = Tcom(text_id = text, user_id = self.request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
+        tcomf = TcomForm(request.POST, request.FILES)
+        print(pk)
+        text = Texts.objects.get(text_id=pk)
+        tcomf = Tcom(text_id = text, user_id = request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
         print(tcomf)
         tcomf.save()
-        return render(self.request, 'textpage/textpage.html')
+        tcom_list = Tcom.objects.order_by('date').reverse().all()
+        return render(request, 'textpage/textpage.html', {
+            'texts': text,
+            'tcom_list':tcom_list,
+            })
 
-    def get_initial(self):
-        print("ここは通っている2")
-        print("================",self.kwargs['pk'])
-        #tcomf = TcomForm(self.request.POST, self.request.FILES)
-        initial = super().get_initial()
-        initial["text_id"] = self.kwargs['pk']
-        initial["user_id"] = self.request.user
-        return initial
+    form = TcomForm()
+    return render(request, 'textpage/add_comments.html', {
+        "form":form
+    })
+
+    # def get_initial(self):
+    #     print("ここは通っている2")
+    #     print("================",self.kwargs['pk'])
+    #     #tcomf = TcomForm(self.request.POST, self.request.FILES)
+    #     initial = super().get_initial()
+    #     initial["text_id"] = self.kwargs['pk']
+    #     initial["user_id"] = self.request.user
+    #     return initial
     
 
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('textpage:textpage', kwargs={'pk':self.kwargs['pk']})
+    # def get_success_url(self, **kwargs):
+    #     return reverse_lazy('textpage:textpage', kwargs={'pk':self.kwargs['pk']})
 
 
 

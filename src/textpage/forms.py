@@ -8,7 +8,7 @@ class TcomForm(forms.ModelForm):
         model = Tcom
 
         #②表示するモデルクラスのフィールドを定義
-        fields = "__all__"
+        fields = ["comments"]
 
         #③表示ラベルを定義
         labels = {'comments': "コメント",

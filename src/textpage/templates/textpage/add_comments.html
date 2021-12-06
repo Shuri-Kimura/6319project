@@ -1,7 +1,6 @@
 <!DOCTYPE html>
     <form action='' method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        コメント
         {{ form.as_p }}
         <input type="submit" class="btn btn-primary">保存</input>
     </form>
