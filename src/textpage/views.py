@@ -34,13 +34,15 @@ class AddCom(generic.CreateView):
         print("ここは通っている1")
         tcomf = TcomForm(self.request.POST, self.request.FILES)
         print(TcomForm.is_valid())
-        tcomf = Tcom(text_id = self.kwargs['pk'], user_id = self.request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
+        text = Texts.objects.get(text_id=self.kwargs['pk'])
+        tcomf = Tcom(text_id = text, user_id = self.request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
         print(tcomf)
         tcomf.save()
         return render(self.request, 'textpage/textpage.html')
 
     def get_initial(self):
         print("ここは通っている2")
+        print("================",self.kwargs['pk'])
         #tcomf = TcomForm(self.request.POST, self.request.FILES)
         initial = super().get_initial()
         initial["text_id"] = self.kwargs['pk']
