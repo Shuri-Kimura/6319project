@@ -8,7 +8,7 @@ urlpatterns = [
   #path('', IndexView.as_view())
  #path('', views.TextpageView.as_view(), name='textpage'),
  path('<int:pk>/', views.TextpageView.as_view(), name='textpage'),
- path('<int:pk>/AddCom/',views.AddCom.as_view(),name='addCom'),
+ path('<int:pk>/AddCom/', views.addCom, name='addCom'),
 ]
 
 
