@@ -46,6 +46,10 @@ class AddCom(generic.CreateView):
         initial["text_id"] = self.kwargs['pk']
         initial["user_id"] = self.request.user
         return initial
+
+        
+
+
     
 
     def get_success_url(self, **kwargs):
