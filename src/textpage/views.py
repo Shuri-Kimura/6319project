@@ -39,21 +39,6 @@ def addCom(request, pk):
         tcomf = Tcom(text_id = text, user_id = request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
         print(tcomf)
         tcomf.save()
-<<<<<<< HEAD
-        return render(self.request, 'textpage/textpage.html')
-
-    def get_initial(self):
-        print("ここは通っている2")
-        #tcomf = TcomForm(self.request.POST, self.request.FILES)
-        initial = super().get_initial()
-        initial["text_id"] = self.kwargs['pk']
-        initial["user_id"] = self.request.user
-        return initial
-
-        
-
-
-=======
         tcom_list = Tcom.objects.order_by('date').reverse().all()
         return render(request, 'textpage/textpage.html', {
             'texts': text,
@@ -73,7 +58,6 @@ def addCom(request, pk):
     #     initial["text_id"] = self.kwargs['pk']
     #     initial["user_id"] = self.request.user
     #     return initial
->>>>>>> 57587317609de64135fc6a05e95b5e5a4180ee25
     
 
     # def get_success_url(self, **kwargs):
