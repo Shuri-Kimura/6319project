@@ -118,10 +118,43 @@
 
 <h1>商品の情報</h1>
 <p>
-カテゴリ：{{texts.category}}<br>
-商品状態：{{texts.state}}<br>
+カテゴリ：{% if texts.category == 1 %}
+          教科書
+          {% endif %}
+          {% if texts.category == 2 %}
+          参考書
+          {% endif %}
+          {% if texts.category == 3 %}
+          過去問
+          {% endif %}<br>
+商品状態：{% if texts.state == 1 %}
+          新品、未使用
+          {% endif %}
+          {% if texts.state == 2 %}
+          未使用に近い
+          {% endif %}
+          {% if texts.state == 3 %}
+          目立った傷や汚れなし
+          {% endif %}
+          {% if texts.state == 4 %}
+          やや傷や汚れあり
+          {% endif %}
+          {% if texts.state == 5 %}
+          傷や汚れあり
+          {% endif %}
+          {% if texts.state == 6 %}
+          全体的に状態が悪い
+          {% endif %}<br>
 授業名：{{texts.class_id.title}}<br>
-お渡しまでの日数：{{texts.days}}<br>
+お渡しまでの日数：{% if texts.days == 1 %}
+          1~2日
+          {% endif %}
+          {% if texts.days == 2 %}
+          2~3日
+          {% endif %}
+          {% if texts.days == 3 %}
+          4~7日
+          {% endif %}<br>
 </p>
 
 
