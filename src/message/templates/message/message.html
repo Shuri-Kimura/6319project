@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <link  href="{% static 'message/style.css' %}" rel="stylesheet" >
+    </head>
+    <body>
+        <header>
+            <h1>{{users.username}}のメッセージボックス</h1>
+        </header>
+        {{users.username}}
+    </body>
+</html>
