@@ -110,14 +110,36 @@
                 </td>
             </tr>
         </table>
-        <form action="#" method="post">
-            <div class="c_com">
-                <p>口コミ:</p>
+        <p>口コミ</p>
+        <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
+        {%for ccom in ccom_list%}
+        {% if ccom.class_id.class_id == classes.class_id %}
+
+            {% if user.username == ccom.user_id.username %}
+            <h6 style="text-align:right">
                 <p>
-                    <textarea name="c_com" cols="50" rows="1"></textarea>
-                    <input type="submit">
+                <h7>{{ccom.user_id.username}}</h7><br>
+                {{ccom.comments}}<br>
+                {{ccom.date}}<br>
                 </p>
-            </div>
-        </form>
+            </h6>
+            
+            {% else  %}
+            <h6 style="text-align:left">
+                <p>
+                  <h7>{{tcom.user_id.username}}</h7><br>
+                  {{tcom.comments}}<br>
+                  {{tcom.date}}<br>
+                </p>
+            </h6>
+            {%endif%}
+        {%endif%}
+        {%endfor%}
+        </div>
+        <div>
+
+
+        </div>
+        <a href="{% url 'classpages:ccom' classes.class_id %}" class="button">追加</a>
     </body>
 </html>
