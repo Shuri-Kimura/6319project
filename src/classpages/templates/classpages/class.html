@@ -92,12 +92,12 @@
                 <td>
                     {%if classes.classform == 1%}
                     対面
-                    {%endif%}
-                    {%if classes.classform == 2%}
-                    オンライン
-                    {%endif%}
-                    {%if classes.classform == 3%}
+                    {%elif classes.classform == 2%}
+                    オンライン（Zoom）
+                    {%elif classes.classform == 3%}
                     ハイフレックス
+                    {%elif classes.classform == 4%}
+                    オンライン（非同期）
                     {%endif%}
                 </td>
             </tr>
@@ -110,6 +110,18 @@
                 </td>
             </tr>
         </table>
+        <p></p>
+
+        評価
+        <form action='' method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.rikai }}
+            {% for error in form.title.errors %}
+                {{error}}
+            {% endfor %}
+            <input type="submit" class="button"></input>
+        </form>
+
         <p>口コミ</p>
         <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
         {%for ccom in ccom_list%}
@@ -136,10 +148,15 @@
         {%endif%}
         {%endfor%}
         </div>
-        <div>
-
-
+        <p></p>
+        <div class="url">
+        <p class="message"><a href="{% url 'classpages:ccom' classes.class_id %}" class="button">追加</a></p>
         </div>
-        <a href="{% url 'classpages:ccom' classes.class_id %}" class="button">追加</a>
+
+        <p></p>
+
+        <div class="url">
+            <p class="message"><a href="{% url 'classpages:create' %}" class="button">授業追加</a></p>
+            </div>
     </body>
 </html>
