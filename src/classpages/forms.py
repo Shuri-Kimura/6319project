@@ -26,13 +26,13 @@ class CreateForm(forms.ModelForm):
         model = Classes
         fields = '__all__'
 
-        label = {
+        labels = {
             'class_id':"授業番号",
             'title':"授業名",
             'teacher':"教授名",
-            'Faculty':"学部",
+            'faculty':"学部",
             'department':"学部",
             'method_eval':"評価方法",
             'classform':"授業形式",
-            'content':"授業概要",
+            'contents':"授業概要",
         }
