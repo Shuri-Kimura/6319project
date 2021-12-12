@@ -1,21 +1,21 @@
 from django import forms
 
-from users.models import Tcom
+from users.models import Messages, Tcom
+
+
 class TcomForm(forms.ModelForm):
 
     class Meta():
-        #①モデルクラスを指定
+        # ①モデルクラスを指定
         model = Tcom
 
-        #②表示するモデルクラスのフィールドを定義
+        # ②表示するモデルクラスのフィールドを定義
         fields = ["comments"]
 
-        #③表示ラベルを定義
+        # ③表示ラベルを定義
         labels = {'comments': "コメント",
-        }
+                  }
 
-
-        
         """
         #②表示するモデルクラスのフィールドを定義
         fields = ('class_id','title','info','category','state','days','image1','image2','image3')
@@ -32,4 +32,11 @@ class TcomForm(forms.ModelForm):
                  'image3':"画像3",
         }
         """
-    
+
+
+class MessageForm(forms.ModelForm):
+    class Meta():
+        model = Messages
+        fields = []
+
+        labels = {}

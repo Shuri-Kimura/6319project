@@ -1,0 +1,6 @@
+{% load static %}
+<!DOCTYPE html>
+    {% for ToUser in ToUser_list %}
+        <a href="{% url 'textpage:TransAction' text_pk=text.text_id user_pk=ToUser.user_id %}">{{ ToUser.username }}</a>
+    {% endfor %}
+</html>

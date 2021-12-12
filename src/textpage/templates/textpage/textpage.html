@@ -204,6 +204,7 @@
 {% if texts.user_id.username == user.username%}
 <h1>取引完了</h1>
 条件オッケー　ここはボタン作って繊維画面もつくるぜ！！！
+<a href="{% url 'textpage:TransActionList' texts.text_id %}">取引相手を決める</a>
 {% endif %}
 
 

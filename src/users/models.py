@@ -166,3 +166,9 @@ class Messages(models.Model):
     messages = models.TextField()
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)  # レコード登録時の日本時間が保存
+
+
+class Target_user(models.Model):
+    target_id = models.AutoField(primary_key=True)
+    ToUser = models.ForeignKey(Users, on_delete=models.CASCADE)
+    target_text = models.ForeignKey(Texts, on_delete=models.CASCADE)

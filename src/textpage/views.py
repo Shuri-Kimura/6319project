@@ -2,52 +2,84 @@ from typing import TextIO
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
-from django.http import HttpResponse,HttpResponseRedirect, request
+from django.http import HttpResponse, HttpResponseRedirect, request
 from django.urls.base import reverse_lazy
 from django.views.generic.list import ListView
 from django.views import generic
+from django.db.models import Q
 from django.shortcuts import render
 from users.models import Users
-from .forms import TcomForm
-from users.models import Tfavos,Cfavos,Classes,Texts,Tcom
+from .forms import MessageForm, TcomForm
+from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
 
 
 class TextpageView(generic.DetailView):
     template_name = 'textpage/textpage.html'
-    
+
     model = Texts
-    
+
     def get_context_data(self, **kwargs):
         context = super(TextpageView, self).get_context_data(**kwargs)
         context.update({
             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
-            
+
         })
         return context
 
+
+def TransActionList(request, pk):
+    return render(request, 'textpage/TransActionList.html', {
+        'ToUser_list': Users.objects.filter(Q(user_id__lt=request.user.user_id) | Q(user_id__gt=request.user.user_id)),
+        'text': Texts.objects.get(user_id=request.user.user_id)
+    })
+
+
+def TransAction(request, text_pk, user_pk):
+    text = Texts.objects.get(text_id=text_pk)
+    if request.method == 'POST':
+        messageF = MessageForm(request.POST, request.FILES)
+        ToUser = Users.objects.get(user_id=user_pk)
+        messageF = Messages(title=text.title, messages=request.user.username + "から教材の出品を受け取りましたよ",
+                            user_id=ToUser, date=timezone.now())
+        print(messageF)
+        messageF.save()
+        tcom_list = Tcom.objects.order_by('date').reverse().all()
+        return render(request, 'textpage/textpage.html', {
+            'texts': text,
+            'tcom_list': tcom_list,
+        })
+
+    form = MessageForm()
+    return render(request, 'textpage/TransAction.html', {
+        'form': form,
+        'text': text
+    })
 # class AddCom(generic.CreateView):
 #     fields = '__all__'
 #     model = Tcom
-#     template_name = 'textpage/add_comments.html'  
+#     template_name = 'textpage/add_comments.html'
 #     #success_url = reverse_lazy('textpage:textpage')
+
+
 def addCom(request, pk):
     if request.method == 'POST':
         print("ここは通っている1")
         tcomf = TcomForm(request.POST, request.FILES)
         print(pk)
         text = Texts.objects.get(text_id=pk)
-        tcomf = Tcom(text_id = text, user_id = request.user, date = timezone.now(),comments = tcomf.data.get("comments"))
+        tcomf = Tcom(text_id=text, user_id=request.user,
+                     date=timezone.now(), comments=tcomf.data.get("comments"))
         print(tcomf)
         tcomf.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
         return render(request, 'textpage/textpage.html', {
             'texts': text,
-            'tcom_list':tcom_list,
-            })
+            'tcom_list': tcom_list,
+        })
 
     form = TcomForm()
     return render(request, 'textpage/add_comments.html', {
-        "form":form
+        "form": form
     })
 
     # def get_initial(self):
@@ -58,56 +90,27 @@ def addCom(request, pk):
     #     initial["text_id"] = self.kwargs['pk']
     #     initial["user_id"] = self.request.user
     #     return initial
-    
 
     # def get_success_url(self, **kwargs):
     #     return reverse_lazy('textpage:textpage', kwargs={'pk':self.kwargs['pk']})
 
 
-
-
-
-
-
-  
-
-
-
-        
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-#def index(request):
+# def index(request):
  # content = {
-  #'message': 'こんにちは！Djangoテンプレート！'
-  #}
-  #return render(request, 'index.html', content)
-
+  # 'message': 'こんにちは！Djangoテンプレート！'
+  # }
+  # return render(request, 'index.html', content)
 
 
 #from django.http import HttpResponse
 #from django.views.generic import TemplateView
 
 
-#class IndexView(TemplateView):
+# class IndexView(TemplateView):
     #template_name = "index.html"
 
 
-#def index(request):
-    
-    #return HttpResponse("Hello, world. 6319project.textpage")
+# def index(request):
+
+    # return HttpResponse("Hello, world. 6319project.textpage")
 # Create your views here.
