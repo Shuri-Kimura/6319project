@@ -29,8 +29,10 @@
             {% endif %}
             ここがいいね一覧です。
             <a href="{% url 'like:like' user.user_id %}" class="button1">いいね一覧</a>
+            {% if users.user_id == user.user_id %}
             ここが出品です。
             <a href="{% url 'newcommodity:index' %}" class="button1">出品する</a>
+            {% endif %}
             ここがお気に入り登録です。
             <a href="{% url 'like:likely' user.user_id %}" class="button1">お気に入り登録</a>
             <p>ここが自己紹介です。</p>
