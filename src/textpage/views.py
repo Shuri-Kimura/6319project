@@ -10,7 +10,7 @@ from django.views import generic
 from django.db.models import Q
 from django.shortcuts import render
 from users.models import Target, Users
-from .forms import MessageForm, TcomForm
+from .forms import MessageForm, TcomForm, TextForm
 from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
 from django.core.mail import send_mail, EmailMessage
 
@@ -32,7 +32,7 @@ class TextpageView(generic.DetailView):
 def TransActionList(request, pk):
     return render(request, 'textpage/TransActionList.html', {
         'target_list': Target.objects.filter(text_id=Texts.objects.get(text_id=pk)),
-        'text': Texts.objects.get(user_id=request.user.user_id)
+        'text': Texts.objects.get(text_id=pk)
     })
 
 
@@ -53,6 +53,23 @@ def TransAction(request, text_pk, user_pk):
                 '6319011@ed.tus.ac.jp',
             ]
         )
+        text = Texts(
+            text_id=text.text_id,
+            user_id=text.user_id,
+            class_id=text.class_id,
+            title=text.title,
+            info=text.info,
+            sold_flag=True,
+            category=text.category,
+            state=text.state,
+            date=text.date,
+            days=text.days,
+            image1=text.image1,
+            image2=text.image2,
+            image3=text.image3,
+        )
+        text.clean()
+        text.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
         return render(request, 'textpage/textpage.html', {
             'texts': text,
@@ -91,6 +108,7 @@ def addCom(request, pk):
             date=timezone.now(),
             comments=tcomf.data.get("comments")
         )
+        MessageF = MessageForm()
         if request.user != text.user_id:
             MessageF = Messages(
                 title=request.user.username + 'が' + text.title + 'に対してコメントしました',
