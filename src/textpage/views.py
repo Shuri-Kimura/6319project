@@ -61,6 +61,13 @@ def TransAction(request, text_pk, user_pk):
 #     template_name = 'textpage/add_comments.html'
 #     #success_url = reverse_lazy('textpage:textpage')
 
+# 教材に対する新しいコメントの追加
+# やっている事1
+# 新しいコメントの追加
+# やっている事2
+# Targetテーブルに新しいToUserを追加
+# ただし、既に同じToUserが存在すれば、追加は省く
+
 
 def addCom(request, pk):
     if request.method == 'POST':
@@ -71,14 +78,17 @@ def addCom(request, pk):
         text = Texts.objects.get(text_id=pk)
         tcomf = Tcom(text_id=text, user_id=request.user,
                      date=timezone.now(), comments=tcomf.data.get("comments"))
+        # tarにTargetテーブルのToUserがrequest.userに対応するものだけを抽出
         tar = Target.objects.filter(ToUser=request.user)
-        for a in tar:
-            if a.ToUser == request.user:
+        for inner in tar:
+            if inner.ToUser == request.user:
                 TF = False
         if text.user_id != request.user and TF:
             target = Target(ToUser=request.user, text_id=text)
+            # ここでtargetを追加
             target.save()
         print(tcomf)
+        # ここでtcomfを追加
         tcomf.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
         return render(request, 'textpage/textpage.html', {
