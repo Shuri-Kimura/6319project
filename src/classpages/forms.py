@@ -31,7 +31,7 @@ class CreateForm(forms.ModelForm):
             'title':"授業名",
             'teacher':"教授名",
             'faculty':"学部",
-            'department':"学部",
+            'department':"学科",
             'method_eval':"評価方法",
             'classform':"授業形式",
             'contents':"授業概要",
