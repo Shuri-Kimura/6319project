@@ -78,17 +78,15 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
 
 class Classes(models.Model):
-    class_id = models.IntegerField(primary_key=True)
+    class_id = models.AutoField(primary_key=True)
     title = models.TextField(max_length=50)  # 文字数？
     teacher = models.TextField(max_length=20)  # 文字数？
     faculty = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(7)])  # 数字は？
     department = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(35)])  # 数字は？
-    method_eval = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)])  # 数字は？
-    classform = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)])  # 数字は？
+    method_eval = models.TextField()  # 数字は？
+    classform = models.TextField()  # 数字は？
     contents = models.TextField()
 
 
