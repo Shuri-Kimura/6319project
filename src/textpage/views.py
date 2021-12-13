@@ -12,6 +12,7 @@ from django.shortcuts import render
 from users.models import Target, Users
 from .forms import MessageForm, TcomForm
 from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
+from django.core.mail import send_mail, EmailMessage
 
 
 class TextpageView(generic.DetailView):
@@ -38,12 +39,20 @@ def TransActionList(request, pk):
 def TransAction(request, text_pk, user_pk):
     text = Texts.objects.get(text_id=text_pk)
     if request.method == 'POST':
-        messageF = MessageForm(request.POST, request.FILES)
         ToUser = Users.objects.get(user_id=user_pk)
         messageF = Messages(title=text.title, messages=request.user.username + "から教材の出品を受け取りましたよ",
                             user_id=ToUser, date=timezone.now())
         print(messageF)
         messageF.save()
+        # メール送信処理
+        send_mail(
+            subject='トピック作成: ',
+            message='トピックが作成されました。',
+            from_email='tusproject7@gmail.com',
+            recipient_list=[
+                '6319011@ed.tus.ac.jp',
+            ]
+        )
         tcom_list = Tcom.objects.order_by('date').reverse().all()
         return render(request, 'textpage/textpage.html', {
             'texts': text,
@@ -76,15 +85,30 @@ def addCom(request, pk):
         print(pk)
         TF = True
         text = Texts.objects.get(text_id=pk)
-        tcomf = Tcom(text_id=text, user_id=request.user,
-                     date=timezone.now(), comments=tcomf.data.get("comments"))
+        tcomf = Tcom(
+            text_id=text,
+            user_id=request.user,
+            date=timezone.now(),
+            comments=tcomf.data.get("comments")
+        )
+        if request.user != text.user_id:
+            MessageF = Messages(
+                title=request.user.username + 'が' + text.title + 'に対してコメントしました',
+                messages=request.user.username + ':' + tcomf.comments,
+                user_id=text.user_id,
+                date=tcomf.date
+            )
+            MessageF.save()
         # tarにTargetテーブルのToUserがrequest.userに対応するものだけを抽出
         tar = Target.objects.filter(ToUser=request.user)
         for inner in tar:
             if inner.ToUser == request.user:
                 TF = False
         if text.user_id != request.user and TF:
-            target = Target(ToUser=request.user, text_id=text)
+            target = Target(
+                ToUser=request.user,
+                text_id=text
+            )
             # ここでtargetを追加
             target.save()
         print(tcomf)
