@@ -1,4 +1,4 @@
-{% extends "users/base.html" %}
+{% extends "base.html" %}
 
 {% block titele %}ログイン{% endblock %}
 
@@ -7,7 +7,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <!--<p><a href="{% url 'password_reset' %}">パスワードを忘れた</a></p>-->
+        <p><a href="{% url 'password_change' %}">パスワード変更</a></p>
         <p><a href="{% url 'users:registration' %}">新規登録がお済みでない方</a></p>
         <button type="submit" class="btn btn-primary">ログイン</button>
     </form>

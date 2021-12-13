@@ -14,10 +14,3 @@ class AccountForm(forms.ModelForm):
         fields = ('username','student_number','email','password')
         # フィールド名指定
         labels = {'username':"ユーザーID",'stuent_number':"学籍番号",'email':"メールアドレス"}
-
-# class AddAccountForm(forms.ModelForm):
-#     class Meta():
-#         # モデルクラスを指定
-#         model = Users
-#         fields = ('last_name','first_name',)
-#         labels = {'last_name':"苗字",'first_name':"名前",}
