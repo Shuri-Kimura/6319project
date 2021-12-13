@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>コメント</title>
+    <link href="{% static 'css/classpages.css' %}" rel="stylesheet">
+    <link href="{% static 'css/forms.css' %}" rel="stylesheet">
+</head>
+
+<div class="box4">
+    <h3>注意事項</h3>
+    <h5>理解度について</h5>
+    <p> この授業のわかりやすさを5段階評価してください。
+    </p>
+
+    <h5>楽単について</h5>
+    <p> この授業の受けやすさや課題の多さなど理解度以外の点で5段階評価してください。
+    </p>
+</div>
+
+    <form action='' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="button"></input>
+    </form>
+</html>
