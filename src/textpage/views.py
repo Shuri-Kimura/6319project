@@ -30,7 +30,7 @@ class TextpageView(generic.DetailView):
 
 def TransActionList(request, pk):
     return render(request, 'textpage/TransActionList.html', {
-        'ToUser_list': Target.objects.filter(text_id=Texts.objects.get(text_id=pk)),
+        'target_list': Target.objects.filter(text_id=Texts.objects.get(text_id=pk)),
         'text': Texts.objects.get(user_id=request.user.user_id)
     })
 
