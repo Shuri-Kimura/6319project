@@ -1,4 +1,5 @@
 from typing import TextIO
+from django.db.models.query import QuerySet
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
@@ -8,7 +9,7 @@ from django.views.generic.list import ListView
 from django.views import generic
 from django.db.models import Q
 from django.shortcuts import render
-from users.models import Users
+from users.models import Target, Users
 from .forms import MessageForm, TcomForm
 from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
 
@@ -29,7 +30,7 @@ class TextpageView(generic.DetailView):
 
 def TransActionList(request, pk):
     return render(request, 'textpage/TransActionList.html', {
-        'ToUser_list': Users.objects.filter(Q(user_id__lt=request.user.user_id) | Q(user_id__gt=request.user.user_id)),
+        'ToUser_list': Target.objects.filter(text_id=Texts.objects.get(text_id=pk)),
         'text': Texts.objects.get(user_id=request.user.user_id)
     })
 
@@ -66,9 +67,17 @@ def addCom(request, pk):
         print("ここは通っている1")
         tcomf = TcomForm(request.POST, request.FILES)
         print(pk)
+        TF = True
         text = Texts.objects.get(text_id=pk)
         tcomf = Tcom(text_id=text, user_id=request.user,
                      date=timezone.now(), comments=tcomf.data.get("comments"))
+        tar = Target.objects.filter(ToUser=request.user)
+        for a in tar:
+            if a.ToUser == request.user:
+                TF = False
+        if text.user_id != request.user and TF:
+            target = Target(ToUser=request.user, text_id=text)
+            target.save()
         print(tcomf)
         tcomf.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
