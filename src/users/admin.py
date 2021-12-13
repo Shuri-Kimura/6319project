@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Users, Classes, Texts, Tcom, Ccom, Cevals, Uevals, Tfavos, Cfavos, Messages
+from .models import Users, Classes, Texts, Tcom, Ccom, Cevals, Uevals, Tfavos, Cfavos, Messages, Target
 # Register your models here.
 
 admin.site.register(Users)
@@ -12,3 +12,4 @@ admin.site.register(Uevals)
 admin.site.register(Tfavos)
 admin.site.register(Cfavos)
 admin.site.register(Messages)
+admin.site.register(Target)

@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <link  href="{% static 'message/style.css' %}" rel="stylesheet" >
+    </head>
+    <body>
+        {% if user.user_id == users.user_id %}
+            <header>
+                <h1>{{users.username}}のメッセージボックス</h1>
+            </header>
+            {% for message in messages_list %}
+                <div>
+                    <a href="{% url 'message:detail' message.message_id %}">
+                        <h2>{{ message.title }}</h2>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if user.user_id != users.user_id %}
+            このページは閲覧できません
+        {% endif %}
+    </body>
+</html>

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'like.apps.LikeConfig',
     'mypage.apps.MypageConfig',
     'textpage.apps.TextpageConfig',
-    #'users.apps.UsersConfig',
+    'message.apps.MessageConfig',
+    # 'users.apps.UsersConfig',
     'newcommodity.apps.NewcommodityConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media', 
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -102,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS':{"min_length":6},
+        'OPTIONS': {"min_length": 6},
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -111,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-#パスワードのハッシュ化
+# パスワードのハッシュ化
 # PASSWORD_HASHERS = [
 #     "django.contrib.auth.hashers.Argon2PasswordHasher",
 #     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",

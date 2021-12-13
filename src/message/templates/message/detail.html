@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body>
+        {% if messages.user_id.user_id != user.user_id %}
+            このページは閲覧できません
+        {% endif %}
+        {% if messages.user_id.user_id == user.user_id %}
+            <h1>{{ messages.title }}</h1>
+            <p>{{ messages.messages }}</p>
+        {% endif %}
+    </body>
+</html>

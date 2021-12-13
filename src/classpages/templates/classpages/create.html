@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>コメント</title>
+    <link href="{% static 'css/forms.css' %}" rel="stylesheet">               
+</head>
+<div class="box4">
+    <h3>注意事項</h3>
+    <h5>評価方法について</h5>
+    <p> 記入していただく値は1～5です。<br>
+        1：出席点20%、中間テスト30%、期末テスト50%<br>
+        2：中間テスト30%、期末テスト70%<br>
+        3：期末テストのみ<br>
+        4：中間レポート30%、期末レポート70%<br>
+        5：期末レポートのみ
+    </p>
+
+    <h5>授業形式</h5>
+    <p> 記入していただく値は1～4です。<br>
+        1：対面<br>
+        2：オンライン（Zoom）<br>
+        3：ハイフレックス<br>
+        4：オンライン（非同期）
+    </p>
+</div>
+
+    <form action='' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="area">
+        <input type="submit" class="btn-flat-border"></input>
+        </div>
+    </form>
+</html>

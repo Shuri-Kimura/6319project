@@ -26,11 +26,15 @@ urlpatterns = [
     path('like/', include('like.urls')),
     path('mypage/',include('mypage.urls')),
     path('textpage/',include('textpage.urls')),
-    path('users/',include('users.urls')),
+    path('',include('users.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('classpages/',include('classpages.urls')),
+<<<<<<< HEAD
     path('password_change/', auth_views.PasswordChangeView.as_view(template_name='password_change_form.html'), name='password_change'), # 追加
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'), name='password_change_done'),
+=======
+    path('message/',include('message.urls')),
+>>>>>>> 73b42e972283bd21f42844929066f4617e7a2397
 
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -81,6 +81,7 @@ table td.content{
 }
 
 
+
 .star5_rating{
 	position: relative;
 	z-index: 0;
@@ -154,3 +155,15 @@ table td.content{
 .star5_rating[data-rate="0.2"]:after{ width: 4%; }
 .star5_rating[data-rate="0.1"]:after{ width: 2%; }
 .star5_rating[data-rate="0"]:after{ width: 0%; }
+
+.box8 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+}
+.box8 p {
+    margin: 0; 
+    padding: 0;
+}
