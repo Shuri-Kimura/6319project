@@ -28,6 +28,8 @@
     <form action='' method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="button"></input>
+        <div class="area">
+        <input type="submit" class="btn-flat-border"></input>
+        </div>
     </form>
 </html>
