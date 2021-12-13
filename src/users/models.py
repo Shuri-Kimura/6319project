@@ -85,6 +85,9 @@ class Classes(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(7)])  # 数字は？
     department = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(35)])  # 数字は？
+    credit = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(1), MaxValueValidator(5)])
     method_eval = models.TextField()  # 数字は？
     classform = models.TextField()  # 数字は？
     contents = models.TextField()
