@@ -22,8 +22,13 @@
         <div class="top">
             <h1>{{user}}の出品ページ</h1>
         </div>
-      
-      
+        <p>
+        教科書、参考書、過去問等に該当するものが出品対象になります。<br>
+        商品名には、本のタイトルをそのまま入力してください。<br>
+        また、過去問を出品する際、必ず『過去問』を商品名に含んでください。<br>
+        商品の説明は全員が閲覧できます。丁寧に書きましょう。<br>
+         </p>
+         
     <center>
          <form action='{% url 'newcommodity:addText' %}' method='post' class='form' enctype="multipart/form-data">
                <!-- ユーザー登録フォームを表示 -->

@@ -31,14 +31,11 @@ def addText(request):
     if request.method == 'POST':
         #リクエストをもとにフォームをインスタンス化
         textForm = TextForm(request.POST, request.FILES)
-
         print(textForm.is_valid())
-        # if textForm.is_valid():
-
+        print(request.FILES)
         print("カテゴリー", textForm.data.get("category"))
         Class = Classes.objects.get(class_id=textForm.data.get("class_id"))
-        textForm = Texts(user_id=request.user, class_id=Class, title=textForm.data.get("title"), info=textForm.data.get("info"), category=textForm.data.get("category"), state=textForm.data.get("state"), sold_flag=False, days=textForm.data.get("days"), image1=textForm.data.get("image1"), image2=textForm.data.get("image2"), image3=textForm.data.get("image3"))
-        print(textForm)
+        textForm = Texts(user_id=request.user, class_id=Class, title=textForm.data.get("title"), info=textForm.data.get("info"), category=textForm.data.get("category"), state=textForm.data.get("state"), sold_flag=False, days=textForm.data.get("days"), image1=request.FILES.get("image1"), image2=request.FILES.get("image2"), image3=request.FILES.get("image3"))
         textForm.save()
         #user.htmlへデータを渡す
     #return render(request, 'mypage/mypage.html')
