@@ -46,6 +46,23 @@ class Classpage(generic.DetailView,generic.edit.ModelFormMixin):
     #def get_cfavo():
         #cfavo_list = Cevals.objects.filter(class_id__exact = Classes.objects.class_id)
 
+def addceval(request, pk):
+    if request.method == 'POST':
+        print("ここは通っている1")
+        cevf = CevalForm(request.POST, request.FILES)
+        print(pk)
+        cl = Classes.objects.get(class_id=pk)
+        cevf = Cevals(class_id = cl, user_id = request.user, rikai = cevf.data.get("rikai"),raku = cevf.data.get("raku"))
+        print(cevf)
+        cevf.save()
+        ccom_list = Ccom.objects.order_by('date').reverse().all()
+        return HttpResponseRedirect(reverse('classpages:class', args=(cl.class_id,)))
+
+    form = CevalForm()
+    return render(request, 'classpages/add_ceval.html', {
+        "form":form
+    })
+
 def addccom(request, pk):
     if request.method == 'POST':
         print("ここは通っている1")

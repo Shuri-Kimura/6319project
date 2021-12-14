@@ -52,7 +52,7 @@
                     単位
                 </td>
                 <td>
-                    3
+                    {{classes.credit}}
                 </td>
             </tr>
             <tr>
@@ -90,15 +90,9 @@
         </table>
         <p></p>
 
-        評価
-        <form action='' method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.rikai }}
-            {% for error in form.title.errors %}
-                {{error}}
-            {% endfor %}
-            <input type="submit" class="button"></input>
-        </form>
+        <div style="text-align: center;">
+        <p><a href="{% url 'classpages:ceval' classes.class_id %}" class="button">評価する</a></p>
+        </div>
 
         <div class="box8">
         <h3>口コミ</h3>
@@ -135,6 +129,6 @@
 
         <div class="url">
             <p class="message"><a href="{% url 'classpages:create' %}" class="button">授業追加</a></p>
-            </div>
+        </div>
     </body>
 </html>

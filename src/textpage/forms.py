@@ -1,6 +1,6 @@
 from django import forms
 
-from users.models import Messages, Tcom
+from users.models import Messages, Tcom, Texts
 
 
 class TcomForm(forms.ModelForm):
@@ -37,6 +37,14 @@ class TcomForm(forms.ModelForm):
 class MessageForm(forms.ModelForm):
     class Meta():
         model = Messages
+        fields = []
+
+        labels = {}
+
+
+class TextForm(forms.ModelForm):
+    class Meta():
+        model = Texts
         fields = []
 
         labels = {}
