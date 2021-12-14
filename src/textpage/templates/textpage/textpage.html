@@ -13,7 +13,7 @@
    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
  <link rel="stylesheet" href="/static/style.css">
  <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
- 
+ <link href="{% static 'css/classpages.css' %}" rel="stylesheet">
 
  <title>検索</title>
 <style>
@@ -27,19 +27,20 @@
 </head>
 <body>
 
-  <!--<h1>Doutei</h1>-->
-  <div class="pl-4 small" style="background-color: #e2e3e5 ; border-bottom: solid 1px #f3f3f3;">
-      
-    こんにちは！ ゲスト さん
-  
+  <div class="titlebar">
+    <p class="RIKATYAN">RIKATYAN</p>        
+</div>
+<p>
+</p>
+
+  <div class="url">
+    <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
+    <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
+    <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
 </div>
 
 
-<div class = "navbar">
-  <a href = "/mypage">マイページ</a>
-  <a href = "/search">授業検索</a>
-  <a href = "/search">教科書検索</a>
-  </div>
+
 
 <link rel="stylesheet" href="/static/search/styles.css">
 
