@@ -11,8 +11,10 @@ urlpatterns = [
     path('<int:pk>/AddCom/', views.addCom, name='addCom'),
     path('<int:pk>/TransActionList/',
          views.TransActionList, name='TransActionList'),
+    path('<int:text_pk>/UserEvalutate/<int:user_pk>',
+         views.UserEvaluate, name='Evaluate'),
     path('<int:text_pk>/TransAction/<int:user_pk>',
-         views.TransAction, name='TransAction')
+         views.TransAction, name='TransAction'),
 ]
 
 

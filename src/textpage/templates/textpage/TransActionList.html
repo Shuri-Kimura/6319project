@@ -4,7 +4,7 @@
     <p>ここではあなたの出品した{{ text.title }}の取引相手を決めることが出来ます。教科書ページでコメントしている人のみが取引の対象となります。</p>
     {% if target_list %}
         {% for target in target_list %}
-            <a href="{% url 'textpage:TransAction' text_pk=text.text_id user_pk=target.ToUser.user_id %}">{{ target.ToUser.username }}</a>
+            <a href="{% url 'textpage:Evaluate' text_pk=text.text_id user_pk=target.ToUser.user_id %}">{{ target.ToUser.username }}</a>
         {% endfor %}
     {% else %}
         まだ誰もコメントしていません。
