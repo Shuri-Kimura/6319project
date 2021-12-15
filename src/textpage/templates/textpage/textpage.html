@@ -13,7 +13,7 @@
    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
  <link rel="stylesheet" href="/static/style.css">
  <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
- <link href="{% static 'css/classpages.css' %}" rel="stylesheet">
+ <link href="{% static 'css/textpage.css' %}" rel="stylesheet">
 
  
  
@@ -99,7 +99,7 @@
 <table>
   <tbody>
 <p>
-カテゴリ：{% if texts.category == 1 %}
+<th>カテゴリ</th><td>{% if texts.category == 1 %}
           教科書
           {% endif %}
           {% if texts.category == 2 %}
@@ -107,9 +107,12 @@
           {% endif %}
           {% if texts.category == 3 %}
           過去問
-          {% endif %}<br>
+          {% endif %}
+          </td>
+          <br>
 
-商品状態：{% if texts.state == 1 %}
+<th>商品状態</th>
+<tb>{% if texts.state == 1 %}
           新品、未使用
           {% endif %}
           {% if texts.state == 2 %}
@@ -126,11 +129,16 @@
           {% endif %}
           {% if texts.state == 6 %}
           全体的に状態が悪い
-          {% endif %}<br>
+          {% endif %}
+          </tb>
+          <br>
 
-授業名：{{texts.class_id.title}}<br>
+<th>授業名</th><tb>{{texts.class_id.title}}</tb>
 
-お渡しまでの日数：{% if texts.days == 1 %}
+<br>
+
+<th>お渡しまでの日数</th>
+<tb>{% if texts.days == 1 %}
           1~2日
           {% endif %}
           {% if texts.days == 2 %}
@@ -138,7 +146,9 @@
           {% endif %}
           {% if texts.days == 3 %}
           4~7日
-          {% endif %}<br>
+          {% endif %}
+          </tb>
+          <br>
 
 </p>
 </tbody>
