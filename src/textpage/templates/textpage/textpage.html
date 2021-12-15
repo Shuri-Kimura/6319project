@@ -181,7 +181,11 @@
 
 
 </div>
-<a href="{% url 'textpage:addCom' texts.text_id %}">追加</a>
+<p>
+<a href="{% url 'textpage:addCom' texts.text_id %}">追加</a><br>
+</p>>
+
+
 
 {% if texts.user_id.username == user.username%}
 {% if texts.sold_flag %}
