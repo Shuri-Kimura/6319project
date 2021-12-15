@@ -5,10 +5,14 @@ table {
 th {
     background-color: #00e2cf;  /* 背景色指定 */
 }
-.url{
+.url {
     display: table; 
     width: 100%; 
     color:black;
+}
+
+.red {
+    color: red;
 }
 
 .mypage{
