@@ -178,6 +178,8 @@
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
 {% for tcom in tcom_list %}
   {% if tcom.text_id.text_id == texts.text_id %}
+  {% comment %} exhibitor_or_allが、全員に送るか、出品者にのみ送るかを選択できる {% endcomment %}
+  {% comment %} exhibitor_or_all : False -> 出品者にのみ送信 {% endcomment %}
     {% if tcom.exhibitor_or_all == False %}
       {% if user.username == tcom.user_id.username %}
         <h6 style="text-align:right">
@@ -196,7 +198,9 @@
           </p>
         </h6>
       {% endif %}
+  {% comment %} exhibitor_or_all : True -> 出品者にのみ送信 {% endcomment %}
     {% else %}
+    {% comment %} user(ログイン者)が出品者あるいはそのコメントをした人なら、閲覧できる {% endcomment %}
       {% if user == tcom.user_id or user == texts.user_id %}
         {% if user.username == tcom.user_id.username %}
           <h6 style="text-align:right">
