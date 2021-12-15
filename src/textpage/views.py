@@ -41,7 +41,7 @@ def UserEvaluate(request, text_pk, user_pk):
     ToUser = Users.objects.get(user_id=user_pk)
     if request.method == 'POST':
         Eval = UevalFrom(request.POST, request.FILES)
-        Eval = Uevals(user_id=request.user, eval=Eval.data.get('eval'))
+        Eval = Uevals(user_id=ToUser, eval=Eval.data.get('eval'))
         Eval.save()
         return redirect('textpage:TransAction', text.text_id, ToUser.user_id)
     form = UevalFrom()
@@ -49,7 +49,6 @@ def UserEvaluate(request, text_pk, user_pk):
         'form': form,
         'text': text,
         'ToUser': ToUser
-
     })
 
 
@@ -62,7 +61,7 @@ def TransAction(request, text_pk, user_pk):
             messages=request.user.username + "から教材の出品を受け取りましたよ",
             FromUser=text.user_id,
             ToUser=ToUser,
-            Eval_flag=False,
+            Eval_flag=-1,
             date=timezone.now()
         )
         print(messageF)

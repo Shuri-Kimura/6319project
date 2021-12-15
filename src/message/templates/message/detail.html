@@ -9,6 +9,12 @@
         {% if messages.ToUser.user_id == user.user_id %}
             <h1>{{ messages.title }}</h1>
             <p>{{ messages.messages }}</p>
+            {% if messages.Eval_flag == -1 %}
+                <a href={% url 'message:Evaluate' pk=messages.message_id to_pk=messages.FromUser.user_id %}>評価</a>
+            {% endif %}
+            {% if messages.Eval_flag == 1 %}
+                評価終了
+            {% endif %}
         {% endif %}
     </body>
 </html>
