@@ -96,29 +96,35 @@
 
         <div class="box8">
         <h3>口コミ</h3>
+        <div style="border: #71c3fa solid 3px; border-radius: 10px; font-size: 100%; padding: 5px;">
         {%for ccom in ccom_list%}
         {% if ccom.class_id.class_id == classes.class_id %}
 
             {% if user.username == ccom.user_id.username %}
             <h6 style="text-align:right">
-                <p>
                 <h7>{{ccom.user_id.username}}</h7><br>
+                <div class="balloon2-top-right">
+                <p>
                 {{ccom.comments}}<br>
                 {{ccom.date}}<br>
                 </p>
+                </div>
             </h6>
             
             {% else  %}
             <h6 style="text-align:left">
+                <h7>{{tcom.user_id.username}}</h7><br>
+                <div class="balloon2-top-left">
                 <p>
-                  <h7>{{tcom.user_id.username}}</h7><br>
                   {{tcom.comments}}<br>
                   {{tcom.date}}<br>
                 </p>
+                </div>
             </h6>
             {%endif%}
         {%endif%}
         {%endfor%}
+        </div>
         </div>
         <p></p>
         <div class="url">
