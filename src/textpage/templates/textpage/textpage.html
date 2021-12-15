@@ -183,7 +183,7 @@
 </div>
 <p>
 <a href="{% url 'textpage:addCom' texts.text_id %}">追加</a><br>
-</p>>
+</p>
 
 
 
@@ -191,7 +191,6 @@
 {% if texts.sold_flag %}
 <h1>取引完了</h1>
 {% else %}
-条件オッケー　ここはボタン作って繊維画面もつくるぜ！！！
 <a href="{% url 'textpage:TransActionList' texts.text_id %}">取引相手を決める</a>
 {% endif %}
 {% endif %}
