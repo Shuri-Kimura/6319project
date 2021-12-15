@@ -170,6 +170,7 @@ class Messages(models.Model):
     ToUser = models.ForeignKey(
         Users, on_delete=models.CASCADE, null=True, related_name='ToUser')
     Eval_flag = models.IntegerField(default=0)
+    reading_flag = models.BooleanField(default=True)
     date = models.DateTimeField(default=timezone.now)  # レコード登録時の日本時間が保存
 
 

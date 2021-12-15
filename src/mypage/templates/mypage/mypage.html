@@ -17,7 +17,15 @@
             <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
         </div>
         <div class="top">
-            <h1>{{users.username}}のマイページ</h1>
+            <h1>{{users.username}}のマイページ
+                    {% if ueval_avg %}
+                        {% for avg in ueval_avg %}
+                            {{ avg.avg }}
+                        {% endfor %}
+                    {% else %}
+                        あなたはまだ他の人に評価されていません
+                    {% endif %}
+                </p>
         </div>
         <div>
             ここが写真です。
