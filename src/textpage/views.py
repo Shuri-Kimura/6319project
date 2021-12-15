@@ -4,13 +4,13 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect, request
-from django.urls.base import reverse_lazy
+from django.urls.base import reverse_lazy, reverse
 from django.views.generic.list import ListView
 from django.views import generic
 from django.db.models import Q
 from django.shortcuts import render
-from users.models import Target, Users
-from .forms import MessageForm, TcomForm, TextForm
+from users.models import Target, Uevals, Users
+from .forms import MessageForm, TcomForm, TextForm, UevalFrom
 from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
 from django.core.mail import send_mail, EmailMessage
 
@@ -33,6 +33,23 @@ def TransActionList(request, pk):
     return render(request, 'textpage/TransActionList.html', {
         'target_list': Target.objects.filter(text_id=Texts.objects.get(text_id=pk)),
         'text': Texts.objects.get(text_id=pk)
+    })
+
+
+def UserEvaluate(request, text_pk, user_pk):
+    text = Texts.objects.get(text_id=text_pk)
+    ToUser = Users.objects.get(user_id=user_pk)
+    if request.method == 'POST':
+        Eval = UevalFrom(request.POST, request.FILES)
+        Eval = Uevals(user_id=request.user, eval=Eval.data.get('eval'))
+        Eval.save()
+        return redirect('textpage:TransAction', text.text_id, request.user.user_id)
+    form = UevalFrom()
+    return render(request, 'textpage/UserEvaluate.html', {
+        'form': form,
+        'text': text,
+        'ToUser': ToUser
+
     })
 
 
@@ -71,10 +88,11 @@ def TransAction(request, text_pk, user_pk):
         text.clean()
         text.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
-        return render(request, 'textpage/textpage.html', {
-            'texts': text,
-            'tcom_list': tcom_list,
-        })
+        return redirect('textpage:textpage', text.text_id)
+        # return render(request, 'textpage/textpage.html', {
+        #     'texts': text,
+        #     'tcom_list': tcom_list,
+        # })
 
     form = MessageForm()
     return render(request, 'textpage/TransAction.html', {
@@ -133,10 +151,7 @@ def addCom(request, pk):
         # ここでtcomfを追加
         tcomf.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
-        return render(request, 'textpage/textpage.html', {
-            'texts': text,
-            'tcom_list': tcom_list,
-        })
+        return redirect('textpage:textpage', text.text_id)
 
     form = TcomForm()
     return render(request, 'textpage/add_comments.html', {

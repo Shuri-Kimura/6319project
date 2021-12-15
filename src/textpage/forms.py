@@ -1,6 +1,7 @@
 from django import forms
+from django.db.models import fields
 
-from users.models import Messages, Tcom, Texts
+from users.models import Messages, Tcom, Texts, Uevals
 
 
 class TcomForm(forms.ModelForm):
@@ -48,3 +49,14 @@ class TextForm(forms.ModelForm):
         fields = []
 
         labels = {}
+
+
+class UevalFrom(forms.ModelForm):
+    class Meta():
+        model = Uevals
+
+        fields = ['eval']
+
+        labels = {
+            'eval': '相手への評価'
+        }
