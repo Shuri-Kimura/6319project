@@ -20,9 +20,28 @@ class MessageList(generic.DetailView):
         return context
 
 
-class MessageDetail(generic.DetailView):
-    model = Messages
-    template_name = 'message/detail.html'
+# class MessageDetail(generic.DetailView):
+#     model = Messages
+#     template_name = 'message/detail.html'
+
+
+def MessageDetail(request, pk):
+    message = Messages.objects.get(message_id=pk)
+    if message.reading_flag:
+        message = Messages(
+            message_id=message.message_id,
+            title=message.title,
+            messages=message.messages,
+            FromUser=message.FromUser,
+            ToUser=message.ToUser,
+            Eval_flag=message.Eval_flag,
+            reading_flag=False,
+            date=message.date
+        )
+    message.save()
+    return render(request, 'message/detail.html', {
+        'messages': message,
+    })
 
 
 def UserEvaluate(request, pk, to_pk):
@@ -35,6 +54,7 @@ def UserEvaluate(request, pk, to_pk):
         FromUser=message.FromUser,
         ToUser=message.ToUser,
         Eval_flag=1,
+        reading_flag=message.reading_flag,
         date=message.date
     )
     message.save()

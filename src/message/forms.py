@@ -13,3 +13,12 @@ class UevalFrom(forms.ModelForm):
         labels = {
             'eval': '相手への評価'
         }
+
+
+class MessageForm(forms.ModelForm):
+    class Meta():
+        models = Messages
+
+        fields = []
+
+        labels = {}

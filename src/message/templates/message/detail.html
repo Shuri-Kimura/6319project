@@ -3,10 +3,10 @@
     <head>
     </head>
     <body>
-        {% if messages.ToUser.user_id != user.user_id %}
+        {% if messages.ToUser != user %}
             このページは閲覧できません
         {% endif %}
-        {% if messages.ToUser.user_id == user.user_id %}
+        {% if messages.ToUser == user %}
             <h1>{{ messages.title }}</h1>
             <p>{{ messages.messages }}</p>
             {% if messages.Eval_flag == -1 %}
