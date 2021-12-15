@@ -99,6 +99,7 @@
 <table>
   <tbody>
 <p>
+  <tr>
 <th>カテゴリ</th><td>{% if texts.category == 1 %}
           教科書
           {% endif %}
@@ -109,8 +110,10 @@
           過去問
           {% endif %}
           </td>
-          <br>
+          
+</tr>
 
+<tr>
 <th>商品状態</th>
 <tb>{% if texts.state == 1 %}
           新品、未使用
@@ -131,12 +134,15 @@
           全体的に状態が悪い
           {% endif %}
           </tb>
-          <br>
+          
+</tr>
 
+<tr>
 <th>授業名</th><tb>{{texts.class_id.title}}</tb>
+</tr>
 
-<br>
 
+<tr>
 <th>お渡しまでの日数</th>
 <tb>{% if texts.days == 1 %}
           1~2日
@@ -148,7 +154,7 @@
           4~7日
           {% endif %}
           </tb>
-          <br>
+          </tr>
 
 </p>
 </tbody>
