@@ -120,6 +120,7 @@ class Tcom(models.Model):
     tcom_id = models.AutoField(primary_key=True)
     text_id = models.ForeignKey(Texts, on_delete=models.CASCADE)  # 外部キー
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)  # 外部キー
+    exhibitor_or_all = models.BooleanField(default=False)
     date = models.DateTimeField(default=timezone.now)  # レコード登録時の日本時間が保存
     comments = models.TextField(max_length=100)  # 文字数？
 

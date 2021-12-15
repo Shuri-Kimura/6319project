@@ -10,7 +10,7 @@ from django.views import generic
 from django.db.models import Q
 from django.shortcuts import render
 from users.models import Target, Uevals, Users
-from .forms import MessageForm, TcomForm, TextForm, UevalFrom
+from .forms import MessageForm, TcomForm, TcomForm2, TextForm, UevalFrom
 from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
 from django.core.mail import send_mail, EmailMessage
 
@@ -119,15 +119,17 @@ def TransAction(request, text_pk, user_pk):
 
 
 def addCom(request, pk):
+    text = Texts.objects.get(text_id=pk)
     if request.method == 'POST':
-        print("ここは通っている1")
         tcomf = TcomForm(request.POST, request.FILES)
-        print(pk)
+        e_or_a = True
+        if tcomf.data.get("exhibitor_or_all") == None:
+            e_or_a = False
         TF = True
-        text = Texts.objects.get(text_id=pk)
         tcomf = Tcom(
             text_id=text,
             user_id=request.user,
+            exhibitor_or_all=e_or_a,
             date=timezone.now(),
             comments=tcomf.data.get("comments")
         )
@@ -153,13 +155,14 @@ def addCom(request, pk):
             )
             # ここでtargetを追加
             target.save()
-        print(tcomf)
         # ここでtcomfを追加
         tcomf.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
         return redirect('textpage:textpage', text.text_id)
-
-    form = TcomForm()
+    if request.user == text.user_id:
+        form = TcomForm2()
+    else:
+        form = TcomForm()
     return render(request, 'textpage/add_comments.html', {
         "form": form
     })

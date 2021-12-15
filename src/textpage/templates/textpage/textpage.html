@@ -176,32 +176,48 @@
   
 <h2>コメント</h2>
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
-  {% for tcom in tcom_list %}
-{% if tcom.text_id.text_id == texts.text_id %}
-
-{% if user.username == tcom.user_id.username %}
-
-<h6 style="text-align:right">
-<p>
-  <h7>{{tcom.user_id.username}}</h7><br>
-  {{tcom.comments}}<br>
-  {{tcom.date}}<br>
-</p>
-</h6>
-{% endif%}
-
-{% if tcom.user_id.username != user.username %}
-
-<h6 style="text-align:left">
-<p>
-<h7>{{tcom.user_id.username}}</h7><br>
-{{tcom.comments}}<br>
-{{tcom.date}}<br>
-</p>
-</h6>
-{% endif%}
-
-{% endif %}
+{% for tcom in tcom_list %}
+  {% if tcom.text_id.text_id == texts.text_id %}
+    {% if tcom.exhibitor_or_all == False %}
+      {% if user.username == tcom.user_id.username %}
+        <h6 style="text-align:right">
+          <p>
+            <h7>{{tcom.user_id.username}}</h7><br>
+                {{tcom.comments}}<br>
+                {{tcom.date}}<br>
+          </p>
+        </h6>
+      {% else %}
+        <h6 style="text-align:left">
+          <p>
+            <h7>{{tcom.user_id.username}}</h7><br>
+                {{tcom.comments}}<br>
+                {{tcom.date}}<br>
+          </p>
+        </h6>
+      {% endif %}
+    {% else %}
+      {% if user == tcom.user_id or user == texts.user_id %}
+        {% if user.username == tcom.user_id.username %}
+          <h6 style="text-align:right">
+            <p>
+              <h7>{{tcom.user_id.username}}</h7><br>
+                {{tcom.comments}}<br>
+                {{tcom.date}}<br>
+            </p>
+          </h6>
+        {% else %}
+          <h6 style="text-align:left">
+            <p>
+              <h7>{{tcom.user_id.username}}</h7><br>
+                {{tcom.comments}}<br>
+                {{tcom.date}}<br>
+            </p>
+          </h6>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
 {% endfor %}
 </div>
 

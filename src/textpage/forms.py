@@ -4,6 +4,17 @@ from django.db.models import fields
 from users.models import Messages, Tcom, Texts, Uevals
 
 
+class TcomForm2(forms.ModelForm):
+    class Meta():
+        model = Tcom
+
+        fields = ['comments']
+
+        labels = {
+            'comments': 'コメント'
+        }
+
+
 class TcomForm(forms.ModelForm):
 
     class Meta():
@@ -11,11 +22,13 @@ class TcomForm(forms.ModelForm):
         model = Tcom
 
         # ②表示するモデルクラスのフィールドを定義
-        fields = ["comments"]
+        fields = ['comments', 'exhibitor_or_all']
 
         # ③表示ラベルを定義
-        labels = {'comments': "コメント",
-                  }
+        labels = {
+            'comments': "コメント",
+            'exhibitor_or_all': '出品者にのみコメントする'
+        }
 
         """
         #②表示するモデルクラスのフィールドを定義
