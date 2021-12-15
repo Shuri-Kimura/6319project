@@ -165,7 +165,11 @@ class Messages(models.Model):
     message_id = models.AutoField(primary_key=True)
     title = models.TextField(max_length=30)
     messages = models.TextField()
-    user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
+    FromUser = models.ForeignKey(
+        Users, on_delete=models.CASCADE, null=True, related_name='FromUser')
+    ToUser = models.ForeignKey(
+        Users, on_delete=models.CASCADE, null=True, related_name='ToUser')
+    Eval_flag = models.BooleanField(default=True)
     date = models.DateTimeField(default=timezone.now)  # レコード登録時の日本時間が保存
 
 

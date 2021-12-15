@@ -57,8 +57,12 @@ def TransAction(request, text_pk, user_pk):
     text = Texts.objects.get(text_id=text_pk)
     if request.method == 'POST':
         ToUser = Users.objects.get(user_id=user_pk)
-        messageF = Messages(title=text.title, messages=request.user.username + "から教材の出品を受け取りましたよ",
-                            user_id=ToUser, date=timezone.now())
+        messageF = Messages(
+            title=text.title,
+            messages=request.user.username + "から教材の出品を受け取りましたよ",
+            FromUser=text.user_id,
+            ToUser=ToUser, date=timezone.now()
+        )
         print(messageF)
         messageF.save()
         # メール送信処理
@@ -131,7 +135,8 @@ def addCom(request, pk):
             MessageF = Messages(
                 title=request.user.username + 'が' + text.title + 'に対してコメントしました',
                 messages=request.user.username + ':' + tcomf.comments,
-                user_id=text.user_id,
+                FromUser=request.user,
+                ToUser=text.user_id,
                 date=tcomf.date
             )
             MessageF.save()

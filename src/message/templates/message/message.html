@@ -17,6 +17,7 @@
             {% endfor %}
         {% endif %}
         {% if user.user_id != users.user_id %}
+        {{user.user_id}}{{users.user_id}}
             このページは閲覧できません
         {% endif %}
     </body>

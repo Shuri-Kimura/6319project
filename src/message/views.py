@@ -14,7 +14,7 @@ class MessageList(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(MessageList, self).get_context_data(**kwargs)
         context.update({
-            'messages_list': Messages.objects.filter(user_id=self.request.user.user_id),
+            'messages_list': Messages.objects.filter(ToUser=self.request.user.user_id),
         })
         return context
 
