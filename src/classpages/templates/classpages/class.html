@@ -3,11 +3,12 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>授業ページ</title>
+        <title>{{classes.title}}</title>
         <link href="{% static 'classpages/classpages.css' %}" rel="stylesheet">               
     </head>
     <body>
         {% include 'classpages/head.html'%}   
+        <p><br></p> 
         <table>
         <caption>{{classes.title}}</caption>
             <tr>
@@ -80,7 +81,7 @@
         <p></p>
 
         <div style="text-align: center;">
-        <p><a href="{% url 'classpages:ceval' classes.class_id %}" class="button">評価する</a></p>
+        <p><a href="{% url 'classpages:ceval' classes.class_id %}" class="button"><span>評価する</span></a></p>
         </div>
 
         <div class="box8">
@@ -117,13 +118,13 @@
         </div>
         <p></p>
         <div class="url">
-        <p class="message"><a href="{% url 'classpages:ccom' classes.class_id %}" class="button">コメントする</a></p>
+        <p class="message"><a href="{% url 'classpages:ccom' classes.class_id %}" class="button"><span>コメントする</span></a></p>
         </div>
 
         <p></p>
 
         <div class="url">
-            <p class="message"><a href="{% url 'classpages:create' %}" class="button">授業追加</a></p>
+            <p class="message"><a href="{% url 'classpages:create' %}" class="button"><span>授業追加</span></a></p>
         </div>
     </body>
 </html>
