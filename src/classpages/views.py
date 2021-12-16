@@ -20,7 +20,7 @@ def index(request):
         return Classes.objects.filter(class_id__isnull=False)
 
 
-class Classpage(generic.DetailView, generic.edit.ModelFormMixin):
+# class Classpage(generic.DetailView, generic.edit.ModelFormMixin):
     model = Classes
     template_name = 'classpages/class.html'
     form = CevalForm()
@@ -47,9 +47,26 @@ class Classpage(generic.DetailView, generic.edit.ModelFormMixin):
         return render(request, 'classpages:class', {
             "form": form
         })
-
     # def get_cfavo():
         #cfavo_list = Cevals.objects.filter(class_id__exact = Classes.objects.class_id)
+
+
+def Classpage(request, pk):
+    cl = Classes.objects.get(class_id=pk)
+    form = CcomForm()
+    if request.method == 'POST':
+        ccomf = CcomForm(request.POST, request.FILES)
+        ccomf = Ccom(class_id=cl, user_id=request.user,
+                     date=timezone.now(), comments=ccomf.data.get("comments"))
+        ccomf.save()
+        return HttpResponseRedirect(reverse('classpages:class', args=(cl.class_id,)))
+    else:
+        return render(request, 'classpages/class.html', {
+            'classes': cl,
+            'form': form,
+            'avg': Cevals.objects.values('class_id').annotate(avg_rikai=models.Avg('rikai'), avg_raku=models.Avg('raku')),
+            'ccom_list': Ccom.objects.order_by('date').all(),
+        })
 
 
 def addceval(request, pk):
@@ -90,7 +107,7 @@ def addceval(request, pk):
     })
 
 
-def addccom(request, pk):
+# def addccom(request, pk):
     if request.method == 'POST':
         print("ここは通っている1")
         ccomf = CcomForm(request.POST, request.FILES)
