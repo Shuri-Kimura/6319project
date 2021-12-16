@@ -7,8 +7,7 @@ app_name = 'textpage'
 urlpatterns = [
     #path('', IndexView.as_view())
     #path('', views.TextpageView.as_view(), name='textpage'),
-    path('<int:pk>/', views.TextpageView.as_view(), name='textpage'),
-    path('<int:pk>/AddCom/', views.addCom, name='addCom'),
+    path('<int:pk>/', views.TextpageView, name='textpage'),
     path('<int:pk>/TransActionList/',
          views.TransActionList, name='TransActionList'),
     path('<int:text_pk>/UserEvalutate/<int:user_pk>',

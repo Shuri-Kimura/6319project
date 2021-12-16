@@ -224,7 +224,11 @@
 
 </div>
 <p>
-<a href="{% url 'textpage:addCom' texts.text_id %}">追加</a><br>
+  <form action='' method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary">保存</input>
+</form>
 </p>
 
 
