@@ -2,12 +2,13 @@
 <!DOCTYPE html>
     <head>
         <link href="{% static 'css/mypage.css' %}" rel="stylesheet"> 
+        
         <title>{{users.username}}のホームページ</title>
     </head>
     <body>
         <div class="titlebar">
             <p class="RIKATYAN">RIKATYAN</p>        
-            <p class="message">メッセージ</p>
+            <p class="message"><p class="message"><a href={% url 'message:message' user.user_id %} class="btn-border-bottom">メッセージ</a></p>
         </div>
         <p>
         </p>
