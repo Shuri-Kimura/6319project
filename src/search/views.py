@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
-from users.models import Classes, Texts, Cevals, Tfavos
+from users.models import Classes, Texts, Cevals, Tfavos, Cfavos
 from django.db.models import Q, Avg
 
 
@@ -20,7 +20,11 @@ def index(request):
                 ).distinct()
         texts = {}
         classes = classes_.annotate(Avg('cevals__rikai')).annotate(Avg('cevals__raku'))
-        #print(classes[0].cevals__raku__avg)
+        #print(classes)
+        for clas in classes:
+            if not clas.cevals__rikai__avg==None:
+                clas.cevals__rikai__avg = round(clas.cevals__rikai__avg)
+                clas.cevals__raku__avg = round(clas.cevals__raku__avg)
         liked_list = []
     elif q_text:
         texts = Texts.objects.all()
@@ -37,9 +41,13 @@ def index(request):
             liked = text.tfavos_set.filter(user_id=request.user)
             if liked.exists():
                 liked_list.append(text.text_id)
-        print(liked_list)
+        #print(liked_list)
     else:
         classes = Classes.objects.all().annotate(Avg('cevals__rikai')).annotate(Avg('cevals__raku'))
+        for clas in classes:
+            if not clas.cevals__rikai__avg==None:
+                clas.cevals__rikai__avg = round(clas.cevals__rikai__avg)
+                clas.cevals__raku__avg = round(clas.cevals__raku__avg)
         texts = {}
         liked_list = []
     return render(request, "search/index.html", {
@@ -47,6 +55,7 @@ def index(request):
         'texts':texts,
         'liked_list': liked_list,
     })
+
 
 def TlikeView(request):
     if request.method =="POST":
@@ -66,6 +75,29 @@ def TlikeView(request):
             'text_id': text.text_id,
             'liked': liked,
             'count': text.tfavos_set.count(),
+        }
+
+    if request.is_ajax():
+        return JsonResponse(context)
+
+def ClikeView(request):
+    if request.method =="POST":
+        #print(print(request.is_ajax()))
+        class_ = get_object_or_404(Classes, pk=request.POST.get('class_id'))
+        user = request.user
+        liked = False
+        #print(text)
+        cfavos = Cfavos.objects.filter(class_id=class_, user_id=user)
+        if cfavos.exists():
+            cfavos.delete()
+        else:
+            cfavos.create(class_id=class_, user_id=user)
+            liked = True
+    
+        context={
+            'class_id': class_.class_id,
+            'liked': liked,
+            'count': class_.cfavos_set.count(),
         }
 
     if request.is_ajax():
