@@ -79,6 +79,41 @@ def TextpageView(request, pk):
         })
 
 
+def TextUpdate(request, pk):
+    text = Texts.objects.get(text_id=pk)
+    initial_data = {
+        'info': text.info,
+        'category': text.category,
+        'state': text.state,
+        'days': text.days
+    }
+    if request.method == 'POST':
+        textf = TextForm(request.POST, request.FILES)
+        text = Texts(
+            text_id=text.text_id,
+            user_id=text.user_id,
+            class_id=text.class_id,
+            title=text.title,
+            info=textf.data.get('info'),
+            sold_flag=text.sold_flag,
+            category=textf.data.get('category'),
+            state=textf.data.get('state'),
+            date=text.date,
+            days=textf.data.get('days'),
+            image1=text.image1,
+            image2=text.image2,
+            image3=text.image3,
+        )
+        text.save()
+        return redirect('textpage:textpage', text.text_id)
+    else:
+        form = TextForm(initial=initial_data)
+        return render(request, 'textpage/update.html', {
+            'form': form,
+            'text': text
+        })
+
+
 def TransActionList(request, pk):
     return render(request, 'textpage/TransActionList.html', {
         'target_list': Target.objects.filter(text_id=Texts.objects.get(text_id=pk)),

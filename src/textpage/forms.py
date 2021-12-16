@@ -59,9 +59,19 @@ class MessageForm(forms.ModelForm):
 class TextForm(forms.ModelForm):
     class Meta():
         model = Texts
-        fields = []
+        fields = [
+            'info',
+            'category',
+            'state',
+            'days'
+        ]
 
-        labels = {}
+        labels = {
+            'info': '商品情報',
+            'category': 'カテゴリー',
+            'state': '商品状態',
+            'days': 'お渡しまでの日数'
+        }
 
 
 class UevalFrom(forms.ModelForm):

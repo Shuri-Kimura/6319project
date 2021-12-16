@@ -8,6 +8,7 @@ urlpatterns = [
     #path('', IndexView.as_view())
     #path('', views.TextpageView.as_view(), name='textpage'),
     path('<int:pk>/', views.TextpageView, name='textpage'),
+    path('update/<int:pk>/', views.TextUpdate, name='update'),
     path('<int:pk>/TransActionList/',
          views.TransActionList, name='TransActionList'),
     path('<int:text_pk>/UserEvalutate/<int:user_pk>',
