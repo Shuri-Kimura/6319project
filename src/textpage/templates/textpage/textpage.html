@@ -165,7 +165,7 @@
   
   
 <h2>コメント</h2>
-<div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">
+<div class="box8">
 {% for tcom in tcom_list %}
   {% if tcom.text_id.text_id == texts.text_id %}
   {% comment %} exhibitor_or_allが、全員に送るか、出品者にのみ送るかを選択できる {% endcomment %}
@@ -173,19 +173,23 @@
     {% if tcom.exhibitor_or_all == False %}
       {% if user.username == tcom.user_id.username %}
         <h6 style="text-align:right">
-          <p>
             <h7>{{tcom.user_id.username}}</h7><br>
-                {{tcom.comments}}<br>
-                {{tcom.date}}<br>
-          </p>
+            {{tcom.date}}
+            <div class="balloon2-top-right">
+              <p>
+              {{tcom.comments}}
+              </p>
+            </div>
         </h6>
       {% else %}
         <h6 style="text-align:left">
-          <p>
+          
             <h7>{{tcom.user_id.username}}</h7><br>
-                {{tcom.comments}}<br>
+            <div class="balloon2-top-left">
+              <p>{{tcom.comments}}</p>
+            </div>
                 {{tcom.date}}<br>
-          </p>
+          
         </h6>
       {% endif %}
   {% comment %} exhibitor_or_all : True -> 出品者にのみ送信 {% endcomment %}
@@ -194,19 +198,21 @@
       {% if user == tcom.user_id or user == texts.user_id %}
         {% if user.username == tcom.user_id.username %}
           <h6 style="text-align:right" class="red">
-            <p>
-              <h7>{{tcom.user_id.username}}</h7><br>
-                {{tcom.comments}}<br>
-                {{tcom.date}}<br>
-            </p>
+            <h7>{{tcom.user_id.username}}</h7><br>
+            {{tcom.date}}
+            <div class="balloon2-top-right">
+              <p>
+              {{tcom.comments}}
+              </p>
+            </div>
           </h6>
         {% else %}
           <h6 style="text-align:left" class="red">
-            <p>
-              <h7>{{tcom.user_id.username}}</h7><br>
-                {{tcom.comments}}<br>
-                {{tcom.date}}<br>
-            </p>
+            <h7>{{tcom.user_id.username}}</h7><br>
+            <div class="balloon2-top-left">
+              <p>{{tcom.comments}}</p>
+            </div>
+            {{tcom.date}}<br>
           </h6>
         {% endif %}
       {% endif %}
