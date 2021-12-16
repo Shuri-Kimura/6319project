@@ -118,7 +118,11 @@
         </div>
         <p></p>
         <div class="url">
-        <p class="message"><a href="{% url 'classpages:ccom' classes.class_id %}" class="button"><span>コメントする</span></a></p>
+            <form action='' method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="button"></input>
+            </form>
         </div>
 
         <p></p>
