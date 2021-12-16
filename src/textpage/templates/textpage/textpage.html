@@ -81,7 +81,9 @@
 <div class="good">
 
 </div>>-->
+{% if user == texts.user_id %}
 <a href="{% url 'textpage:update' texts.text_id %}">編集する</a>
+{% endif %}
 <h1>商品説明欄</h1>
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{texts.info}}</div>
 
