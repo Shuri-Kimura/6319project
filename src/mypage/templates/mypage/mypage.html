@@ -2,22 +2,22 @@
 <!DOCTYPE html>
     <head>
         <link href="{% static 'css/mypage.css' %}" rel="stylesheet"> 
+        <link href="{% static 'classpages/head.css' %}" rel="stylesheet">
+
         <title>{{users.username}}のホームページ</title>
     </head>
     <body>
-        <div class="titlebar">
-            <p class="RIKATYAN">RIKATYAN</p>        
-            <p class="message">メッセージ</p>
-        </div>
-        <p>
-        </p>
-        <div class="url">
-            <p class="mypage"> <a href={% url 'mypage:mypage' user.user_id %} class="button">マイページ</a></p>
-            <p class="c_search"><a href = "/search" class="button">授業検索</a></p>
-            <p class="t_search"><a href = "/search" class="button">教科書検索</a></p>
-        </div>
+        {% include 'classpages/head.html' %}
         <div class="top">
-            <h1>{{users.username}}のマイページ</h1>
+            <h1>{{users.username}}のマイページ
+                    {% if ueval_avg %}
+                        {% for avg in ueval_avg %}
+                            {{ avg.avg }}
+                        {% endfor %}
+                    {% else %}
+                        あなたはまだ他の人に評価されていません
+                    {% endif %}
+                </p>
         </div>
         <div>
             ここが写真です。

@@ -3,12 +3,18 @@
     <head>
     </head>
     <body>
-        {% if messages.user_id.user_id != user.user_id %}
+        {% if messages.ToUser != user %}
             このページは閲覧できません
         {% endif %}
-        {% if messages.user_id.user_id == user.user_id %}
+        {% if messages.ToUser == user %}
             <h1>{{ messages.title }}</h1>
             <p>{{ messages.messages }}</p>
+            {% if messages.Eval_flag == -1 %}
+                <a href={% url 'message:Evaluate' pk=messages.message_id to_pk=messages.FromUser.user_id %}>評価</a>
+            {% endif %}
+            {% if messages.Eval_flag == 1 %}
+                評価終了
+            {% endif %}
         {% endif %}
     </body>
 </html>

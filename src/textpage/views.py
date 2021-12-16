@@ -4,29 +4,79 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect, request
-from django.urls.base import reverse_lazy
+from django.urls.base import reverse_lazy, reverse
 from django.views.generic.list import ListView
 from django.views import generic
 from django.db.models import Q
 from django.shortcuts import render
-from users.models import Target, Users
-from .forms import MessageForm, TcomForm, TextForm
+from users.models import Target, Uevals, Users
+from .forms import MessageForm, TcomForm, TcomForm2, TextForm, UevalFrom
 from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
 from django.core.mail import send_mail, EmailMessage
 
 
-class TextpageView(generic.DetailView):
-    template_name = 'textpage/textpage.html'
+# class TextpageView(generic.DetailView):
+#     template_name = 'textpage/textpage.html'
 
-    model = Texts
+#     model = Texts
 
-    def get_context_data(self, **kwargs):
-        context = super(TextpageView, self).get_context_data(**kwargs)
-        context.update({
+#     def get_context_data(self, **kwargs):
+#         context = super(TextpageView, self).get_context_data(**kwargs)
+#         context.update({
+#             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
+
+#         })
+#         return context
+def TextpageView(request, pk):
+    text = Texts.objects.get(text_id=pk)
+    if request.user == text.user_id:
+        form = TcomForm2()
+    else:
+        form = TcomForm()
+    if request.method == 'POST':
+        tcomf = TcomForm(request.POST, request.FILES)
+        e_or_a = True
+        if tcomf.data.get("exhibitor_or_all") == None:
+            e_or_a = False
+        TF = True
+        tcomf = Tcom(
+            text_id=text,
+            user_id=request.user,
+            exhibitor_or_all=e_or_a,
+            date=timezone.now(),
+            comments=tcomf.data.get("comments")
+        )
+        MessageF = MessageForm()
+        if request.user != text.user_id:
+            MessageF = Messages(
+                title=request.user.username + 'が' + text.title + 'に対してコメントしました',
+                messages=request.user.username + ':' + tcomf.comments,
+                FromUser=request.user,
+                ToUser=text.user_id,
+                date=tcomf.date
+            )
+            MessageF.save()
+        # tarにTargetテーブルのToUserがrequest.userに対応するものだけを抽出
+        tar = Target.objects.filter(ToUser=request.user)
+        for inner in tar:
+            if inner.ToUser == request.user:
+                TF = False
+        if text.user_id != request.user and TF:
+            target = Target(
+                ToUser=request.user,
+                text_id=text
+            )
+            # ここでtargetを追加
+            target.save()
+        # ここでtcomfを追加
+        tcomf.save()
+        return redirect('textpage:textpage', text.text_id)
+    else:
+        return render(request, 'textpage/textpage.html', {
+            'texts': text,
             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
-
+            'form': form
         })
-        return context
 
 
 def TransActionList(request, pk):
@@ -36,12 +86,34 @@ def TransActionList(request, pk):
     })
 
 
+def UserEvaluate(request, text_pk, user_pk):
+    text = Texts.objects.get(text_id=text_pk)
+    ToUser = Users.objects.get(user_id=user_pk)
+    if request.method == 'POST':
+        Eval = UevalFrom(request.POST, request.FILES)
+        Eval = Uevals(user_id=ToUser, eval=Eval.data.get('eval'))
+        Eval.save()
+        return redirect('textpage:TransAction', text.text_id, ToUser.user_id)
+    form = UevalFrom()
+    return render(request, 'textpage/UserEvaluate.html', {
+        'form': form,
+        'text': text,
+        'ToUser': ToUser
+    })
+
+
 def TransAction(request, text_pk, user_pk):
     text = Texts.objects.get(text_id=text_pk)
     if request.method == 'POST':
         ToUser = Users.objects.get(user_id=user_pk)
-        messageF = Messages(title=text.title, messages=request.user.username + "から教材の出品を受け取りましたよ",
-                            user_id=ToUser, date=timezone.now())
+        messageF = Messages(
+            title=text.title,
+            messages=request.user.username + "から教材の出品を受け取りましたよ",
+            FromUser=text.user_id,
+            ToUser=ToUser,
+            Eval_flag=-1,
+            date=timezone.now()
+        )
         print(messageF)
         messageF.save()
         # メール送信処理
@@ -71,10 +143,11 @@ def TransAction(request, text_pk, user_pk):
         text.clean()
         text.save()
         tcom_list = Tcom.objects.order_by('date').reverse().all()
-        return render(request, 'textpage/textpage.html', {
-            'texts': text,
-            'tcom_list': tcom_list,
-        })
+        return redirect('textpage:textpage', text.text_id)
+        # return render(request, 'textpage/textpage.html', {
+        #     'texts': text,
+        #     'tcom_list': tcom_list,
+        # })
 
     form = MessageForm()
     return render(request, 'textpage/TransAction.html', {
@@ -93,55 +166,6 @@ def TransAction(request, text_pk, user_pk):
 # やっている事2
 # Targetテーブルに新しいToUserを追加
 # ただし、既に同じToUserが存在すれば、追加は省く
-
-
-def addCom(request, pk):
-    if request.method == 'POST':
-        print("ここは通っている1")
-        tcomf = TcomForm(request.POST, request.FILES)
-        print(pk)
-        TF = True
-        text = Texts.objects.get(text_id=pk)
-        tcomf = Tcom(
-            text_id=text,
-            user_id=request.user,
-            date=timezone.now(),
-            comments=tcomf.data.get("comments")
-        )
-        MessageF = MessageForm()
-        if request.user != text.user_id:
-            MessageF = Messages(
-                title=request.user.username + 'が' + text.title + 'に対してコメントしました',
-                messages=request.user.username + ':' + tcomf.comments,
-                user_id=text.user_id,
-                date=tcomf.date
-            )
-            MessageF.save()
-        # tarにTargetテーブルのToUserがrequest.userに対応するものだけを抽出
-        tar = Target.objects.filter(ToUser=request.user)
-        for inner in tar:
-            if inner.ToUser == request.user:
-                TF = False
-        if text.user_id != request.user and TF:
-            target = Target(
-                ToUser=request.user,
-                text_id=text
-            )
-            # ここでtargetを追加
-            target.save()
-        print(tcomf)
-        # ここでtcomfを追加
-        tcomf.save()
-        tcom_list = Tcom.objects.order_by('date').reverse().all()
-        return render(request, 'textpage/textpage.html', {
-            'texts': text,
-            'tcom_list': tcom_list,
-        })
-
-    form = TcomForm()
-    return render(request, 'textpage/add_comments.html', {
-        "form": form
-    })
 
     # def get_initial(self):
     #     print("ここは通っている2")

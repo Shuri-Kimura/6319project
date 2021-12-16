@@ -30,7 +30,7 @@ class Classpage(generic.DetailView, generic.edit.ModelFormMixin):
         context = super(Classpage, self).get_context_data(**kwargs)
         context.update({
             'avg': Cevals.objects.values('class_id').annotate(avg_rikai=models.Avg('rikai'), avg_raku=models.Avg('raku')),
-            'ccom_list': Ccom.objects.order_by('date').reverse().all()[:5],
+            'ccom_list': Ccom.objects.order_by('date').all(),
         })
         return context
 

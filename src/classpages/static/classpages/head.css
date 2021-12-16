@@ -1,0 +1,186 @@
+.RIKATYAN {
+    display: table-cell;
+    text-align: left;
+}
+
+.message {
+    display: table-cell;
+    text-align: right;
+}
+
+.titlebar{
+    display: table;
+    width: 100%; 
+    color:black;
+    font-weight:bold;
+}
+
+
+.mypage{
+    display: table-cell;
+    text-align: left;
+}
+
+.c_search{
+    display: table-cell; 
+    text-align: center;
+}
+
+.t_search{
+    display: table-cell; 
+    text-align: right;
+}
+
+.button{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+.button:active{
+    /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+.button span {
+    display:inline-block;
+    transition: .5s;
+}
+.button:hover span{
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+}
+
+.url{
+    display: table; 
+    width: 100%; 
+    color:black;
+}
+
+.btn-border-bottom {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0;
+    text-decoration: none;
+    color: #79ff67;  
+  }
+  
+  .btn-border-bottom:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 4px;
+    top:100%;
+    left: 0;
+    border-radius: 3px;
+    background:#79ff67;
+    transition: .2s;
+  }
+  
+  .btn-border-bottom:hover:before {
+    top: -webkit-calc(100% - 3px);
+    top: calc(100% - 3px);
+  }
+
+  .box8 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+}
+.box8 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.balloon2-top-right {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 10px;
+    background: #FFF;
+    border: solid 3px #555;
+    box-sizing: border-box;
+    border-radius: 15px;
+  }
+  
+  .balloon2-top-right:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 85%;
+    margin-left: -15px;
+    border: 12px solid transparent;
+    border-bottom: 12px solid #FFF;
+    z-index: 2;
+  }
+  
+  .balloon2-top-right:after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 85%;
+    margin-left: -17px;
+    border: 14px solid transparent;
+    border-bottom: 14px solid #555;
+    z-index: 1;
+  }
+  
+  .balloon2-top-right p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .balloon2-top-left {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 10px;
+    background: #FFF;
+    border: solid 3px #555;
+    box-sizing: border-box;
+    border-radius: 15px;
+  }
+  
+  .balloon2-top-left:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 20%;
+    margin-left: -15px;
+    border: 12px solid transparent;
+    border-bottom: 12px solid #FFF;
+    z-index: 2;
+  }
+  
+  .balloon2-top-left:after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 20%;
+    margin-left: -17px;
+    border: 14px solid transparent;
+    border-bottom: 14px solid #555;
+    z-index: 1;
+  }
+  
+  .balloon2-top-left p {
+    margin: 0;
+    padding: 0;
+  }
