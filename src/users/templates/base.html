@@ -29,8 +29,12 @@
       </div>
     </header>
       <main id="main">
+        {% if user.is_authenticated %}
+        <p>現在ログイン状態です。</p>
+        {% else %}
           {% block content %}
           {% endblock %}
+          {% endif %}
       </main>
     </div>
 </body>
