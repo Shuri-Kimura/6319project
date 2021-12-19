@@ -99,11 +99,16 @@
 <div class="good">
 
 </div>>-->
+<div class="url2">
+  {% if user == texts.user_id %}
+<p class="updata"><a href="{% url 'textpage:update' texts.text_id %}" class = "button"><span>編集する</span></a></p>
+  {% endif %}
+ 
+</div>
 
 
-{% if user == texts.user_id %}
-<a href="{% url 'textpage:update' texts.text_id %}">編集する</a>
-{% endif %}
+
+
 <hr>
 <h2>商品説明欄</h2>
 <h6 style="text-align:left" class="size">{{texts.info}}</h6>
@@ -279,7 +284,7 @@
 {% if texts.sold_flag %}
 <h1>取引完了</h1>
 {% else %}
-<a href="{% url 'textpage:TransActionList' texts.text_id %}">取引相手を決める</a>
+<p class="updata"><a href="{% url 'textpage:TransActionList' texts.text_id %}" class = "button"><span>取引相手を決める</span></a></p>
 {% endif %}
 {% endif %}
 

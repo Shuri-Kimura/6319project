@@ -4,6 +4,13 @@
     color:black;
 }
 
+.url2 {
+    display: table; 
+    width: 100%; 
+    color:black;
+}
+
+
 .red {
     color: red;
 }
@@ -21,6 +28,11 @@
 .t_search {
     display: table-cell; 
     text-align: right;
+}
+
+.updata{
+    display: table-cell; 
+    text-align: center;
 }
 .titlebar {
     display: table;
