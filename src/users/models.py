@@ -49,7 +49,7 @@ class MyUserManager(BaseUserManager):
 
 
 class Users(AbstractBaseUser, PermissionsMixin):
-    user_id = models.IntegerField(primary_key=True)
+    user_id = models.AutoField(primary_key=True)
     username = models.CharField(verbose_name='username', max_length=10, unique=True, validators=[
                                 MinLengthValidator(5,), RegexValidator(r'^[a-zA-Z0-9]*$',)])
     student_number = models.CharField(verbose_name='学籍番号', unique=True, max_length=7, validators=[
