@@ -1,18 +1,25 @@
 <!DOCTYPE html>
     <body>
+        <center>
         <h1>どの出品を削除しますか？</h1>
         {% if texts_list %}
             <ul>
             {% for text in texts_list %}
-                <li><a href="{% url 'mypage:delete' text.text_id %}" width="1200" height="814" class="aligncenter size-full wp-image-7509">
+                <p><a href="{% url 'mypage:delete' text.text_id %}" width="1200" height="814" class="aligncenter size-full wp-image-7509">
                     {% if text.image1 %}
                         <img src="{{text.image1.url}}" width = 100px>
+                        {{text.title}}
                     {% endif %}
-                </a></li>
+
+                </a>
+                <br>
+                </p>
+                
             {% endfor %}
             </ul>
         {% else %}
             <p>No users exist.</p>
         {% endif %}
+        </center>
     </body>
 </html>

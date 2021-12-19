@@ -32,6 +32,13 @@
 .size{
   width: 70%;
 }
+
+.formsize{
+  width: 75%;
+  height: 60px;
+
+
+}
 </style>
 
 
@@ -270,11 +277,12 @@
 
 
 </div>
+
 <p>
-  <form action='' method="POST" enctype="multipart/form-data">
+  <form action='' method="POST" enctype="multipart/form-data" >
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" class="btn btn-primary"></input>
+    <input type="submit"  class="btn btn-primary"></input>
 </form>
 </p>
 
