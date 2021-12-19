@@ -126,7 +126,7 @@ class Tcom(models.Model):
 
 
 class Ccom(models.Model):
-    ccom_id = models.IntegerField(primary_key=True)
+    ccom_id = models.AutoField(primary_key=True)
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE)  # 外部キー
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)  # 外部キー
     date = models.DateTimeField(default=timezone.now)  # レコード登録時の日本時間が保存
@@ -134,7 +134,7 @@ class Ccom(models.Model):
 
 
 class Cevals(models.Model):
-    ceval_id = models.IntegerField(primary_key=True)
+    ceval_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)  # 外部キー
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE)  # 外部キー
     rikai = models.IntegerField(
@@ -144,7 +144,7 @@ class Cevals(models.Model):
 
 
 class Uevals(models.Model):
-    ueval_id = models.IntegerField(primary_key=True)
+    ueval_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)  # 評価先
     eval = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)])
