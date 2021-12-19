@@ -2,20 +2,68 @@
 <!DOCTYPE html>
     <head>
         <link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+        <link href="{% static 'classpages/forms.css' %}" rel="stylesheet">
+        <link href="{% static 'classpages/forms2.css' %}" rel="stylesheet">
         <title>{{users.username}}の編集ページ</title>
-    </nead>
+    </head>
     <body>
+        <div class="kakomi-maru2">
         {% if user.user_id == users.user_id %}
         <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" class="btn btn-primary button" value="編集完了">
+        <div class="stuff">
+            <div class="textBox">
+                <input 
+                    class="text"
+                    type="text" 
+                    name="username" 
+                    maxlength="10"
+                    required 
+                    id="id_username" 
+                    placeholder="ユーザーネーム"
+                    onkeyup="this.setAttribute('value', this.value);"
+                    value="{{user.username}}"/>
+                <label class="label" for="id_username">ユーザーネーム</label>
+                <label class="error"></label>
+            </div>
+            </div>
+            <hr>
+            <div class="stuff">
+            <div class="textBox">
+                <input 
+                    class="text" 
+                    type="email" 
+                    name="email" 
+                    maxlength="50" 
+                    required 
+                    id="id_email"
+                    placeholder="Email"
+                    onkeyup="this.setAttribute('value', this.value);"
+                    value="{{user.email}}"/>
+                <label class="label" for="id_email">Email:</label> 
+                <label class="error"></label>
+            </div>
+            </div>
+            <div>
+            <hr>
+            <label class="" for="id_user_comment">自己紹介</label><br>
+            <textarea name="user_comment" cols="40" rows="10" required id="id_user_comment" placeholder="{{user.user_comment}}"></textarea>
+            </div>
+            <hr>
+            <p>{{form.image.label}}<br>
+                {{form.image}}</p>
+            {% for error in form.title.errors %}
+                {{error}}
+            {% endfor %}<br>
+        <div class="area">    
+        <input type="submit" class="btn btn-primary button" value="編集完了">
             <p></p>
             <a href="{% url 'mypage:mypage' users.user_id %}" class="button1">戻る</a>
+        </div>
         </form>
         {% endif %}
         {% if user.user_id != users.user_id %}
             このページは閲覧できません
         {% endif %}
-
+        </div>
     </body>
 </html>
