@@ -151,13 +151,13 @@ class Uevals(models.Model):
 
 
 class Tfavos(models.Model):
-    tfavo_id = models.IntegerField(primary_key=True)
+    tfavo_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     text_id = models.ForeignKey(Texts, on_delete=models.CASCADE)  # 外部キー
 
 
 class Cfavos(models.Model):
-    cfavo_id = models.IntegerField(primary_key=True)
+    cfavo_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE)  # 外部キー
 
