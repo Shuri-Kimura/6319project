@@ -10,6 +10,7 @@ def index(request):
     q_class = request.POST.get('q_class')
     q_text = request.POST.get('q_text')
     if q_class:
+        liked_list = []
         classes_ = Classes.objects.all()
         queries = q_class.split()
         for query in queries: #今はキーワードで絞りまくってる。
@@ -22,10 +23,12 @@ def index(request):
         classes = classes_.annotate(Avg('cevals__rikai')).annotate(Avg('cevals__raku'))
         #print(classes)
         for clas in classes:
+            liked = clas.cfavos_set.filter(user_id=request.user)
+            if liked.exists():
+                liked_list.append(clas.class_id)
             if not clas.cevals__rikai__avg==None:
                 clas.cevals__rikai__avg = round(clas.cevals__rikai__avg)
                 clas.cevals__raku__avg = round(clas.cevals__raku__avg)
-        liked_list = []
     elif q_text:
         texts = Texts.objects.all()
         queries = q_text.split()
@@ -44,12 +47,15 @@ def index(request):
         #print(liked_list)
     else:
         classes = Classes.objects.all().annotate(Avg('cevals__rikai')).annotate(Avg('cevals__raku'))
+        liked_list = []
         for clas in classes:
+            liked = clas.cfavos_set.filter(user_id=request.user)
+            if liked.exists():
+                liked_list.append(clas.class_id)
             if not clas.cevals__rikai__avg==None:
                 clas.cevals__rikai__avg = round(clas.cevals__rikai__avg)
                 clas.cevals__raku__avg = round(clas.cevals__raku__avg)
         texts = {}
-        liked_list = []
     return render(request, "search/index.html", {
         'classes':classes,
         'texts':texts,
@@ -85,18 +91,18 @@ def ClikeView(request):
         #print(print(request.is_ajax()))
         class_ = get_object_or_404(Classes, pk=request.POST.get('class_id'))
         user = request.user
-        liked = False
+        cliked = False
         #print(text)
         cfavos = Cfavos.objects.filter(class_id=class_, user_id=user)
         if cfavos.exists():
             cfavos.delete()
         else:
             cfavos.create(class_id=class_, user_id=user)
-            liked = True
+            cliked = True
     
         context={
             'class_id': class_.class_id,
-            'liked': liked,
+            'cliked': cliked,
             'count': class_.cfavos_set.count(),
         }
 

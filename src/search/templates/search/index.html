@@ -54,7 +54,7 @@
                 dataType: 'json',
                 success: function(response){
                     selector = document.getElementsByName(response.class_id);
-                    if(response.liked){
+                    if(response.cliked){
                         $(selector).html("<i class='fas fa-lg fa-heart' style='color:#ff3333;'></i>");
                     }
                     else {
