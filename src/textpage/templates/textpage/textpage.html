@@ -17,7 +17,12 @@
  <link href="{% static 'classpages/head.css' %}" rel="stylesheet">
 
  
- 
+ <style>
+  .circle {
+    border-radius: 50%;
+  }
+</style>
+
 </head>
 <body>
 {% include 'classpages/head.html' %}
@@ -164,7 +169,7 @@
 <h2>出品者</h2>
 
 <figure class="pic3">
-<img src="{{texts.user_id.image.url}}" style="width:100px;">
+<img src="{{texts.user_id.image.url}}" style="width:100px;" class="circle" />
 </figure>
 {{ texts.user_id.username }}
 
