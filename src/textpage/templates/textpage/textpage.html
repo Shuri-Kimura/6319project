@@ -95,11 +95,15 @@
 <div class="good">
 
 </div>>-->
+
+<hr>
 {% if user == texts.user_id %}
 <a href="{% url 'textpage:update' texts.text_id %}">編集する</a>
 {% endif %}
 <h1>商品説明欄</h1>
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{texts.info}}</div>
+
+<hr>
 
 <h1>商品の情報</h1>
 <table>
@@ -173,14 +177,19 @@
 </table>
 
 
-
+<hr>
 
 <h2>出品者</h2>
 
 
 <p class="ichigyou">
-<img src="{{texts.user_id.image.url}}"  class="circle" />
-<span>{{ texts.user_id.username }}</span>
+  <h2>
+    {% if texts.user_id.image %}
+    <img src="{{texts.user_id.image.url}}"  class="circle" />
+    {% endif %}
+    <span>{{ texts.user_id.username }}</span>
+  </h2>
+ 
 </p>
 
 
@@ -189,7 +198,7 @@
  
   
   
-  
+  <hr>
   
 <h2>コメント</h2>
 <div class="box8">
@@ -254,7 +263,7 @@
   <form action='' method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" class="btn btn-primary">保存</input>
+    <input type="submit" class="btn btn-primary"></input>
 </form>
 </p>
 
