@@ -1,10 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
+<head>
+    <link href="{% static 'css/delete.css' %}" rel="stylesheet">
+    </head>
 <body>
-    <h1>DeleteView削除確認画面</h1>
+<center>
+    <h1>削除確認画面</h1>
     <form method="post">
         {% csrf_token %}
-        <p>{{ texts.title }}を削除しますか？</p>
-        <input type="submit" value="削除する">
+        {% if texts.image1 %}
+        <img src="{{texts.image1.url}}" style="width:100px;"/>
+        {% endif %}
+        <p><h3><font color="red">{{ texts.title }}を削除しますか？</font></h3></p>
+        <label>
+
+        <input type="submit" name="submit">削除
+
+        </label>
     </form>
+</center>
 </body>
 </html>
