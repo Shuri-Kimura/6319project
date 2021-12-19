@@ -1,7 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
-   {% if user == text.text_id %}
-   <h1>{{ text.title }}</h1>
+   {% if user == text.user_id %}
+   <h1>
+      {{ text.title }}
+   </h1>
    <form action='' method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <p><b>商品の説明</b><br>{{ form.info }}</p>
