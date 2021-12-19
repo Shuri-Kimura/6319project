@@ -30,6 +30,16 @@
         <div class="grid-parent">
             <div class="c1">
                 <h3>出品数</h3>
+                <div style="text-align: center;">
+                {% with deta=0 %}
+                {% for text in texts_list %}
+                {% if text.user_id.user_id == users.user_id %}
+                {{data|add:"1"}}
+                {%endif%}
+                {%endfor%}
+                {{data}}
+                {% endwith %}
+                </div>
             </div>
             <div class="c2">
                 <h3>評価平均</h3>

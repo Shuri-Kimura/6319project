@@ -115,17 +115,17 @@
         {%endif%}
         {%endfor%}
         </div>
-        </div>
         <p></p>
+        <hr>
         <div class="url">
             <form action='' method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.comments.label_tag }}<br>
-                <textarea name="comments" cols="40" rows="1" required id="id_comments">
+                <textarea name="comments" cols="60" rows="1" required id="id_comments">
                 </textarea>
                 <input type="submit" class="button"></input>
             </form>
             
+        </div>
         </div>
 
         <p></p>
