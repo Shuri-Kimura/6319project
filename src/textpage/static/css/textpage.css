@@ -1,10 +1,10 @@
-table {
-    background-color: #cdefff;  /* 背景色指定 */
+/*table {
+    background-color: #cdefff; 
 }
  
 th {
-    background-color: #00e2cf;  /* 背景色指定 */
-}
+    background-color: #00e2cf;  
+}*/
 .url {
     display: table; 
     width: 100%; 

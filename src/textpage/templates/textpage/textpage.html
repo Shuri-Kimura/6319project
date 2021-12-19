@@ -100,12 +100,12 @@
 {% if user == texts.user_id %}
 <a href="{% url 'textpage:update' texts.text_id %}">編集する</a>
 {% endif %}
-<h1>商品説明欄</h1>
+<h2>商品説明欄</h2>
 <div style="border: #141406 solid 1px; font-size: 100%; padding: 15px;">{{texts.info}}</div>
 
 <hr>
 
-<h1>商品の情報</h1>
+<h2>商品の情報</h2>
 <table>
   <tbody>
     <tr>
@@ -183,12 +183,12 @@
 
 
 <p class="ichigyou">
-  <h2>
+  <h3>
     {% if texts.user_id.image %}
     <img src="{{texts.user_id.image.url}}"  class="circle" />
     {% endif %}
     <span>{{ texts.user_id.username }}</span>
-  </h2>
+  </h3>
  
 </p>
 
