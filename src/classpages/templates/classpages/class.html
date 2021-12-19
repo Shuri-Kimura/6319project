@@ -120,9 +120,12 @@
         <div class="url">
             <form action='' method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.comments.label_tag }}<br>
+                <textarea name="comments" cols="40" rows="1" required id="id_comments">
+                </textarea>
                 <input type="submit" class="button"></input>
             </form>
+            
         </div>
 
         <p></p>
