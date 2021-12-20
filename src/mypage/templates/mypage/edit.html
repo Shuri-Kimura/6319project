@@ -49,7 +49,10 @@
             <textarea name="user_comment" cols="40" rows="10" required id="id_user_comment" placeholder="{{user.user_comment}}"></textarea>
             </div>
             <hr>
-            <p>{{form.image.label}}<br>
+            <p>{{form.image.label}}
+                {% if user.image %}
+                <img src="{{user.image.url}}" width=100px><br>
+                {% endif %}
                 {{form.image}}</p>
             {% for error in form.title.errors %}
                 {{error}}
