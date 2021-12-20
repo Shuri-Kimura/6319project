@@ -66,3 +66,15 @@ hr {
     width: 100%;
 }
 
+ul.horizontal-list {
+    overflow-x: auto;
+	white-space: nowrap;
+}
+
+.box {
+    display: inline-block;
+	width: 50%;
+	height: auto;
+	margin: 16px;
+}
+
