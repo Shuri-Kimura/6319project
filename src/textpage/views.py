@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect, request
+from django.http import HttpResponse, JsonResponse
 from django.urls.base import reverse_lazy, reverse
 from django.views.generic.list import ListView
 from django.views import generic
@@ -179,6 +180,37 @@ def TransAction(request, text_pk, user_pk):
         'form': form,
         'text': text
     })
+
+
+def TlikeView(request):
+    if request.method =="POST":
+        #print(print(request.is_ajax()))
+        text = get_object_or_404(Texts, pk=request.POST.get('text_id'))
+        user = request.user
+        liked = False
+        #print(text)
+        tfavos = Tfavos.objects.filter(text_id=text, user_id=user)
+        if tfavos.exists():
+            tfavos.delete()
+        else:
+            tfavos.create(text_id=text, user_id=user)
+            liked = True
+    
+        context={
+            'text_id': text.text_id,
+            'liked': liked,
+            'count': text.tfavos_set.count(),
+        }
+
+    if request.is_ajax():
+        return JsonResponse(context)
+
+
+
+
+
+
+
 # class AddCom(generic.CreateView):
 #     fields = '__all__'
 #     model = Tcom
