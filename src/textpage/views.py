@@ -11,22 +11,11 @@ from django.db.models import Q
 from django.shortcuts import render
 from users.models import Target, Uevals, Users
 from .forms import MessageForm, TcomForm, TcomForm2, TextForm, UevalFrom
-from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages
+from users.models import Tfavos, Cfavos, Classes, Texts, Tcom, Messages,Uevals
 from django.core.mail import send_mail, EmailMessage
 
 
-# class TextpageView(generic.DetailView):
-#     template_name = 'textpage/textpage.html'
 
-#     model = Texts
-
-#     def get_context_data(self, **kwargs):
-#         context = super(TextpageView, self).get_context_data(**kwargs)
-#         context.update({
-#             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
-
-#         })
-#         return context
 def TextpageView(request, pk):
     text = Texts.objects.get(text_id=pk)
     if request.user == text.user_id:
@@ -75,6 +64,7 @@ def TextpageView(request, pk):
         return render(request, 'textpage/textpage.html', {
             'texts': text,
             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
+            'ueval_avg': Uevals.objects.filter(user_id=request.user).aggregate(avg=models.Avg('eval')),
             'form': form
         })
 
