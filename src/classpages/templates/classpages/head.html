@@ -1,7 +1,8 @@
 
 <div class="titlebar">
-    <p class="RIKATYAN">RIKATYAN</p>        
-    <p class="message"><a href={% url 'message:message' user.user_id %} class="btn-border-bottom">メッセージ</a></p>
+    <div class="logout"><a href="{% url 'logout'%}" class="btn-right-radius">ログアウト</a></div>
+    <div class="RIKATYAN">RIKATYAN</div>        
+    <div class="message"><a href={% url 'message:message' user.user_id %} class="btn-border-bottom">メッセージ</a></div>
 </div>
 <p>
 </p>

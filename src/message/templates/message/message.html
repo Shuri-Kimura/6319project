@@ -2,6 +2,7 @@
 <!DOCTYPE html>
     <head>
         <link  href="{% static 'message/style.css' %}" rel="stylesheet" >
+        <link href="{% static 'classpages/forms.css' %}" rel="stylesheet">
     </head>
     <body>
         {% if user.user_id == users.user_id %}
@@ -20,6 +21,8 @@
         {{user.user_id}}{{users.user_id}}
             このページは閲覧できません
         {% endif %}
-        <a href="{{request.META.HTTP_REFERER}}">前のページに戻る</a>
+        <div class="area">
+        <a href="{{request.META.HTTP_REFERER}}" class="btn-flat-border">前のページに戻る</a>
+        </div>
     </body>
 </html>

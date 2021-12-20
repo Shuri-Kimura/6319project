@@ -1,6 +1,12 @@
-.RIKATYAN {
+.logout {
     display: table-cell;
     text-align: left;
+}
+
+.RIKATYAN {
+    display: table-cell;
+    text-align: center;
+    font-size: 120%;
 }
 
 .message {
@@ -183,4 +189,20 @@
   .balloon2-top-left p {
     margin: 0;
     padding: 0;
+  }
+
+  .btn-right-radius {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    border-radius: 0 15px 15px 0;
+    transition: .4s;
+  }
+  
+  .btn-right-radius:hover {
+    background: #636363;
   }

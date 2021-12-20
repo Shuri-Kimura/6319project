@@ -31,23 +31,14 @@
             <div class="c1">
                 <h3>出品数</h3>
                 <div style="text-align: center;">
-                {% with deta=0 %}
-                {% for text in texts_list %}
-                {% if text.user_id.user_id == users.user_id %}
-                {{data|add:"1"}}
-                {%endif%}
-                {%endfor%}
-                {{data}}
-                {% endwith %}
+                {{quantity}}
                 </div>
             </div>
             <div class="c2">
                 <h3>評価平均</h3>
-                {% if ueval_avg %}
+                {% if ueval_avg.avg != None %}
                     <div style="text-align: left;">
-                        {% for avg in ueval_avg %}
-                            {{ avg.avg }}
-                        {% endfor %}
+                        {{ ueval_avg.avg }}
                     </div>
                     {% else %}
                         <br>あなたはまだ他の人に評価されていません
@@ -77,14 +68,12 @@
             <h2>出品教材</h2>
             <ul class="horizontal-list">
             {% for text in texts_list %}
-                {% if text.user_id.user_id == users.user_id %}
                 <li class="item">
                     <h4>{{text.title}}</h4>
                     {% if text.image1 %}
                         <a href="{% url 'textpage:textpage' text.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >
                         <img src="{{text.image1.url}}" width = 100px></a>
                     {% endif %}
-                {% endif %}
                 </li>
             {% endfor %}
             </ul>

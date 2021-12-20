@@ -26,8 +26,9 @@ class MypageView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(MypageView, self).get_context_data(**kwargs)
         context.update({
-            'texts_list': Texts.objects.all(),
-            'ueval_avg': Uevals.objects.values('user_id').annotate(avg=models.Avg('eval'))
+            'texts_list': Texts.objects.filter(user_id=self.request.user),
+            'ueval_avg': Uevals.objects.filter(user_id=self.request.user).aggregate(avg=models.Avg('eval')),
+            'quantity': Texts.objects.filter(user_id=self.request.user).count(),
         })
         return context
 

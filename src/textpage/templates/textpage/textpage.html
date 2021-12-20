@@ -275,18 +275,15 @@
 {% endfor %}
 </div>
 
-
-</div>
-
 <p>
   <form action='' method="POST" enctype="multipart/form-data" >
     {% csrf_token %}
-    {{ form.as_p }}
+    <textarea name="comments" cols="60" rows="1" required id="id_comments">
+    </textarea>
     <input type="submit"  class="btn btn-primary"></input>
-</form>
+  </form>
 </p>
-
-
+<hr>
 
 {% if texts.user_id.username == user.username%}
 {% if texts.sold_flag %}

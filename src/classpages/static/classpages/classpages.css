@@ -1,6 +1,11 @@
+.logout {
+  display: table-cell;
+  text-align: left;
+}
+
 .RIKATYAN {
     display: table-cell;
-    text-align: left;
+    text-align: center;
 }
 
 .message {
