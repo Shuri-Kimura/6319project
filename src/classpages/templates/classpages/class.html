@@ -6,6 +6,12 @@
         <title>{{classes.title}}</title>
         <link href="{% static 'classpages/classpages.css' %}" rel="stylesheet">
         <link href="{% static 'classpages/head.css' %}" rel="stylesheet">
+        <script src="{% static 'search/jquery.raty.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
         {% include 'classpages/head.html'%}   
@@ -81,10 +87,17 @@
         </table>
         <p></p>
 
-        <div style="text-align: center;">
-        <p><a href="{% url 'classpages:ceval' classes.class_id %}" class="button"><span>評価する</span></a></p>
+        <div class="grid-parent">
+        <div class="child1">
+            <br>
+        {% include 'classpages/cfavo.html' %}
         </div>
-
+        <div class="child2">
+        <center>
+        <p><a href="{% url 'classpages:ceval' classes.class_id %}" class="button"><span>評価する</span></a></p>
+        </center>
+        </div>
+        </div>
         <div class="box8">
         <h3>口コミ</h3>
         <div>
@@ -119,11 +132,11 @@
         <p></p>
         <hr>
         <div class="url">
-            <form action='' method="POST" enctype="multipart/form-data">
+            <form action='' method="POST" name="form_comment" enctype="multipart/form-data">
                 {% csrf_token %}
                 <textarea name="comments" cols="60" rows="1" required id="id_comments">
                 </textarea>
-                <input type="submit" class="button"></input>
+                <input type="submit" class="button" name="button_comment" value="送信"></input>
             </form>
             
         </div>

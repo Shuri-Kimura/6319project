@@ -22,7 +22,9 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>No users exist.</p>
+            <br>
+            <p>削除する出品がありません。</p>
+            <br><br>
         {% endif %}
         <div>
         <a href="{{request.META.HTTP_REFERER}}" class="btn-flat-border">前のページに戻る</a>

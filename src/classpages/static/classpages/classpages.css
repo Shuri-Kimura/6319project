@@ -290,3 +290,14 @@ table td.content{
     margin: 0;
     padding: 0;
   }
+
+.grid-parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+}
+
+.child1, .child2 {
+    background-color: white;
+}

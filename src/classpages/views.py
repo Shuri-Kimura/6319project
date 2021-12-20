@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .forms import CcomForm, CevalForm, CreateForm
-from users.models import Classes, Users, Cevals, Ccom
+from users.models import Classes, Users, Cevals, Ccom, Cfavos
 from django.urls import reverse
 
 
@@ -54,16 +54,27 @@ def index(request):
 def Classpage(request, pk):
     cl = Classes.objects.get(class_id=pk)
     form = CcomForm()
-    if request.method == 'POST':
+    favos = Cfavos.objects.filter(class_id=cl, user_id=request.user)
+    if 'button_comment' in request.POST:
+    #if request.method == 'POST':
         ccomf = CcomForm(request.POST, request.FILES)
         ccomf = Ccom(class_id=cl, user_id=request.user,
                      date=timezone.now(), comments=ccomf.data.get("comments"))
         ccomf.save()
         return HttpResponseRedirect(reverse('classpages:class', args=(cl.class_id,)))
+    elif 'button_favos' in request.POST:
+        if favos.exists():
+            favos.delete()
+        else:
+            favos.create(class_id=cl, user_id=request.user)
+        return HttpResponseRedirect(reverse('classpages:class', args=(cl.class_id,)))
     else:
+        #if liked.exists():
+            #liked_list.append(clas.class_id)
         return render(request, 'classpages/class.html', {
             'classes': cl,
             'form': form,
+            'cfavo': favos,
             'avg': Cevals.objects.values('class_id').annotate(avg_rikai=models.Avg('rikai'), avg_raku=models.Avg('raku')),
             'ccom_list': Ccom.objects.order_by('date').all(),
         })
@@ -107,7 +118,8 @@ def addceval(request, pk):
     })
 
 
-# def addccom(request, pk):
+
+#def addccom(request, pk):
     if request.method == 'POST':
         print("ここは通っている1")
         ccomf = CcomForm(request.POST, request.FILES)
