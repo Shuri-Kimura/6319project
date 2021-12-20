@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import fields
 from django.utils import timezone
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import generic
 from .forms import CcomForm, CevalForm, CreateForm
 from users.models import Classes, Users, Cevals, Ccom, Cfavos
@@ -52,6 +52,8 @@ def index(request):
 
 
 def Classpage(request, pk):
+    if request.user.is_anonymous:#loginしていない場合勝手にloginページ
+        return redirect('users:index')
     cl = Classes.objects.get(class_id=pk)
     form = CcomForm()
     favos = Cfavos.objects.filter(class_id=cl, user_id=request.user)
