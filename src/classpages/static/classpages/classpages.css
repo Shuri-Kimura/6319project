@@ -1,6 +1,11 @@
+.logout {
+  display: table-cell;
+  text-align: left;
+}
+
 .RIKATYAN {
     display: table-cell;
-    text-align: left;
+    text-align: center;
 }
 
 .message {
@@ -263,7 +268,7 @@ table td.content{
     content: "";
     position: absolute;
     top: -24px;
-    left: 15%;
+    left: 20%;
     margin-left: -15px;
     border: 12px solid transparent;
     border-bottom: 12px solid #FFF;
@@ -274,7 +279,7 @@ table td.content{
     content: "";
     position: absolute;
     top: -30px;
-    left: 15%;
+    left: 20%;
     margin-left: -17px;
     border: 14px solid transparent;
     border-bottom: 14px solid #555;

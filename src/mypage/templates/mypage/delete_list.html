@@ -1,4 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
+<head>
+    <link href="{% static 'classpages/forms.css' %}" rel="stylesheet">
+</head>
     <body>
         <center>
         <h1>どの出品を削除しますか？</h1>
@@ -7,7 +11,7 @@
             {% for text in texts_list %}
                 <p><a href="{% url 'mypage:delete' text.text_id %}" width="1200" height="814" class="aligncenter size-full wp-image-7509">
                     {% if text.image1 %}
-                        <img src="{{text.image1.url}}" width = 100px>
+                        <img src="{{text.image1.url}}" width = 100px><br>
                         {{text.title}}
                     {% endif %}
 
@@ -20,6 +24,10 @@
         {% else %}
             <p>No users exist.</p>
         {% endif %}
+        <div>
+        <a href="{{request.META.HTTP_REFERER}}" class="btn-flat-border">前のページに戻る</a>
+        <a href={% url 'mypage:mypage' user.user_id %} class="btn-flat-border">マイページに戻る</a>
+        </div>
         </center>
     </body>
 </html>

@@ -4,7 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{{classes.title}}</title>
-        <link href="{% static 'classpages/classpages.css' %}" rel="stylesheet">               
+        <link href="{% static 'classpages/classpages.css' %}" rel="stylesheet">
+        <link href="{% static 'classpages/head.css' %}" rel="stylesheet">
     </head>
     <body>
         {% include 'classpages/head.html'%}   
@@ -115,14 +116,17 @@
         {%endif%}
         {%endfor%}
         </div>
-        </div>
         <p></p>
+        <hr>
         <div class="url">
             <form action='' method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <textarea name="comments" cols="60" rows="1" required id="id_comments">
+                </textarea>
                 <input type="submit" class="button"></input>
             </form>
+            
+        </div>
         </div>
 
         <p></p>

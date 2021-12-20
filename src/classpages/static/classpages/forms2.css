@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;  
+}
+.stuff {
+  width: 25vw;
+}
+.textBox {
+  position: relative;
+  width: 200%;
+  padding-top: 10px;
+  height: 45px;
+  display: inline-flex;
+  margin-bottom: 3vh;
+}
+.textBox .text {
+  font-weight: 500;
+  width: calc(100% - 2vw);
+  height: 27px;
+  padding-left: 0.5vw;
+  background-color: transparent;
+  color: rgb(61, 158, 238);
+  position: absolute;
+  bottom: 0px;
+  outline: none;
+  border-style: solid;
+  border-color: rgb(61, 158, 238);
+  border-width: 0px 0px 2px 0px;
+  font-size: 20px;
+  -webkit-transition: border-color 0.45s linear;
+  transition: border-color 0.45s linear;
+}
+
+.textBox > input.text:focus {
+  border-color: #B2FF59;
+}
+
+.textBox .label {
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+  color: rgb(61, 158, 238);
+  position: absolute;
+  padding-left: 0.5vw;
+  bottom: 3px;
+  font-size: 20px;
+  font-weight: 300;
+  -webkit-transition-property: opacity bottom font-size;
+  transition-property: opacity bottom font-size;
+  -webkit-transition-duration: 0.45s;
+  transition-duration: 0.45s;
+  -webkit-transition-timing-function: cubic-bezier(.68,-0.55,.27,1.55);
+  transition-timing-function: cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.textBox .error {
+  position: absolute;
+  margin-top: 48px;
+  width: 100%;
+  color: #e74c3c;
+  text-align: center;
+}
+
+.textBox > input.text:focus ~ .label, .textBox > input.text:not([value=""]) ~ .label {
+  opacity: 1;
+  z-index: 1;
+  bottom: 55%;
+  font-size: 12px;
+}
+
+.textBox > input.text:focus ~ .label {
+  color: #B2FF59;
+}
+
+.textBox ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #2B2B2B;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: 'Roboto', sans-serif;
+}
+.textBox ::-moz-placeholder { /* Firefox 19+ */
+  color: #2B2B2B;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: 'Roboto', sans-serif;
+}
+.textBox :-ms-input-placeholder { /* IE 10+ */
+  color: #2B2B2B;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: 'Roboto', sans-serif;
+}
+.textBox :-moz-placeholder { /* Firefox 18- */
+  color: #2B2B2B;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: 'Roboto', sans-serif;
+}
+
+hr {
+    height: 1px;
+    background-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#ccc), to(transparent));
+    background-image: linear-gradient(to right, transparent, #ccc, transparent);
+}
+
+.area{
+    text-align: center;
+}
+
+.kakomi-maru2 {
+    margin: 2em auto;
+    padding: 1em;
+    width: 90%;
+    border: 2px solid #7c7b79; /*線の太さ・色*/
+    background-color: #fff; /*背景色*/
+    box-shadow: -2px 5px 5px #e8d3c7; /*影*/
+    border-radius: 20px; /*角の丸み*/
+   }
+  
+.gazou {
+    position: relative;
+    margin: 8px 0 0 -14px;
+}
+.gazou::before {
+    content: “添付ファイル：”;
+    position: absolute;
+    background: #fff;
+    width: 110px;
+    height: 26px;
+    line-height: 1.8;
+    text-align: right;
+}

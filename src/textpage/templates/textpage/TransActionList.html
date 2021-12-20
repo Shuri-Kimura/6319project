@@ -1,12 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
+<head>
+    <link href="{% static 'classpages/forms.css' %}" rel="stylesheet">
+</head>
+    <div class="box4">
     <h1>取引相手を決める</h1>
     <p>ここではあなたの出品した{{ text.title }}の取引相手を決めることが出来ます。教科書ページでコメントしている人のみが取引の対象となります。</p>
+    </div>
     {% if target_list %}
         {% for target in target_list %}
-            <a href="{% url 'textpage:Evaluate' text_pk=text.text_id user_pk=target.ToUser.user_id %}">{{ target.ToUser.username }}</a>
+            <a href="{% url 'textpage:Evaluate' text_pk=text.text_id user_pk=target.ToUser.user_id %}" class="btn-flat-border">{{ target.ToUser.username }}</a>
         {% endfor %}
     {% else %}
         まだ誰もコメントしていません。
     {% endif %}
+    <br><br>
+    <div class="area">
+    <a href="{{request.META.HTTP_REFERER}}" class="btn-flat-border">戻る</a>
+    </div>
 </html>

@@ -9,47 +9,80 @@
     <body>
         {% include 'classpages/head.html' %}
         <div class="top">
-            <h1>{{users.username}}のマイページ
-                    {% if ueval_avg %}
-                        {% for avg in ueval_avg %}
-                            {{ avg.avg }}
-                        {% endfor %}
-                    {% else %}
-                        あなたはまだ他の人に評価されていません
-                    {% endif %}
-                </p>
+            <h1>{{users.username}}のマイページ</h1>
         </div>
-        <div>
-            ここが写真です。
+        <div class="grid-parent">
+            <div class="child1">
             {% if users.image %}
             <img src="{{users.image.url}}" width = 100px>
+            {% else %}
+            no image
             {% endif %}
+            </div>
+            <div class="child2">
+                <h2>{{user.username}}</h2>
+                <p>ここが自己紹介です。</p>
+            <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="grid-parent">
+            <div class="c1">
+                <h3>出品数</h3>
+                <div style="text-align: center;">
+                {{quantity}}
+                </div>
+            </div>
+            <div class="c2">
+                <h3>評価平均</h3>
+                {% if ueval_avg.avg != None %}
+                    <div style="text-align: left;">
+                        {{ ueval_avg.avg }}
+                    </div>
+                    {% else %}
+                        <br>あなたはまだ他の人に評価されていません
+                    {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="four">
+            <div class="child1">
             {% if users.user_id == user.user_id %}
             <a href="edit/" class="button1">編集</a>
             {% endif %}
-            ここがいいね一覧です。
+            </div>
+            <div class="child2">
             <a href="{% url 'like:like' user.user_id %}" class="button1">いいね一覧</a>
+            </div>
+            <div class="child3">
             {% if users.user_id == user.user_id %}
-            ここが出品です。
             <a href="{% url 'newcommodity:index' %}" class="button1">出品する</a>
             {% endif %}
-            ここがお気に入り登録です。
+            </div>
+            <div class="child4">
             <a href="{% url 'like:likely' user.user_id %}" class="button1">お気に入り登録</a>
-            <p>ここが自己紹介です。</p>
-            <div style="border: #808000 solid 1px; font-size: 100%; padding: 15px;">{{users.user_comment}}</div>
-            <p>出品教材だよ</p>
+            </div>
+        </div>
+        <hr>
+            <h2>出品教材</h2>
+            <ul class="horizontal-list">
             {% for text in texts_list %}
-                {% if text.user_id.user_id == users.user_id %}
-                    {{text.title}}
+                <li class="item">
+                    <h4>{{text.title}}</h4>
                     {% if text.image1 %}
                         <a href="{% url 'textpage:textpage' text.text_id%}"  alt="実装例" width="1200" height="814" class="aligncenter size-full wp-image-7509" >
                         <img src="{{text.image1.url}}" width = 100px></a>
                     {% endif %}
-                {% endif %}
+                </li>
             {% endfor %}
+            </ul>
+            <hr>
+            <div style="text-align: center;">
             {% if user.user_id == users.user_id %}
                 <a href="{% url 'mypage:delete_list' users.user_id %}" class="button1">出品取り消し</a>
             {% endif %}
+            </div>
         </div>
     </body>
 
