@@ -64,28 +64,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <center>
-    <div class = "image-horizontal-scroll">
-     　
-      <div class="box">
+    <ul class = "horizontal-list">
+    
+     <div class="box">
        {% if texts.image1 %}
-      <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
-      <img src="{{texts.image1.url}}" style="width:100px;"/>
-      {%endif%}
-    </div>
-    <div class="box">
-      {% if texts.image2 %}
-      <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
-      <img src="{{texts.image2.url}}" style="width:100px;"/>
-      {%endif%}
-    </div>
-    <div class="box">
-      {% if texts.image3 %}
-      <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
-      <img src="{{texts.image3.url}}" style="width:100px;"/>
-      {%endif%}
-    </div>
-       
+       <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+       <img src="{{texts.image1.url}}" style="width:100px;"/>
+       {%endif%}
      </div>
+     <div class="box">
+       {% if texts.image2 %}
+       <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+       <img src="{{texts.image2.url}}" style="width:100px;"/>
+       {%endif%}
+     </div>
+     <div class="box">
+       {% if texts.image3 %}
+       <!-- <button type="button" onclick="location.href='http://127.0.0.1:8000/mypage/'"><span>{{ likely.text_id.image1 }}</span>  </button> 授業ページのリンクをはる(classpages)-->
+       <img src="{{texts.image3.url}}" style="width:100px;"/>
+       {%endif%}
+      </div>
+       
+     </ul>
 
 
      
