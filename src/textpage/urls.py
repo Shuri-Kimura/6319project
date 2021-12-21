@@ -15,6 +15,7 @@ urlpatterns = [
          views.UserEvaluate, name='Evaluate'),
     path('<int:text_pk>/TransAction/<int:user_pk>',
          views.TransAction, name='TransAction'),
+     path('<int:pk>/tlike/', views.TlikeView, name='tlike'),
 ]
 
 

@@ -19,6 +19,7 @@ from django.core.mail import send_mail, EmailMessage
 
 def TextpageView(request, pk):
     text = Texts.objects.get(text_id=pk)
+    tf = Tfavos.objects.filter(text_id=pk,user_id=request.user)
     if request.user == text.user_id:
         form = TcomForm2()
     else:
@@ -64,6 +65,7 @@ def TextpageView(request, pk):
     else:
         return render(request, 'textpage/textpage.html', {
             'texts': text,
+            'tfavo': tf,
             'tcom_list': Tcom.objects.order_by('date').reverse().all(),
             'ueval_avg': Uevals.objects.filter(user_id=request.user).aggregate(avg=models.Avg('eval')),
             'form': form
@@ -182,10 +184,10 @@ def TransAction(request, text_pk, user_pk):
     })
 
 
-def TlikeView(request):
+def TlikeView(request, pk):
     if request.method =="POST":
         #print(print(request.is_ajax()))
-        text = get_object_or_404(Texts, pk=request.POST.get('text_id'))
+        text = Texts.objects.get(text_id=pk)
         user = request.user
         liked = False
         #print(text)
@@ -201,9 +203,7 @@ def TlikeView(request):
             'liked': liked,
             'count': text.tfavos_set.count(),
         }
-
-    if request.is_ajax():
-        return JsonResponse(context)
+        return HttpResponseRedirect(reverse('textpage:textpage', args=(text.text_id,)))
 
 
 

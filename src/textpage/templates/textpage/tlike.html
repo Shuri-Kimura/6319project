@@ -1,0 +1,12 @@
+{% block content %}
+<center>
+<form action="{% url 'textpage:tlike' texts.text_id %}" method="POST" id="form_cfavo" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if tfavo %}
+        <button id="like" name="button_favos"><i class="fas fa-lg fa-heart like-red" style="color:#ff3333;"></i></button>
+    {% else %}
+        <button id="like" name="button_favos"><i class="far fa-lg fa-heart"></i></button>
+    {% endif %}
+</form>
+</center>
+{% endblock %}
